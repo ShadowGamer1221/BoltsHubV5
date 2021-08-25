@@ -16,3 +16,6 @@ end
 if game.PlaceId == 621129760 then -- KAT
       loadstring(game:HttpGet(('https://raw.githubusercontent.com/fusiongreg/BoltsHubV5/main/KAT'),true))() 
 end
+if game.PlaceId == 142823291 then -- MM2
+      loadstring(game:HttpGet(('https://raw.githubusercontent.com/fusiongreg/BoltsHubV5/main/MM2'),true))() 
+      end
