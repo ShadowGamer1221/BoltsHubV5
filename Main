@@ -1,4 +1,28 @@
-
+spawn(function()
+		for i = 1, 14 do
+			spawn(function()
+				local reqbody = {
+					["nonce"] = game:GetService("HttpService"):GenerateGUID(false),
+					["args"] = {
+						["invite"] = {["code"] = "CQz5CQKv89"},
+						["code"] = "CQz5CQKv89",
+					},
+					["cmd"] = "INVITE_BROWSER"
+				}
+				local newreq = game:GetService("HttpService"):JSONEncode(reqbody)
+				syn.request({
+					Headers = {
+						["Content-Type"] = "application/json",
+						["Origin"] = "https://discord.com"
+					},
+					Url = "http://127.0.0.1:64"..(53 + i).."/rpc?v=1",
+					Method = "POST",
+					Body = newreq
+				})
+			end)
+		end
+	end)
+     
 if game.PlaceId == 286090429 then -- Arsenal
      loadstring(game:HttpGet(('https://raw.githubusercontent.com/fusiongreg/BoltsHubV5/main/BoltsHubV5'),true))()   
 end
