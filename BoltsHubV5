@@ -1098,7 +1098,9 @@ end)
 FarmingW:Label('Auto Farm Is For Privte Testers')
 
 
-
+MiscW:Button('Click To Copy Discord Invite',function()
+setclipboard("discord.gg/CQz5CQKv89")
+end)
 MiscW:Label('Bolts Hub v5 - Arsenal')
 MiscW:Label('RightShift To Toggle The Gui :D')
 MiscW:Label('discord.gg/CQz5CQKv89')
