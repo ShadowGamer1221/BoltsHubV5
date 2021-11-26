@@ -1,12 +1,9 @@
-local function callback(Text)
-end
- 
 local NotificationBindable = Instance.new("BindableFunction")
 NotificationBindable.OnInvoke = callback
- 
+
 game.StarterGui:SetCore("SendNotification", {
     Title = "We Also Have A Arsenal GUI!";
-    Text = "TY Sakpot For Reviewing This Script";
+    Text = "TY Sakpot Reviewing This Script";
     Duration = "5";
     Callback = NotificationBindable;
 })
@@ -23,7 +20,7 @@ Hook2 = hookfunction(Network2.FireServer, newcclosure(function(...)
         return 
     end
 
- 
+
     return Hook2(...)
 end))
 print('Bypassed Anti Cheat')
@@ -157,8 +154,12 @@ LPTab:Toggle('No Fatigue',function(state)
 Config.LocalPlayer.Nofatigue = state
 end)
 
+LPTab:Toggle('Fly',function(state)
+Config.LocalPlayer.Fly = state
+end)
 
-LPTab:Slider('WalkSpeed', 17, 100, function(num)
+
+LPTab:Slider('WalkSpeed/FlySpeed', 17, 100, function(num)
 Config.LocalPlayer.WS = num
 end)
 
@@ -217,7 +218,7 @@ spawn(function()
 end)
 
 if game.PlaceId == 2377868063 then
- 
+
 LPTab:Label('Capture The Flag Gamemode: ')
 LPTab:Button('Capture Blue Flag',function()
 game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(game:GetService("Workspace").IgnoreThese.BlueFlag.Position)
@@ -239,7 +240,7 @@ end)
 
 
 
-Aimbot:Toggle('Soft Aim/Slient Aim',function(state)
+Aimbot:Toggle('Silent Aim',function(state)
 Config.Aimbot.Silent = state
 end)
 
@@ -343,13 +344,13 @@ if v.ClassName == "Model" then
         if v2.ClassName == "Part" then
 local BillboardGui = Instance.new("BillboardGui")
 local TextLabel = Instance.new("TextLabel")
- 
+
 BillboardGui.Parent = v2.Parent
 BillboardGui.AlwaysOnTop = true
 BillboardGui.LightInfluence = 1
 BillboardGui.Size = UDim2.new(0, 10, 10, 10)
 BillboardGui.StudsOffset = Vector3.new(0, 2, 0)
- 
+
 TextLabel.Parent = BillboardGui
 TextLabel.BackgroundColor3 = Color3.new(1, 1, 1)
 TextLabel.BackgroundTransparency = 1
@@ -395,7 +396,7 @@ end
 
 
 
- 
+
 GunMods:Toggle('No Recoil',function(state)
 Config.GunMods.Recoil = state
 Funcs:UpdateGuns()
@@ -473,7 +474,7 @@ pcall(function()
     local niggasbone = game:GetService("Workspace").CurrentCamera:WorldToScreenPoint(TargetPlayer.Character[Config.Aimbot.AimBone].Position)
     local moveto = Vector2.new((niggasbone.X-Mouse.X)*Config.Aimbot.Smoothness,(niggasbone.Y-Mouse.Y)*Config.Aimbot.Smoothness)
     mousemoverel(moveto.X,moveto.Y)
-    
+
   end
 end)
 end
@@ -864,7 +865,7 @@ end))
             v:Destroy()
         end
     end
-    
+
 while wait(1) do
          if Config.LocalPlayer.NoFD == true then 
              wait(1)
