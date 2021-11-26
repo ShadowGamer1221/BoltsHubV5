@@ -7,7 +7,7 @@ NotificationBindable.OnInvoke = callback
 game.StarterGui:SetCore("SendNotification", {
     Title = ":D";
     Text = "TY Sakpot Reviewing This Script";
-    Duration = "5";
+    Duration = "8";
     Callback = NotificationBindable;
 })
 wait(2)
@@ -299,7 +299,28 @@ end
 end
 end
 end)
+FEW:Button('Insta Kill (Cant Toggle Off)(Might Ping Spike)',function()
+    --Arsenal Insta Kill
+local met = getrawmetatable(game)
+setreadonly(met,false)
+local old = met.__namecall
+met.__namecall = function(t,...)
+local args = {...}
+if(getnamecallmethod()=="FireServer") then
+if(tostring(t) == "HitPart") then
+  for i = 0,200 do old(t,...)end
+end
 
+end
+return old(t,...)
+end
+end)
+FEW:Button('999 Ammo Bypass (Press When Spawned)',function()
+    game:GetService('RunService').Stepped:connect(function() -- Infinite Ammo by Frontman#9917
+        game:GetService("Players").LocalPlayer.PlayerGui.GUI.Client.Variables.ammocount.Value = 999 -- dont do it higher then 999
+        game:GetService("Players").LocalPlayer.PlayerGui.GUI.Client.Variables.ammocount2.Value = 999
+        end)
+    end)
 
 Bolts:Textbox(
     "Enter A Skin You Want In Your Locker",
