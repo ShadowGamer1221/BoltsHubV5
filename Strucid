@@ -6,7 +6,7 @@ NotificationBindable.OnInvoke = callback
  
 game.StarterGui:SetCore("SendNotification", {
     Title = "We Also Have A Arsenal GUI!";
-    Text = "TY Sakpot Reviewing This Script";
+    Text = "TY Sakpot For Reviewing This Script";
     Duration = "5";
     Callback = NotificationBindable;
 })
@@ -157,12 +157,8 @@ LPTab:Toggle('No Fatigue',function(state)
 Config.LocalPlayer.Nofatigue = state
 end)
 
-LPTab:Toggle('Fly',function(state)
-Config.LocalPlayer.Fly = state
-end)
 
-
-LPTab:Slider('WalkSpeed/FlySpeed', 17, 100, function(num)
+LPTab:Slider('WalkSpeed', 17, 100, function(num)
 Config.LocalPlayer.WS = num
 end)
 
@@ -243,7 +239,7 @@ end)
 
 
 
-Aimbot:Toggle('Silent Aim',function(state)
+Aimbot:Toggle('Soft Aim/Slient Aim',function(state)
 Config.Aimbot.Silent = state
 end)
 
