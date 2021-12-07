@@ -1,16 +1,3 @@
-local function callback(Text)
-end
- 
-local NotificationBindable = Instance.new("BindableFunction")
-NotificationBindable.OnInvoke = callback
- 
-game.StarterGui:SetCore("SendNotification", {
-    Title = ":D";
-    Text = "TY Sakpot Reviewing This Script";
-    Duration = "8";
-    Callback = NotificationBindable;
-})
-wait(2)
 Client = {
     Modules = {
         ClientEnvoirment,
@@ -308,7 +295,7 @@ met.__namecall = function(t,...)
 local args = {...}
 if(getnamecallmethod()=="FireServer") then
 if(tostring(t) == "HitPart") then
-  for i = 0,200 do old(t,...)end
+  for i = 0,100 do old(t,...)end
 end
 
 end
@@ -321,7 +308,6 @@ FEW:Button('999 Ammo Bypass (Press When Spawned)',function()
         game:GetService("Players").LocalPlayer.PlayerGui.GUI.Client.Variables.ammocount2.Value = 999
         end)
     end)
-
 Bolts:Textbox(
     "Enter A Skin You Want In Your Locker",
     true,
@@ -582,26 +568,27 @@ spawn(function()
         end
     end
 end)
+ServerW:Textbox(
+    "FE Enter Any Gun (Cant do dmg)",
+true,
+function(Text)
+    game.ReplicatedStorage.Randomizer.Value= true
 
-ServerW:Button('Crash All v3',function()
+for _,v in pairs(game.ReplicatedStorage.Levels:GetChildren())do
+		v.Value= Text
+	end
+	game.ReplicatedStorage.Events.LoadCharacter:FireServer()
+end
+)
+ServerW:Button('Crash All v4 New Method (RISKY)',function()
 --Arsenal Crash Script By Bolts#9999 :D DM Him For The Script Or Skid
 --Must be spawned in to work
-while wait(5) do
-for i = 1,1000 do
-local args = {
-    [1] = {
-        [1] = "createparticle",
-        [2] = "explosion",
-        [3] = game:GetService("ReplicatedStorage").Pilots.AcePilot.Humanoid,
-        [4] = Vector3.new(49.285179138184, 16.526796340942, 24.010454177856),
-        [5] = game:GetService("Players").LocalPlayer.Data.RadioID,
-        [6] = "Firework Launcher",
-        [7] = nil --[[Color3]]
-    }
-}
-
-game:GetService("ReplicatedStorage").Events.RemoteEvent:FireServer(unpack(args))
-end
+while task.wait() do
+   for i,v in pairs(game.Players:GetPlayers()) do
+       if (v.Character) then
+           game:GetService("ReplicatedStorage").Events.Fire:FireServer(v.Character.HumanoidRootPart.Position)
+       end
+   end
 end
 end)
 
