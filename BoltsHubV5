@@ -611,7 +611,23 @@ for _,v in pairs(game.ReplicatedStorage.Levels:GetChildren())do
 	game.ReplicatedStorage.Events.LoadCharacter:FireServer()
 end
 )
+ServerW:Button('*FE* Golden Knife DOSE DMG RESET After Pressed',function()
+    for _,v in pairs(game.ReplicatedStorage.Levels:GetChildren())do
+		v.Value= "Golden Knife"
+    end
+end)
 
+ServerW:Button('*FE* Destroy Head Hitbox + Headless',function()
+    
+    
+if game.Players.LocalPlayer.Character:FindFirstChild("HeadHB")then
+            game.Players.LocalPlayer.Character:FindFirstChild("HeadHB"):Destroy()
+        end
+        if game.Players.LocalPlayer.Character:FindFirstChild("FakeHead")then
+            game.Players.LocalPlayer.Character:FindFirstChild("FakeHead"):Destroy()
+        end
+
+end)
 
 ServerW:Button('TP To Test Server v2',function()
     game:GetService("TeleportService"):Teleport(8412573470, LocalPlayer)
