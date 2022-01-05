@@ -32,7 +32,7 @@ Client = {
     }
 }
 
-local lib = loadstring(game:HttpGet("https://raw.githubusercontent.com/fusiongreg/BoltsHubV5/main/UI%20LIB"))()
+local lib = loadstring(game:HttpGet("https://pastebin.com/raw/2U92qyG3"))()
 main = lib:Window()
 CombatW = main:Tab('Combat')
 FEW = main:Tab('Gun Mods')
@@ -1477,24 +1477,97 @@ Services.Players.PlayerAdded:Connect(
 VisualsW:Button('Rainbow Gun',function()
 local c = 1 function zigzag(X)  return math.acos(math.cos(X * math.pi)) / math.pi end game:GetService("RunService").RenderStepped:Connect(function()  if game.Workspace.Camera:FindFirstChild('Arms') then   for i,v in pairs(game.Workspace.Camera.Arms:GetDescendants()) do    if v.ClassName == 'MeshPart' then      v.Color = Color3.fromHSV(zigzag(c),1,1)     c = c + .0001    end   end  end end)
 end)
-VisualsW:Toggle('Boxs',function(state)
+VisualsW:Button('Banana ESP',function()
+    while true do
+    wait(4)
+for i,v in pairs(game.Workspace:GetDescendants()) do -- grabs everything from workspace
+    if v.ClassName == 'TouchTransmitter' and v.Parent.Name == 'Banana' then -- checks if it has a handle and if its a touchtransmitter
+        local BillboardGui = Instance.new('BillboardGui') -- Makes Billboardgui
+        local TextLabel = Instance.new('TextLabel') -- makes text label
+        
+        BillboardGui.Parent = v.Parent -- what the billboardgui goes into
+        BillboardGui.AlwaysOnTop = true -- if its on top or not
+        BillboardGui.Size = UDim2.new(0, 50, 0, 50) -- size of it
+        BillboardGui.StudsOffset = Vector3.new(0,2,0)
+        
+        TextLabel.Parent = BillboardGui -- putting textlabel into billboardgui
+        TextLabel.BackgroundColor3 = Color3.new(1,1,1) -- color
+        TextLabel.BackgroundTransparency = 1 -- transparency
+        TextLabel.Size = UDim2.new(1, 0, 1, 0) -- size
+        TextLabel.Text = "🍌" -- what the label says
+        TextLabel.TextColor3 = Color3.new(1, 0, 0) -- color
+        TextLabel.TextScaled = false -- if the text is scaled or not
+    end
+end
+end
+end)
+VisualsW:Button('Ammo Box ESP',function()
+while true do
+    wait(4)
+for i,v in pairs(game.Workspace:GetDescendants()) do -- grabs everything from workspace
+    if v.ClassName == 'TouchTransmitter' and v.Parent.Name == 'DeadAmmo' then -- checks if it has a handle and if its a touchtransmitter
+        local BillboardGui = Instance.new('BillboardGui') -- Makes Billboardgui
+        local TextLabel = Instance.new('TextLabel') -- makes text label
+        
+        BillboardGui.Parent = v.Parent -- what the billboardgui goes into
+        BillboardGui.AlwaysOnTop = true -- if its on top or not
+        BillboardGui.Size = UDim2.new(0, 50, 0, 50) -- size of it
+        BillboardGui.StudsOffset = Vector3.new(0,2,0)
+        
+        TextLabel.Parent = BillboardGui -- putting textlabel into billboardgui
+        TextLabel.BackgroundColor3 = Color3.new(1,1,1) -- color
+        TextLabel.BackgroundTransparency = 1 -- transparency
+        TextLabel.Size = UDim2.new(1, 0, 1, 0) -- size
+        TextLabel.Text = "Ammo Box" -- what the label says
+        TextLabel.TextColor3 = Color3.new(1, 0, 0) -- color
+        TextLabel.TextScaled = false -- if the text is scaled or not
+    end
+end
+end
+end)
+VisualsW:Button('HP Jug ESP',function()
+    while true do
+    wait(4)
+for i,v in pairs(game.Workspace:GetDescendants()) do -- grabs everything from workspace
+    if v.ClassName == 'TouchTransmitter' and v.Parent.Name == 'DeadHP' then -- checks if it has a handle and if its a touchtransmitter
+        local BillboardGui = Instance.new('BillboardGui') -- Makes Billboardgui
+        local TextLabel = Instance.new('TextLabel') -- makes text label
+        
+        BillboardGui.Parent = v.Parent -- what the billboardgui goes into
+        BillboardGui.AlwaysOnTop = true -- if its on top or not
+        BillboardGui.Size = UDim2.new(0, 50, 0, 50) -- size of it
+        BillboardGui.StudsOffset = Vector3.new(0,2,0)
+        
+        TextLabel.Parent = BillboardGui -- putting textlabel into billboardgui
+        TextLabel.BackgroundColor3 = Color3.new(1,1,1) -- color
+        TextLabel.BackgroundTransparency = 1 -- transparency
+        TextLabel.Size = UDim2.new(1, 0, 1, 0) -- size
+        TextLabel.Text = "HP Jar" -- what the label says
+        TextLabel.TextColor3 = Color3.new(1, 0, 0) -- color
+        TextLabel.TextScaled = false -- if the text is scaled or not
+    end
+end
+end
+end)
+
+VisualsW:Toggle('Box ESP',function(state)
     Config.Visuals.BoxEsp = state
 end)
 
-VisualsW:Toggle('Tracers',function(state)
+VisualsW:Toggle('Line ESP',function(state)
     Config.Visuals.TracerEsp = state
 end)
 VisualsW:Dropdown(
-  "Tracers Origin", {'Top','Middle','Bottom','Mouse'}, function(selected)
+  "Lines Origin", {'Top','Middle','Bottom','Mouse'}, function(selected)
     Config.Visuals.TracersOrigin = selected
 end)
-VisualsW:Toggle('Names',function(state)
+VisualsW:Toggle('Name ESP',function(state)
     Config.Visuals.NameEsp = state
 end)
-VisualsW:Toggle('Distance',function(state)
+VisualsW:Toggle('Distance ESP',function(state)
     Config.Visuals.DistanceEsp = state
 end)
-VisualsW:Toggle('Skeletons',function(state)
+VisualsW:Toggle('Skeletons ESP',function(state)
     Config.Visuals.SkeletonEsp = state
 end)
 VisualsW:Colorpicker(
