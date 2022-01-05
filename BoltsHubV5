@@ -39,7 +39,7 @@ FEW = main:Tab('Gun Mods')
 Bolts = main:Tab('LocalPlayer')
 ServerW = main:Tab('FE/Trolling')
 VisualsW = main:Tab('Visuals')
-FarmingW = main:Tab('TBA')
+FarmingW = main:Tab('Arsenal Settings')
 MiscW = main:Tab('Credits')
 
 
@@ -391,6 +391,8 @@ end
 table.insert(Loadout.Melees, Text);
     end
 )
+
+
 
 Bolts:Button('Press E To Fly (E To To Toggle On And Off',function()
     repeat wait() 
@@ -1585,6 +1587,30 @@ VisualsW:Colorpicker(
 	end
 )
 
+
+FarmingW:Slider('FOV Slider',30,120,function(num)
+    game:GetService("Players").LocalPlayer.Settings.FOV.Value = num
+
+end)
+FarmingW:Button('Mask Usernames ON',function()
+    game:GetService("Players").AutofarmingRainster.Settings.MaskUsernames.Value = true
+    end)
+FarmingW:Button('Mask Usernames OFF',function()
+    game:GetService("Players").AutofarmingRainster.Settings.MaskUsernames.Value = false
+    end)
+
+FarmingW:Button('No Textures ON',function()
+    game:GetService("Players").AutofarmingRainster.Settings.NoTextures.Value = true
+end)
+FarmingW:Button('No Textures OFF (Only Works Next Round)',function()
+    game:GetService("Players").AutofarmingRainster.Settings.NoTextures.Value = false
+end)
+FarmingW:Button('AutoReload On',function()
+    game:GetService("Players").AutofarmingRainster.Settings.AutoReload.Value = true
+end)
+FarmingW:Button('AutoReload OFF',function()
+    game:GetService("Players").AutofarmingRainster.Settings.AutoReload.Value = false
+    end)
 MiscW:Button('Click To Copy Discord Invite',function()
 setclipboard("discord.gg/CQz5CQKv89")
 end)
