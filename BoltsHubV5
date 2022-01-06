@@ -491,6 +491,9 @@ local args = {
 game:GetService("ReplicatedStorage").Events.BuyItem:FireServer(unpack(args))
 
 end)
+Bolts:Button('Get Rid Of Nerf Ad',function()
+game:GetService("Players").LocalPlayer.PlayerGui.Menew.Main.NerfOrNothing:Destroy()
+end)
 Bolts:Button('Rejoin',function()
     local TeleportService = game:GetService("TeleportService")
 local Players = game:GetService("Players")
@@ -613,6 +616,9 @@ for _,v in pairs(game.ReplicatedStorage.Levels:GetChildren())do
 	game.ReplicatedStorage.Events.LoadCharacter:FireServer()
 end
 )
+ServerW:Button('*FE* FPS Crash Script V10 (Spawn in for this to work)',function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/fusiongreg/BoltsHubV5/main/Crash%20script%20v10"))()
+    end)
 ServerW:Button('*FE* Golden Knife DOSE DMG RESET After Pressed',function()
     for _,v in pairs(game.ReplicatedStorage.Levels:GetChildren())do
 		v.Value= "Golden Knife"
@@ -631,6 +637,12 @@ if game.Players.LocalPlayer.Character:FindFirstChild("HeadHB")then
 
 end)
 
+ServerW:Button('FE Sunglasses',function()
+    while true do
+game:GetService("ReplicatedStorage").Events.Sunglasses:FireServer("")
+wait(0.0000000000000000000000000000001)
+end
+end)
 ServerW:Button('TP To Test Server v2',function()
     game:GetService("TeleportService"):Teleport(8412573470, LocalPlayer)
 end)
