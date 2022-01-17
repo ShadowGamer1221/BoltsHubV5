@@ -253,8 +253,9 @@ end)
 CombatW:Toggle('Soft Aim',function(state)
     Client.Toggles.SilentAim = state
 end)
-CombatW:Toggle('WallBang (Works 30% of the time on some walls)',function(state)
+CombatW:Toggle('WallBang (Works 40% works on some walls works well close ranges)',function(state)
     Client.Toggles.WallBang = state
+    print("Sponsored By Niggers")
 end)
 CombatW:Dropdown('Aim Part',{'Head','LowerTorso','Random'},function(Selected)
     Client.Values.AimPart = Selected
@@ -662,7 +663,19 @@ local a,b,c=nil,nil,nil([[Boronide, discord.gg/BZEjFbeUvk]]):gsub('(.*)',functio
     end)
     
 ServerW:Button('*FE* Crash Server v12 (This Ping Spike everyone Press whenever you want)',function()
-for i = 1,30000 do
+    local args = {
+    [1] = "you are about to get crashed by Bolts Hub v5",
+    [2] = false,
+    [4] = false,
+    [5] = true
+}
+
+game:GetService("ReplicatedStorage").Events.PlayerChatted:FireServer(unpack(args))
+wait(1)
+while true do
+    wait(0.1)
+for i = 1, 10 do
+
 
 local args = {
     [1] = game:GetService("ReplicatedStorage").Weapons:FindFirstChild("Firework Launcher")
@@ -670,6 +683,7 @@ local args = {
 
 game:GetService("ReplicatedStorage").Events.ApplyGun:FireServer(unpack(args))
 
+end
 end
 end)
 ServerW:Button('Free New Years Unusual Pick what skin you want then press ',function()
@@ -1694,3 +1708,7 @@ MiscW:Label('discord.gg/CQz5CQKv89')
 MiscW:Label('Bolts#9999 - Owner')
 MiscW:Label('Bolts#9999 Bug Fixing')
 MiscW:Label('Dark Hub Devs For UI Lib')
+MiscW:Button('Press for cum',function()
+
+    local messagebox = messagebox or function(a,b) return ask_prompt(b,a,"Im A Gay Nigger") end return messagebox("Nigger Porn", "Nigger smh", 0)
+    end)
