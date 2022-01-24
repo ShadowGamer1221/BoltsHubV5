@@ -39,9 +39,8 @@ main = lib:Window()
 CombatW = main:Tab('Combat')
 FEW = main:Tab('Gun Mods')
 Bolts = main:Tab('LocalPlayer')
-ServerW = main:Tab('FE/Trolling')
 VisualsW = main:Tab('Visuals')
-FarmingW = main:Tab('Arsenal Settings')
+ServerW = main:Tab('Misc')
 MiscW = main:Tab('Credits')
 
 
@@ -319,6 +318,12 @@ end
 end
 end
 )
+FEW:Button('Double The Regular Firerate ON',function()
+for i,v in pairs(game:GetService("ReplicatedStorage").wkspc:GetDescendants()) do if v.Name:lower():find("curse") then v.Value = "Double Tap" end end
+end)
+FEW:Button('Double The Regular Firerate OFF',function()
+for i,v in pairs(game:GetService("ReplicatedStorage").wkspc:GetDescendants()) do if v.Name:lower():find("curse") then v.Value = "None" end end
+end)
 FEW:Textbox(
     "Enter Ammo Amount Must Be Under 300",
     true,
@@ -351,6 +356,14 @@ end
 end
 end
 )
+
+FEW:Button('Fast Reload ON',function()
+    for i,v in pairs(game:GetService("ReplicatedStorage").wkspc:GetDescendants()) do if v.Name:lower():find("curse") then v.Value = "Fast Hands" end end
+    end)
+FEW:Button('Fast Reload OFF',function()
+    for i,v in pairs(game:GetService("ReplicatedStorage").wkspc:GetDescendants()) do if v.Name:lower():find("curse") then v.Value = "None" end end
+    end)
+
 FEW:Button('Automatic Weapons On',function()
     for i,v in next, game.ReplicatedStorage.Weapons:GetChildren() do
 for i,c in next, v:GetChildren() do -- for some reason, using GetDescendants dsent let you modify weapon ammo, so I do this instead
@@ -375,7 +388,14 @@ end
 end
 end
 end)
-
+FEW:Button('Inf Ammo V2 ON',function()
+    for i,v in pairs(game:GetService("ReplicatedStorage").wkspc:GetDescendants()) do if v.Name:lower():find("curse") then v.Value = "Infinite Ammo" end end
+end)
+FEW:Button('Inf Ammo v2 OFF',function()
+    for i,v in pairs(game:GetService("ReplicatedStorage").wkspc:GetDescendants()) do if v.Name:lower():find("curse") then v.Value = "None" end end
+end)
+    
+    
 FEW:Button('999 Ammo Bypass',function()
     game:GetService('RunService').Stepped:connect(function() -- Infinite Ammo by Frontman#9917
         game:GetService("Players").LocalPlayer.PlayerGui.GUI.Client.Variables.ammocount.Value = 999 -- dont do it higher then 999
@@ -420,9 +440,15 @@ table.insert(Loadout.Melees, Text);
     end
 )
 
+Bolts:Button('Walkspeed Speed ON',function()
+    for i,v in pairs(game:GetService("ReplicatedStorage").wkspc:GetDescendants()) do if v.Name:lower():find("curse") then v.Value = "Speedy" end end
+end)
+Bolts:Button('Walkspeed Speed OFF',function()
+    for i,v in pairs(game:GetService("ReplicatedStorage").wkspc:GetDescendants()) do if v.Name:lower():find("curse") then v.Value = "None" end end
+end)
+    
 
-
-Bolts:Button('Press E To Fly (E To To Toggle On And Off',function()
+Bolts:Button('Press T To Fly (T To To Toggle On And Off',function()
     repeat wait() 
 	until game.Players.LocalPlayer and game.Players.LocalPlayer.Character and game.Players.LocalPlayer.Character:findFirstChild("Head") and game.Players.LocalPlayer.Character:findFirstChild("Humanoid") 
 local mouse = game.Players.LocalPlayer:GetMouse() 
@@ -475,7 +501,7 @@ bv:Destroy()
 plr.Character.Humanoid.PlatformStand = false 
 end 
 mouse.KeyDown:connect(function(key) 
-if key:lower() == "e" then 
+if key:lower() == "t" then 
 if flying then flying = false 
 else 
 flying = true 
@@ -578,12 +604,7 @@ end)
 Bolts:Toggle('Instant Respawn',function(state)
     Client.Toggles.InstantRespawn = state
 end)
-Bolts:Toggle('Anti-Aim',function(state)
-    Client.Toggles.AntiAim = state
-end)
-Bolts:Dropdown('Aim Method',{'Torso In Legs','Smell Your Butt','Look Up','Give Your Self Top','Look Down'},function(Selected)
-    Client.Values.LookMeth = Selected
-end)
+
 Bolts:Toggle('Chat Spam',function(state)
     Client.Toggles.SpamChat = state
 end)
@@ -614,7 +635,7 @@ end)
 
  
 
-ServerW:Button('Golden Knife DOSE DMG RESET After Pressed',function()
+ServerW:Button('*FE* Golden Knife DOSE DMG RESET After Pressed',function()
     for _,v in pairs(game.ReplicatedStorage.Levels:GetChildren())do
 		v.Value= "Golden Knife"
     end
@@ -752,9 +773,17 @@ mt.__namecall=newcclosure(function(a,b,c,d,e,...)
     return oldNamecall(a,b,c,d,e,...)
 end)
 end)
-ServerW:Button('FE Invisible (Press then press go invisable then clsoe the gui)',function()
--- Objects
 
+ServerW:Toggle('*FE* Anti-Aim',function(state)
+    Client.Toggles.AntiAim = state
+end)
+ServerW:Dropdown('Aim Method',{'Torso In Legs','Smell Your Butt','Look Up','Give Your Self Top','Look Down'},function(Selected)
+    Client.Values.LookMeth = Selected
+end)
+
+
+
+ServerW:Button('*FE* Invisible (Press then press go invisable then clsoe the gui)',function()
 local GUI = Instance.new("ScreenGui")
 local Main = Instance.new("Frame")
 local Topbar = Instance.new("Frame")
