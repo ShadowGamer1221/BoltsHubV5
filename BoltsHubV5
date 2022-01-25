@@ -1,8 +1,6 @@
-
---Sasquatch
 Client = {
     Modules = {
-        ClientEnvoirmenwdat,
+        ClientEnvoirment,
         ClientMain,
         CreateProj,
         CretTrail,
@@ -24,7 +22,7 @@ Client = {
     },
     Values = {
         JumpPower = 50,
-        LookMeth = 'Look Up',
+        LookMeth = 'Look Up',                                                                                                                                                                                                                                                 
         Test = '',
         FOV = 150,
         ChatMsg = 'Bolts Hub V5 Is The Best Arsenal GUI - Sponsored By Carls Jr',
@@ -40,7 +38,7 @@ CombatW = main:Tab('Combat')
 FEW = main:Tab('Gun Mods')
 Bolts = main:Tab('LocalPlayer')
 VisualsW = main:Tab('Visuals')
-ServerW = main:Tab('Misc')
+ServerW = main:Tab('Misc/FE')
 MiscW = main:Tab('Credits')
 
 
@@ -194,10 +192,10 @@ function KnifeKill()
     local Crit = math.random() > .6 and true or false;
     Target = RandomPlr()
     game.Players.LocalPlayer.Character:SetPrimaryPartCFrame(Target.Character.Head.CFrame * CFrame.new(0,2,3))
-    SwitchToKnife()
+    
     wait(.2)
     for i =1,20 do
-        SwitchToKnife()
+        
         wait()
         local getenemys=function()--simple get enemys function (with proper ffa detection)
     local a={}
@@ -321,9 +319,11 @@ end
 FEW:Button('Double The Regular Firerate ON',function()
 for i,v in pairs(game:GetService("ReplicatedStorage").wkspc:GetDescendants()) do if v.Name:lower():find("curse") then v.Value = "Double Tap" end end
 end)
+
 FEW:Button('Double The Regular Firerate OFF',function()
 for i,v in pairs(game:GetService("ReplicatedStorage").wkspc:GetDescendants()) do if v.Name:lower():find("curse") then v.Value = "None" end end
 end)
+
 FEW:Textbox(
     "Enter Ammo Amount Must Be Under 300",
     true,
@@ -340,6 +340,7 @@ end
 end
 end
 )
+
 FEW:Textbox(
     "Enter Recoil Amount (1 Is Recomended)",
     true,
@@ -440,6 +441,12 @@ table.insert(Loadout.Melees, Text);
     end
 )
 
+Bolts:Button('Third Person ON',function()
+    game:GetService("Players")["LocalPlayer"].PlayerGui.GUI.Client.Variables.thirdperson.Value = true
+    end)
+Bolts:Button('Third Person OFF',function()
+    game:GetService("Players")["LocalPlayer"].PlayerGui.GUI.Client.Variables.thirdperson.Value = false
+    end)
 Bolts:Button('Walkspeed Speed ON',function()
     for i,v in pairs(game:GetService("ReplicatedStorage").wkspc:GetDescendants()) do if v.Name:lower():find("curse") then v.Value = "Speedy" end end
 end)
@@ -608,8 +615,6 @@ end)
 Bolts:Toggle('Chat Spam',function(state)
     Client.Toggles.SpamChat = state
 end)
-
-
 spawn(function()
     while true do
         wait(.01)
@@ -633,12 +638,19 @@ game:GetService("ReplicatedStorage").Events.PlayerChatted:FireServer(unpack(args
     end
 end)
 
- 
+ServerW:Textbox(
+    "FE Guns/Admin Melees Enter Any Gun",
+    true,
+    function(Text)
+    
+debug.setconstant(getsenv(game.Players.LocalPlayer.PlayerGui.GUI.Client).givetools,30,Text)
+
+table.insert(Loadout.Melees, Text);
+    end
+)
 
 ServerW:Button('*FE* Golden Knife DOSE DMG RESET After Pressed',function()
-    for _,v in pairs(game.ReplicatedStorage.Levels:GetChildren())do
-		v.Value= "Golden Knife"
-    end
+    debug.setconstant(getsenv(game.Players.LocalPlayer.PlayerGui.GUI.Client).givetools,30,"Golden Knife")
 end)
 
 ServerW:Button('*FE*Destroy Head Hitbox + Headless',function()
@@ -1623,30 +1635,6 @@ VisualsW:Colorpicker(
 	end
 )
 
-
-FarmingW:Slider('FOV Slider',30,120,function(num)
-    game:GetService("Players").LocalPlayer.Settings.FOV.Value = num
-
-end)
-FarmingW:Button('Mask Usernames ON',function()
-    game:GetService("Players").AutofarmingRainster.Settings.MaskUsernames.Value = true
-    end)
-FarmingW:Button('Mask Usernames OFF',function()
-    game:GetService("Players").AutofarmingRainster.Settings.MaskUsernames.Value = false
-    end)
-
-FarmingW:Button('No Textures ON',function()
-    game:GetService("Players").AutofarmingRainster.Settings.NoTextures.Value = true
-end)
-FarmingW:Button('No Textures OFF (Only Works Next Round)',function()
-    game:GetService("Players").AutofarmingRainster.Settings.NoTextures.Value = false
-end)
-FarmingW:Button('AutoReload On',function()
-    game:GetService("Players").AutofarmingRainster.Settings.AutoReload.Value = true
-end)
-FarmingW:Button('AutoReload OFF',function()
-    game:GetService("Players").AutofarmingRainster.Settings.AutoReload.Value = false
-    end)
 MiscW:Button('Click To Copy Discord Invite',function()
 setclipboard("discord.gg/CQz5CQKv89")
 end)
