@@ -16,6 +16,7 @@ Client = {
         Trac = false,
         Sight = false,
         FOV = false,
+        Golden = true,
         Visiblecheck = false,
         SilentAim = false,
 
@@ -156,7 +157,6 @@ game:GetService("RunService").Stepped:Connect(function()
     FOVCircle.Position = game:GetService('UserInputService'):GetMouseLocation()
 end)
 
-
 spawn(function()
     while true do
         wait()
@@ -188,6 +188,7 @@ function RandomPlr()
 end
 
 function KnifeKill()
+    
     OldPos = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame
     local Crit = math.random() > .6 and true or false;
     Target = RandomPlr()
@@ -210,37 +211,30 @@ function KnifeKill()
     end
     return a
 end
-    for _,v in pairs(getenemys())do
-        local Partpos=v.Character.Head.Position+Vector3.new(math.random(),math.random(),math.random())--get head pos with random position to prevent ss detection(old kill all had it so i added it)
-        local Packedstring=string.pack(
-                        debug.getconstant(require(game:GetService("ReplicatedStorage").Modules.ClientFunctions).CreateProjectile,105),
-                        Partpos.X,
-                        Partpos.Y,
-                        Partpos.Z,
-                        tostring(game.Players.LocalPlayer.PlayerGui.GUI.Client.Variables.gun.Value),
-                        1,--headshot=1 none=0
-                        0,--unknown
-                        0,--backstab=1 none=0
-                        0,--forcecrit=1 none=0
-                        0,--morecrit=1 none=0
-                        0,--spoof=2 none=0
-                        0,--unkown
-                        0,--Player Distance
-                        1,--Current Spell
-                        0,--scope=1 noscope=0
-                        0--aircrit=1 none=0
-                    )
-        game.ReplicatedStorage.Events.HitPart:FireServer(v.Character.Head,Packedstring)
-    end
-    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = OldPos
+   
+if not(game.ReplicatedStorage.wkspc.Status.RoundOver.Value or game.ReplicatedStorage.wkspc.Status.Preparation.Value)and game.Players.LocalPlayer.Character then
+for _,v in pairs(game.Players:GetChildren())do
+if v.Character then
+if v.Team~=game.Players.LocalPlayer.Team or game.ReplicatedStorage.wkspc.FFA.Value then
+if v.Character:FindFirstChild("IsAPlayer")and v~=game.Players.LocalPlayer and not v.Character:FindFirstChild("ShuckyHAX")and v.Character:FindFirstChild("Spawned")and v~=game.Players.LocalPlayer then
+if(game.Players.LocalPlayer.Character.HumanoidRootPart.Position-v.Character.HumanoidRootPart.Position).Magnitude<=10000000 then
+game.ReplicatedStorage.Events.FallDamage:FireServer(500/4,v.Character.Hitbox)
+end
+end
+end
+end
+end
+end
 end
 end
 CombatW:Keybind(
-	"Kill All (Spam Me And Press Kill Aura Below)",
+	"Kill Random Enemy (Spam this for kill all)",
 	Enum.KeyCode.E,
+
 	function()
 		KnifeKill()
 	end
+	
 )
 CombatW:Button('Kill Aura',function()
     _G.Range = 10000
@@ -638,20 +632,25 @@ game:GetService("ReplicatedStorage").Events.PlayerChatted:FireServer(unpack(args
     end
 end)
 
+
 ServerW:Textbox(
     "FE Guns/Admin Melees Enter Any Gun",
     true,
     function(Text)
     
 debug.setconstant(getsenv(game.Players.LocalPlayer.PlayerGui.GUI.Client).givetools,30,Text)
-
+getsenv(game.Players.LocalPlayer.PlayerGui.GUI.Client).givetools()
+        require(game.Players.LocalPlayer.PlayerGui.GUI.Client.Functions.Weapons).usethatgun()
 table.insert(Loadout.Melees, Text);
     end
 )
 
 ServerW:Button('*FE* Golden Knife DOSE DMG RESET After Pressed',function()
     debug.setconstant(getsenv(game.Players.LocalPlayer.PlayerGui.GUI.Client).givetools,30,"Golden Knife")
+    getsenv(game.Players.LocalPlayer.PlayerGui.GUI.Client).givetools()
+        require(game.Players.LocalPlayer.PlayerGui.GUI.Client.Functions.Weapons).usethatgun()
 end)
+
 
 ServerW:Button('*FE*Destroy Head Hitbox + Headless',function()
     
