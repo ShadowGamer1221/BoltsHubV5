@@ -645,7 +645,7 @@ table.insert(Loadout.Melees, Text);
     end
 )
 
-ServerW:Button('*FE* Golden Knife DOSE DMG RESET After Pressed',function()
+ServerW:Button('*FE* Golden Knife',function()
     debug.setconstant(getsenv(game.Players.LocalPlayer.PlayerGui.GUI.Client).givetools,30,"Golden Knife")
     getsenv(game.Players.LocalPlayer.PlayerGui.GUI.Client).givetools()
         require(game.Players.LocalPlayer.PlayerGui.GUI.Client.Functions.Weapons).usethatgun()
