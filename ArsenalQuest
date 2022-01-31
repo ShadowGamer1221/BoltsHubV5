@@ -1,0 +1,55 @@
+
+local lib = loadstring(game:HttpGet("https://pastebin.com/raw/r7LZJci3"))()
+main = lib:Window()
+CombatW = main:Tab('Main')
+Fun = main:Tab('Fun')
+MiscW = main:Tab('Credits')
+
+
+CombatW:Button('Step 1 Teleport to(Color Code)',function()
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(168.199722, 68, -112, 1, 0, 0, 0, 1, 0, 0, 0, 1)
+end)
+CombatW:Button('Step 2 Grab Codes',function()
+ local NUMBERS = game:GetService("Workspace").Map.Geometry.Facility.Notes:GetChildren()
+   for i, v in pairs(NUMBERS) do
+     game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.Note.CFrame
+     wait(3)
+   end
+   end)
+CombatW:Button('Step 3 Go To To Keypad1',function()
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(625.04718, 61.8498535, 145.411041, 0, 0, 1, 0, 1, -0, -1, 0, 0)
+    end)
+CombatW:Button('Step 4 Teleport to Maze Keypad',function()
+     game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(1294.85205, 62.65839, -159.861374, 0, 0, -1, 0, 1, 0, 1, 0, 0)
+        end)
+CombatW:Button('Step 5 (Prints the 6 digit code for maze keypad)',function()
+    print("250971")
+end)
+CombatW:Button('Step 6 (Teleport to spawn)',function()
+     game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(60.5, 39.5, -211.5, 1, 0, 0, 0, 1, 0, 0, 0, 1)
+end)
+ CombatW:Button('Step 7 print Melee Code',function()
+ local code = game:GetService("Workspace").Map.Geometry["1"].SurfaceGui.TextLabel.Text
+ print("Your specifical melee code is: "..code)
+ end)
+ CombatW:Button('Step 7.1 print Melee Code',function()
+ local code = game:GetService("Workspace").Map.Geometry["2"].SurfaceGui.TextLabel.Text
+ print("Your specifical melee code is: "..code)
+ end)
+ CombatW:Button('Step 7.2 print Melee Code',function()
+ local code = game:GetService("Workspace").Map.Geometry["3"].SurfaceGui.TextLabel.Text
+ print("Your specifical melee code is: "..code)
+ end)
+ Fun:Button('Teleport To Milo Plush',function()
+  game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Map.Geometry.Facility.MiloSpawns.MiloPlush.CFrame
+ end)
+
+MiscW:Button('Click To Copy Discord Invite',function()
+setclipboard("discord.gg/CQz5CQKv89")
+end)
+MiscW:Label('Bolts Hub v5 - Arsenal Quest')
+MiscW:Label('RightShift To Toggle The Gui :D')
+MiscW:Label('discord.gg/CQz5CQKv89')
+MiscW:Label('Bolts#9999 - Owner')
+MiscW:Label('Bolts#9999 Bug Fixing')
+MiscW:Label('Dark Hub Devs For UI Lib')
