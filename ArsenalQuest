@@ -9,6 +9,9 @@ MiscW = main:Tab('Credits')
 CombatW:Button('Step 1 Teleport to (Color Code)',function()
     game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(196.617752, 58.9999886, -119.517891, 0.999990523, 4.20307096e-08, 0.00435244804, -4.22148467e-08, 1, 4.22149746e-08, -0.00435244804, -4.23983124e-08, 0.999990523)
 end)
+CombatW:Button('Step 1.5 Print the color combo in console',function()
+    print[[Red , Blue , Green , Green , Red , Blue]]
+    end)
 CombatW:Button('Step 2 Grab Codes',function()
  local NUMBERS = game:GetService("Workspace").Map.Geometry.Facility.Notes:GetChildren()
    for i, v in pairs(NUMBERS) do
@@ -84,7 +87,9 @@ end)
 Fun:Button('Teleport to Clock',function()
     game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Maze.clock.TimePart.CFrame
 end)
-
+Fun:Button('See what dev knife your getting today',function()
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(409.258392, 59.100029, 99.7008591, -0.999978483, -4.2491223e-08, 0.006559751, -4.22152091e-08, 1, 4.22154258e-08, -0.006559751, 4.19375965e-08, -0.999978483)
+    end)
 MiscW:Button('Click To Copy Discord Invite',function()
 setclipboard("discord.gg/CQz5CQKv89")
 end)
