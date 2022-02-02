@@ -1,6 +1,8 @@
+
 local lib = loadstring(game:HttpGet("https://raw.githubusercontent.com/fusiongreg/BoltsHubV5/main/AutofarmUiLib"))()
 main = lib:Window()
-CombatW = main:Tab('Main')
+CombatW = main:Tab('Auto Melee Quest')
+Cum = main:Tab('Auto Step 3')
 Utility = main:Tab('Utililitys')
 Fun = main:Tab('Fun')
 MiscW = main:Tab('Credits')
@@ -49,6 +51,20 @@ CombatW:Button('Step 6 (Teleport to tree house)',function()
  print("Your specifical melee code is: "..code4.SurfaceGui.TextLabel.Text)
  end
  end)
+ 
+ 
+ Cum:Label('you need maze unlocked for this to work')
+ Cum:Button('Teleport to maze note codes',function()
+     local TP = game:GetService("Workspace").Maze.Notes:GetChildren()
+        for i, v in pairs(TP) do
+          game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.Note.CFrame
+          wait(3)
+        end
+ end)
+ Cum:Button('Teleport To Final Maze',function()
+             game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(961.69519, 59.2083969, -295.773682, 0.999631107, 0, -0.0271600783, 0, 1, 0, 0.0271600783, 0, 0.999631107)
+end)
+
  
  Utility:Button('Gun Mods (Set to do color code faster)',function()
      for i,v in next, game.ReplicatedStorage.Weapons:GetChildren() do
