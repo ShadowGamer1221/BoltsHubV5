@@ -1,0 +1,13 @@
+while true do
+    wait(0.1)
+
+local args = {
+    [1] = "Trolling42",
+    [2] = _G.Chat,
+    [3] = false,
+    [5] = false,
+    [6] = true
+}
+
+game:GetService("ReplicatedStorage").Events.PlayerChatted:FireServer(unpack(args))
+end
