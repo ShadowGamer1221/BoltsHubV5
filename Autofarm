@@ -3,20 +3,6 @@ wait(3)
 --Template By XR
 print("Bolts Hub Winning!")
 
-while true do
-    wait(0.1)
-
-local args = {
-    [1] = "Trolling42",
-    [2] = _G.Chat,
-    [3] = false,
-    [5] = false,
-    [6] = true
-}
-
-game:GetService("ReplicatedStorage").Events.PlayerChatted:FireServer(unpack(args))
-end
-
 function ServerHop()
 	local Servers = {}
 	local URL = "https://games.roblox.com/v1/games/286090429/servers/Public?sortOrder=Asc&limit=100"
@@ -258,6 +244,7 @@ end)
 
 StartAutofarm()
 
+
 game:GetService("RunService").RenderStepped:Connect(function(step)
 
 function RandomPlr()
@@ -286,6 +273,16 @@ end)
 
 while true do
     wait(0.1)
+    local args = {
+    [1] = "Trolling42",
+    [2] = _G.Chat,
+    [3] = false,
+    [5] = false,
+    [6] = true
+}
+
+game:GetService("ReplicatedStorage").Events.PlayerChatted:FireServer(unpack(args))
+
 if not(game.ReplicatedStorage.wkspc.Status.RoundOver.Value or game.ReplicatedStorage.wkspc.Status.Preparation.Value)and game.Players.LocalPlayer.Character then
 for _,v in pairs(game.Players:GetChildren())do
 if v.Character then
@@ -300,4 +297,3 @@ end
 end
 end
 end
-
