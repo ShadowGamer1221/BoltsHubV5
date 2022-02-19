@@ -1,3 +1,4 @@
+
 Client = {
     Modules = {
         ClientEnvoirment,
@@ -39,7 +40,7 @@ CombatW = main:Tab('Combat')
 FEW = main:Tab('Gun Mods')
 Bolts = main:Tab('LocalPlayer')
 VisualsW = main:Tab('Visuals')
-ServerW = main:Tab('Misc/FE')
+ServerW = main:Tab('Misc/FE/Fun')
 MiscW = main:Tab('Credits')
 
 
@@ -448,8 +449,24 @@ Bolts:Button('Walkspeed Speed OFF',function()
     for i,v in pairs(game:GetService("ReplicatedStorage").wkspc:GetDescendants()) do if v.Name:lower():find("curse") then v.Value = "None" end end
 end)
     
+Bolts:Button('Never Die (Keeps Your Kill Streak)',function()
+    while game.RunService.RenderStepped:Wait()do
+    pcall(function()
+        if game.Players.LocalPlayer.Character then
+            if game.Players.LocalPlayer.NRPBS.Health.Value<=99 then
+                if game.Players.LocalPlayer.Character:FindFirstChild("Spawned")then
+                    
+game:GetService("ReplicatedStorage").Events.LoadCharacter:FireServer()
 
-Bolts:Button('Fast Heal v4 Bypassed By Bolts#9999',function()
+
+                end
+            end
+        end
+    end)
+end
+end)
+
+Bolts:Button('Fast Heal v5 Bypassed By Bolts#9999',function()
     while game.RunService.RenderStepped:Wait()do
     pcall(function()
         if game.Players.LocalPlayer.Character then
@@ -463,7 +480,7 @@ Bolts:Button('Fast Heal v4 Bypassed By Bolts#9999',function()
                     end
 local args = {
     [1] = game:GetService("ReplicatedStorage").Weapons["Stake Launcher"],
-    [2] = "Perish!"
+    [2] = "Rolled!"
 }
 
 game:GetService("ReplicatedStorage").Events.ApplyGun:FireServer(unpack(args))
@@ -471,7 +488,7 @@ game:GetService("ReplicatedStorage").Events.ApplyGun:FireServer(unpack(args))
 game.ReplicatedStorage.Events.HealBoy:FireServer(game.Players.LocalPlayer.Character.HumanoidRootPart)
 local args = {
     [1] = game.Players.LocalPlayer.PlayerGui.GUI.Client.Variables.gun.Value,
-    [2] = "Perish!"
+    [2] = "Rolled!"
 }
 
 game:GetService("ReplicatedStorage").Events.ApplyGun:FireServer(unpack(args))
@@ -670,6 +687,36 @@ game:GetService("ReplicatedStorage").Events.PlayerChatted:FireServer(unpack(args
     end
 end)
 
+ServerW:Button('Auto tp to hearts cant toggle off lol',function()
+    local RunService = game:GetService("RunService")
+RunService.RenderStepped:Connect(function(step)
+
+me = game.Players.LocalPlayer
+team = me.Status.Team
+
+
+pcall(function()
+    for _,v in pairs(game:GetService("Workspace").Debris:GetDescendants()) do
+        if v.Name == "Heart" and v.Team.Value ~= team then
+            me.Character.HumanoidRootPart.CFrame = v.CFrame
+                end
+                   end
+                     end)
+end)
+    end)
+ServerW:Button('TP To just 1 heart (spam) ig',function()
+me = game.Players.LocalPlayer
+team = me.Status.Team
+
+
+pcall(function()
+    for _,v in pairs(game:GetService("Workspace").Debris:GetDescendants()) do
+        if v.Name == "Heart" and v.Team.Value ~= team then
+            me.Character.HumanoidRootPart.CFrame = v.CFrame
+                end
+                   end
+                     end)
+end)
 
 
 ServerW:Button('*FE*Destroy Head Hitbox + Headless',function()
