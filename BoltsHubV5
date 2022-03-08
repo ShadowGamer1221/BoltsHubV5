@@ -1,4 +1,38 @@
-Client = {  Modules = { ClientEnvoirment, ClientMain, CreateProj, CretTrail, ModsShit },  Toggles = { BHop = false, WallBang = false, InstantRespawn = false, AntiAim = false, AutoAmmo = false, AutoHealth = false, Trac = false, Sight = false, FOV = false, Golden = true, Visiblecheck = false, SilentAim = false, }, Values = { JumpPower = 50, LookMeth = 'Look Up', Test = '', FOV = 150, ChatMsg = 'Bolts Hub V5 Is The Best Arsenal GUI - Sponsored By Carls Jr', AimPart = 'Head'  } }
+Client = {
+    Modules = {
+        ClientEnvoirment,
+        ClientMain,
+        CreateProj,
+        CretTrail,
+        ModsShit
+    },
+    Toggles = {
+        BHop = false,
+        WallBang = false,
+        InstantRespawn = false,
+        AntiAim = false,
+        AutoAmmo = false,
+        AutoHealth = false,
+        Trac = false,
+        Sight = false,
+        FOV = false,
+        Golden = true,
+        Visiblecheck = false,
+        SilentAim = false,
+
+    },
+    Values = {
+        JumpPower = 50,
+        LookMeth = 'Look Up',                                                                                                                                                                                                                                                 
+        Test = '',
+        FOV = 150,
+        ChatMsg = 'Bolts Hub V5 Is The Best Arsenal GUI - Sponsored By Carls Jr',
+        AimPart = 'Head'
+
+        
+    }
+}
+
 local lib = loadstring(game:HttpGet("https://pastebin.com/raw/RrjUuMDW"))()
 main = lib:Window()
 CombatW = main:Tab('Combat')
@@ -2044,6 +2078,7 @@ Player.CharacterAdded:connect(OnCharacterAdded)
 
 SubFrame.Rigtype.Text = ('Your Rigtype - %s'):format(CheckRig())
 end)
+ServerL:Label('-Unpatched KRNL/Free Exploits')
 
 ServerL:Label('-Added Patch Notes')
 ServerL:Label('-Added Bypassed Stuff')
