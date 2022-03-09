@@ -1,4 +1,80 @@
 
+_G.FLYING = true
+local LP = game:service('Players').LocalPlayer
+local T = LP.Character.UpperTorso
+local CONTROL = {F = 0, B = 0, L = 0, R = 0}
+local lCONTROL = {F = 0, B = 0, L = 0, R = 0}
+local SPEED = 5
+local MOUSE = LP:GetMouse()
+
+
+local function FLY()
+    _G.FLYING = true
+    local BG = Instance.new('BodyGyro', T)
+    local BV = Instance.new('BodyVelocity', T)
+    BG.P = 9e4
+    BG.maxTorque = Vector3.new(9e9, 9e9, 9e9)
+    BG.cframe = T.CFrame
+    BV.velocity = Vector3.new(0, 0.1, 0)
+    BV.maxForce = Vector3.new(9e9, 9e9, 9e9)
+
+
+    spawn(function()
+      repeat wait()
+        LP.Character.Humanoid.PlatformStand = true
+        if CONTROL.L + CONTROL.R ~= 0 or CONTROL.F + CONTROL.B ~= 0 then
+          SPEED = 50
+        elseif not (CONTROL.L + CONTROL.R ~= 0 or CONTROL.F + CONTROL.B ~= 0) and SPEED ~= 0 then
+          SPEED = 0
+        end
+        if (CONTROL.L + CONTROL.R) ~= 0 or (CONTROL.F + CONTROL.B) ~= 0 then
+          BV.velocity = ((game.Workspace.CurrentCamera.CoordinateFrame.lookVector * (CONTROL.F + CONTROL.B)) + ((game.Workspace.CurrentCamera.CoordinateFrame * CFrame.new(CONTROL.L + CONTROL.R, (CONTROL.F + CONTROL.B) * 0.2, 0).p) - game.Workspace.CurrentCamera.CoordinateFrame.p)) * SPEED
+          lCONTROL = {F = CONTROL.F, B = CONTROL.B, L = CONTROL.L, R = CONTROL.R}
+        elseif (CONTROL.L + CONTROL.R) == 0 and (CONTROL.F + CONTROL.B) == 0 and SPEED ~= 0 then
+          BV.velocity = ((game.Workspace.CurrentCamera.CoordinateFrame.lookVector * (lCONTROL.F + lCONTROL.B)) + ((game.Workspace.CurrentCamera.CoordinateFrame * CFrame.new(lCONTROL.L + lCONTROL.R, (lCONTROL.F + lCONTROL.B) * 0.2, 0).p) - game.Workspace.CurrentCamera.CoordinateFrame.p)) * SPEED
+        else
+          BV.velocity = Vector3.new(0, 0.1, 0)
+        end
+        BG.cframe = game.Workspace.CurrentCamera.CoordinateFrame
+      until not _G.FLYING
+      CONTROL = {F = 0, B = 0, L = 0, R = 0}
+      lCONTROL = {F = 0, B = 0, L = 0, R = 0}
+      SPEED = 0
+      BG:destroy()
+      BV:destroy()
+      LP.Character.Humanoid.PlatformStand = false
+    end)
+  end
+  
+  MOUSE.KeyDown:connect(function(KEY)
+    if KEY:lower() == 'w' then
+      CONTROL.F = 1
+    elseif KEY:lower() == 's' then
+      CONTROL.B = -1
+    elseif KEY:lower() == 'a' then
+      CONTROL.L = -1 
+    elseif KEY:lower() == 'd' then 
+      CONTROL.R = 1
+    end
+  end)
+  
+  MOUSE.KeyUp:connect(function(KEY)
+    if KEY:lower() == 'w' then
+      CONTROL.F = 0
+    elseif KEY:lower() == 's' then
+      CONTROL.B = 0
+    elseif KEY:lower() == 'a' then
+      CONTROL.L = 0
+    elseif KEY:lower() == 'd' then
+      CONTROL.R = 0
+    end
+  end)
+
+
+
+
+  FLY()
+  
 function ServerHop()
 	local Servers = {}
 	local URL = "https://games.roblox.com/v1/games/286090429/servers/Public?sortOrder=Asc&limit=100"
@@ -94,8 +170,8 @@ function StartAutofarm()
 	Farming = true
 	for i,v in pairs(game:GetService("ReplicatedStorage").wkspc:GetDescendants()) do if v.Name:lower():find("curse") then v.Value = "Infinite Ammo" end end
 	-- lol infinite ammo, didn't feel like making my own script to modify the client's local variables, so I figure why not just use hackula's built in infinite ammo?
-	
-	spawn(function()
+
+spawn(function()
 		wait(2.5)
 
 		game:GetService("ReplicatedStorage").Events.JoinTeam:FireServer("TRC")
@@ -225,7 +301,6 @@ spawn(function()
 		end
 	end
 end)
-
 spawn(function()
 	while wait(1) do
 		if Farming then
@@ -246,15 +321,16 @@ spawn(function()
 		end
 	end
 end)
+
 local num = 6
 local up = 0
 game:GetService("RunService").RenderStepped:Connect(function()
 	if Farming then
 		if workspace:FindFirstChild("Map") and PlayerLocked and PlayerLocked.Character and PlayerLocked.NRPBS.Health.Value > 0 and PlayerLocked.Character:FindFirstChild("HeadHB") then
 			workspace.CurrentCamera.CFrame = CFrame.new(workspace.CurrentCamera.CFrame.Position, PlayerLocked.Character.HeadHB.Position)
-			if Back then num = 6 up = 0 else num = -2 up = 4 end
+			if Back then num = 2 up = 0 else num = -2 up = 2 end
 			game:GetService("Players").LocalPlayer.Character:SetPrimaryPartCFrame(
-				PlayerLocked.Character.HumanoidRootPart.CFrame * CFrame.new(-1.5, up, num)
+				PlayerLocked.Character.HumanoidRootPart.CFrame * CFrame.new(-1.0, up, num)
 			)
 			
 			local RayParams = RaycastParams.new()
@@ -276,20 +352,6 @@ game:GetService("RunService").RenderStepped:Connect(function()
 	if not game:GetService("Players").LocalPlayer.Character then PlayerLocked = nil end
 	if game:GetService("Players").LocalPlayer.NRPBS.Health.Value <= 0 then PlayerLocked = nil end
 end)
-function SwitchToKnife()
-	local N = game:GetService("VirtualInputManager")
-	N:SendKeyEvent(true, 51, false, game)
-	N:SendKeyEvent(false, 51, false, game)	
-end
-function KnifeKill()
-    SwitchToKnife()
-    for i =1,20 do
-        SwitchToKnife()
-        
-    end
-end
-
-
 for i,v in next, game.ReplicatedStorage.Weapons:GetChildren() do
 for i,c in next, v:GetChildren() do -- for some reason, using GetDescendants dsent let you modify weapon ammo, so I do this instead
 for i,x in next, getconnections(c.Changed) do
@@ -311,9 +373,21 @@ end
 game:GetService('RunService').Stepped:connect(function() -- Infinite Ammo by Frontman#9917
         game:GetService("Players").LocalPlayer.PlayerGui.GUI.Client.Variables.ammocount.Value = 999 -- dont do it higher then 999
         game:GetService("Players").LocalPlayer.PlayerGui.GUI.Client.Variables.ammocount2.Value = 999
-        end)
-
+end)
+     
 StartAutofarm()
-while true do wait(0.1)
-KnifeKill()
+function SwitchToKnife()
+	local N = game:GetService("VirtualInputManager")
+	N:SendKeyEvent(true, 51, false, game)
+	N:SendKeyEvent(false, 51, false, game)	
 end
+function KnifeKill()
+    SwitchToKnife()
+    for i =1,20 do
+        SwitchToKnife()
+        
+    end
+end
+    while true do wait(0.1)
+		KnifeKill()
+		end
