@@ -193,15 +193,11 @@ function SwitchToKnife()
 	N:SendKeyEvent(false, 51, false, game)	
 end
 function KnifeKill()
-    SwitchToKnife()
-    for i =1,20 do
-        SwitchToKnife()
-        
-    end
+
     OldPos = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame
     local Crit = math.random() > .6 and true or false;
     Target = RandomPlr()
-    game.Players.LocalPlayer.Character:SetPrimaryPartCFrame(Target.Character.Head.CFrame * CFrame.new(0,2,3))
+    game.Players.LocalPlayer.Character:SetPrimaryPartCFrame(Target.Character.Head.CFrame * CFrame.new(0,0,1))
 end
 CombatW:Keybind(
     "TP To Random",
@@ -214,6 +210,201 @@ CombatW:Keybind(
 )
 CombatW:Button('Kill All (After you toggle you can use any guns)',function()
    
+
+local Farming = false
+local Hopped = false
+local TimeLeft = 30
+local TurnBack = 4
+local CheckTick = tick()
+local PlayerLocked
+local Back = true
+
+function DetectPlayer()
+	local Blacklist = {workspace.CurrentCamera}
+	if game:GetService("Players").LocalPlayer.Character then
+		table.insert(Blacklist, game:GetService("Players").LocalPlayer.Character)
+	end
+	if workspace:FindFirstChild("Map") then
+		table.insert(Blacklist, workspace.Map)
+	end
+
+	local RaycastParam = RaycastParams.new()
+	RaycastParam.FilterType = Enum.RaycastFilterType.Blacklist
+	RaycastParam.FilterDescendantsInstances = Blacklist
+
+	local NewRay = Ray.new(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position + Vector3.new(0, 1.5, 0), workspace.CurrentCamera.CFrame.LookVector * 50000, RaycastParam)
+	local PlayerGot
+
+	if NewRay.Instance then
+		if NewRay.Instance:IsDescendantOf(workspace) then
+			if NewRay.Instance.Parent:IsA("Model") then
+				if game:GetService("Players"):GetPlayerFromCharacter(NewRay.Instance.Parent) then
+					PlayerGot = game:GetService("Players"):GetPlayerFromCharacter(NewRay.Instance.Parent)
+				end
+			elseif NewRay.Instance.Parent:IsA("Accessory") then
+				if game:GetService("Players"):GetPlayerFromCharacter(NewRay.Instance.Parent.Parent) then
+					PlayerGot = game:GetService("Players"):GetPlayerFromCharacter(NewRay.Instance.Parent.Parent)
+				end
+			end
+		end
+
+		if PlayerGot and PlayerGot.Status.Team.Value ~= game:GetService("Players").LocalPlayer.Status.Team.Value and PlayerGot.NRPBS.Health.Value > 0 then
+			return true
+		end
+	end
+
+	return false
+end
+
+function sayMessage(option)
+	if game.Players.LocalPlayer.Status.Team.Value ~= "Spectator" then
+		local Message = option
+		game.ReplicatedStorage.Events.PlayerChatted:FireServer("Trolling42", "  Bolts Hub Winning!", false, false, true)
+	end
+end
+
+function StartAutofarm()
+	repeat wait() until game:GetService("ReplicatedStorage").wkspc.Status.RoundOver.Value == false
+	if game:GetService("ReplicatedStorage").wkspc.Status.LastGamemode.Value:lower():find("hackula") then ServerHop() return end
+	
+	Farming = true
+	for i,v in pairs(game:GetService("ReplicatedStorage").wkspc:GetDescendants()) do if v.Name:lower():find("curse") then v.Value = "Infinite Ammo" end end
+	-- lol infinite ammo, didn't feel like making my own script to modify the client's local variables, so I figure why not just use hackula's built in infinite ammo?
+
+
+
+	spawn(function()
+		repeat
+			if game:GetService("Players").LocalPlayer.Status.Team.Value ~= "Spectator" then
+				for i,v in pairs(game:GetService("Players"):GetPlayers()) do
+					if v ~= game:GetService("Players").LocalPlayer then
+						if v.Character then
+							if v.NRPBS.Health.Value > 0 then
+								if v.Status.Team.Value ~= "Spectator" then
+									if v.Character:FindFirstChild("Spawned") and v.Status.Team.Value ~= game:GetService("Players").LocalPlayer.Status.Team.Value then
+										TimeLeft = 25
+										TurnBack = 4
+										Back = true
+										repeat
+											PlayerLocked = v
+											wait(.1)
+											TurnBack = TurnBack - 0.1
+											if TurnBack <= 0 then
+												Back = false
+											elseif TurnBack <= -4 then
+												break
+											end
+										until game:GetService("ReplicatedStorage").wkspc.Status.RoundOver.Value or not v or not v.Character or not v.Character:FindFirstChild("Spawned") or v.NRPBS.Health.Value <= 0 or v.Status.Team.Value == "Spectator" or v.Status.Alive.Value == false or game:GetService("Players").LocalPlayer.Status.Team.Value == v.Status.Team.Value
+									end
+								end
+							end
+						end
+					end
+				end
+			end
+			wait(1)
+		until game:GetService("ReplicatedStorage").wkspc.Status.RoundOver.Value == true
+
+		wait(5)
+		print("f")
+	end)
+end
+
+spawn(function()
+	while wait(3) do
+		game:GetService("VirtualUser"):Button2Down(Vector2.new(0, 0), workspace.CurrentCamera.CFrame)
+		wait(1)
+		game:GetService("VirtualUser"):Button2Up(Vector2.new(0, 0), workspace.CurrentCamera.CFrame)
+	end
+end)
+
+spawn(function()
+	while wait(1) do
+		if game:GetService("Players").LocalPlayer.NRPBS.Health.Value <= 0 and game:GetService("Players").LocalPlayer.Status.Team.Value ~= "Spectator" then
+			game:GetService("ReplicatedStorage").Events.LoadCharacter:FireServer()
+		end
+	end
+end)
+spawn(function()
+	while wait(1) do
+		
+				if game:GetService("ReplicatedStorage").wkspc.Status.LastGamemode.Value:lower():find("hackula") then 
+					print("f")
+					break 
+				end
+				sayMessage(Message)
+end
+end)
+local num = 6
+local up = 0
+game:GetService("RunService").RenderStepped:Connect(function()
+	if Farming then
+		if workspace:FindFirstChild("Map") and PlayerLocked and PlayerLocked.Character and PlayerLocked.NRPBS.Health.Value > 0 and PlayerLocked.Character:FindFirstChild("HeadHB") then
+			workspace.CurrentCamera.CFrame = CFrame.new(workspace.CurrentCamera.CFrame.Position, PlayerLocked.Character.HeadHB.Position)
+			if Back then num = 2 up = 0 else num = -2 up = 2 end
+			game:GetService("Players").LocalPlayer.Character:SetPrimaryPartCFrame(
+				PlayerLocked.Character.HumanoidRootPart.CFrame * CFrame.new(-1.0, up, num)
+			)
+			
+			local RayParams = RaycastParams.new()
+			RayParams.FilterType = Enum.RaycastFilterType.Blacklist
+			RayParams.FilterDescendantsInstances = {workspace.CurrentCamera, game:GetService("Players").LocalPlayer.Character, workspace.Map.Ignore, workspace.Map.Clips}
+				
+			local Result = workspace:Raycast(workspace.CurrentCamera.CFrame.Position, workspace.CurrentCamera.CFrame.LookVector * 10000, RayParams)
+			local Player
+			
+			if Result and Result.Instance then
+				if Result.Instance:IsDescendantOf(PlayerLocked.Character) then
+					game:GetService("VirtualUser"):Button1Down(Vector2.new(0, 0), workspace.CurrentCamera.CFrame)
+				end
+			end
+		end
+	end
+	
+	if game:GetService("ReplicatedStorage").wkspc.Status.RoundOver.Value == true then PlayerLocked = nil end
+	if not game:GetService("Players").LocalPlayer.Character then PlayerLocked = nil end
+	if game:GetService("Players").LocalPlayer.NRPBS.Health.Value <= 0 then PlayerLocked = nil end
+end)
+for i,v in next, game.ReplicatedStorage.Weapons:GetChildren() do
+for i,c in next, v:GetChildren() do -- for some reason, using GetDescendants dsent let you modify weapon ammo, so I do this instead
+for i,x in next, getconnections(c.Changed) do
+x:Disable() -- probably not needed
+end
+if c.Name == "Ammo" or c.Name == "StoredAmmo" then
+c.Value = 300 -- don't set this above 300 or else your guns wont work
+elseif c.Name == "AReload" or c.Name == "RecoilControl" or c.Name == "EReload" or c.Name == "SReload" or c.Name == "ReloadTime" or c.Name == "EquipTime" or c.Name == "Spread" or c.Name == "MaxSpread" then
+c.Value = 0
+elseif c.Name == "Range" then
+c.Value = 9e9
+elseif c.Name == "Auto" then
+c.Value = true
+elseif c.Name == "FireRate" or c.Name == "BFireRate" then
+c.Value = 0.02 -- don't set this lower than 0.02 or else your game will crash
+end
+end
+end
+game:GetService('RunService').Stepped:connect(function() -- Infinite Ammo by Frontman#9917
+        game:GetService("Players").LocalPlayer.PlayerGui.GUI.Client.Variables.ammocount.Value = 999 -- dont do it higher then 999
+        game:GetService("Players").LocalPlayer.PlayerGui.GUI.Client.Variables.ammocount2.Value = 999
+end)
+     function SwitchToKnife()
+	local N = game:GetService("VirtualInputManager")
+	N:SendKeyEvent(true, 51, false, game)
+	N:SendKeyEvent(false, 51, false, game)	
+end
+function KnifeKill()
+    SwitchToKnife()
+    for i =1,20 do
+        SwitchToKnife()
+        
+    end
+end
+
+
+StartAutofarm()
+while true do wait(0.1)
+		KnifeKill()
+		end
 end)
 CombatW:Button('Aimlock In Beta(You can use soft aims draw fov for aimlock)',function()
     local ScreenGui = Instance.new("ScreenGui")
@@ -237,7 +428,7 @@ Title.Parent = Aimbot
 Title.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 Title.Size = UDim2.new(0, 126, 0, 50)
 Title.Font = Enum.Font.SourceSans
-Title.Text = "Bolts Hub V5 Aimlock"
+Title.Text = "Volts Hub V1 Aimlock"
 Title.TextColor3 = Color3.fromRGB(0, 0, 0)
 Title.TextSize = 20.000
 
@@ -318,12 +509,12 @@ local function PNHLOYF_fake_script() -- Toggle.LocalScript
 end
 coroutine.wrap(PNHLOYF_fake_script)()
 end)
-CombatW:Button('Tiggerbot',function()
-    local player = game:GetService("Players").LocalPlayer
+CombatW:Button('Triggerbot (Crashs On Shit Executors)',function()
+     local player = game:GetService("Players").LocalPlayer
     local mouseGet = player:GetMouse()
     game:GetService("RunService").RenderStepped:Connect(function()
-        if mouseGet.Target.Parent:FindFirstChild("Humanoid") and mouseGet.Target.Parent.Name ~= player.Name and game.Players:GetPlayerFromCharacter(mouseGet.Target.Parent).Team ~= player.Team then
-            mouse1press() wait(1) mouse1release()
+        if mouseGet.Target.Parent:FindFirstChild("Humanoid") and mouseGet.Target.Parent:FindFirstChild("Head") and mouseGet.Target.Parent.Name ~= player.Name and game.Players:GetPlayerFromCharacter(mouseGet.Target.Parent).Team ~= player.Team then
+            mouse1press() wait() mouse1release()
         end
     end) 
     end)
@@ -1826,12 +2017,11 @@ Player.CharacterAdded:connect(OnCharacterAdded)
 SubFrame.Rigtype.Text = ('Your Rigtype - %s'):format(CheckRig())
 end)
 
-ServerL:Label('-Added Patch Notes')
+ServerL:Label('-Fixed Volts Hub Crashing On Shit Exploits')
+ServerL:Label('-Added Fast Triggerbot')
 ServerL:Label('-Added Bypassed Stuff')
-ServerL:Label('-Added Kill All')
-ServerL:Label('-Added FE Sunglasses')
-ServerL:Label('-Added No Clip')
-ServerL:Label('-Added TP To Random')
+ServerL:Label('-Added Better Kill All')
+ServerL:Label('-Added Better TP To Random')
 
 
 MiscW:Button('Click To Copy Discord Invite',function()
