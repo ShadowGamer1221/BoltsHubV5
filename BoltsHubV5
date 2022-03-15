@@ -1,4 +1,4 @@
-local Library=loadstring(game:HttpGet("https://pastebin.com/raw/uJEEDTLV"))()
+local Library=loadstring(game:HttpGet("https://pastebin.com/raw/bfSMHFwJ"))()
 
 local ArsoniaTable={
     Player={
@@ -333,7 +333,7 @@ local ArsoniaTable={
 
 
 
-local name="Volts Hub v2"
+local name="Bolts Hub v6"
 if _G.Funnyname then
     local Prefix={"Epic","","Working"}
     local Names={"Astolfo","Baker","Thigh","Breast","Femboy","Hentai","Aim","Tits","Arsenal","Rolve"}
@@ -346,10 +346,92 @@ if _G.Funnyname then
 end
 local Window=Library:Window(name,Color3.fromRGB(255,0,0),700,Color3.new(255,0,0/255),600)
 local CombatTab=Window:Tab("Combat")
-local CombatTabMainSection=CombatTab:Section("Main")
+local CombatTabMainSection=CombatTab:Section("Aimbot")
+
 CombatTabMainSection:Toggle("Enabled",function(x)
-    ArsoniaTable.Combat.Main.Enabled=x
+    ArsoniaTable.Aimbot.Silentaim.Enabled=x
 end)
+CombatTabMainSection:Slider("Hit Chance",0,100,100,function(x)
+    ArsoniaTable.Aimbot.Silentaim.Hitchance=x
+end)
+CombatTabMainSection:Slider("FOV",0,1000,100,function(x)
+    ArsoniaTable.Aimbot.Silentaim.Fov=x
+end)
+CombatTabMainSection:Toggle("Ignore FOV",function(x)
+    ArsoniaTable.Aimbot.Silentaim.Ignorefov=x
+end)
+CombatTabMainSection:Dropdown("Triggerbot",{"None","Force Fire","Fake Click","Mouse"},function(x)
+    ArsoniaTable.Aimbot.Silentaim.AutoshootMethod=x
+end)
+CombatTabMainSection:Dropdown("Priority Target",ArsoniaTable.Variables.TargetNames,function(x)
+    ArsoniaTable.Aimbot.Silentaim.Target=x
+end)
+CombatTabMainSection:Toggle("Only Target Priority",function(x)
+    ArsoniaTable.Aimbot.Silentaim.Onlytarget=x
+end)
+
+--[[CombatTabMainSection:Toggle("Projectile Aura",function(x)
+    ArsoniaTable.Combat.Main.ProjectileAura=x
+end)
+CombatTabMainSection:Dropdown("Projectile",ArsoniaTable.Variables.Allprojectiles,function(x)
+    ArsoniaTable.Combat.Main.ProjectileAuraMethod=x
+end)
+CombatTabMainSection:Toggle("Headshot",function(x)
+    if x then
+        ArsoniaTable.Combat.Main.ProjectileAuraHead=1
+    else
+        ArsoniaTable.Combat.Main.ProjectileAuraHead=0
+    end
+end)
+CombatTabMainSection:Toggle("Air Crit",function(x)
+    if x then
+        ArsoniaTable.Combat.Main.ProjectileAuraAir=1
+    else
+        ArsoniaTable.Combat.Main.ProjectileAuraAir=0
+    end
+end)]]
+--[[CombatTabMainSection:Toggle("Kill All",function(x)
+    ArsoniaTable.Combat.Main.Killall=x
+end)
+CombatTabMainSection:Dropdown("Kill All Method",{"Spoofed","Equipped"},function(x)
+    ArsoniaTable.Combat.Main.KillallMethod=x
+end)]]
+--[[CombatTabMainSection:Toggle("Death Kill",function(x)
+    ArsoniaTable.Combat.Main.Deathkill=x
+end)]]
+--[[CombatTabMainSection:Toggle("Kill Aura",function(x)
+    ArsoniaTable.Combat.Main.Killaura=x
+end)
+CombatTabMainSection:Dropdown("Kill Aura Method",{"Flamethrower","Acid Spitter"},function(x)
+    ArsoniaTable.Combat.Main.KillauraMethod=x
+end)]]
+
+--[[CombatTabMainSection:Toggle("Knife Aura",function(x)
+    ArsoniaTable.Combat.Main.Knifeaura=x
+end)
+CombatTabMainSection:Toggle("Do Fake Animation",function(x)
+    ArsoniaTable.Combat.Main.KnifeauraFakeaim=x
+end)
+CombatTabMainSection:Toggle("Air Crit",function(x)
+    if x then
+        ArsoniaTable.Combat.Main.KnifeauraAir=1
+    else
+        ArsoniaTable.Combat.Main.KnifeauraAir=0
+    end
+end)
+CombatTabMainSection:Dropdown("Knife",{"Basic","Golden"},function(x)
+    ArsoniaTable.Combat.Main.KnifeauraValue=x
+end)
+CombatTabMainSection:Dropdown("Crit",{"None","Basic","Advanced","Backstab"},function(x)
+    ArsoniaTable.Combat.Main.KnifeauraCrit=x
+end)]]
+--[[CombatTabMainSection:ToggleSlider("Bomb Walk",0,100,25,function(x,y)
+    ArsoniaTable.Combat.Main.Bombwalk=x
+    ArsoniaTable.Combat.Main.BombwalkTime=y
+end)
+CombatTabMainSection:Dropdown("Bomb",{"Basic","Golden","Cherry (Infinite)"},function(x)
+    ArsoniaTable.Combat.Main.BombwalkBomb=x
+end)]]
 CombatTabMainSection:Button("Kill All Beta (Buggy/OP)",function()
        
 
@@ -548,72 +630,9 @@ while true do wait(0.1)
 		KnifeKill()
 		end
 end)
---[[CombatTabMainSection:Toggle("Projectile Aura",function(x)
-    ArsoniaTable.Combat.Main.ProjectileAura=x
-end)
-CombatTabMainSection:Dropdown("Projectile",ArsoniaTable.Variables.Allprojectiles,function(x)
-    ArsoniaTable.Combat.Main.ProjectileAuraMethod=x
-end)
-CombatTabMainSection:Toggle("Headshot",function(x)
-    if x then
-        ArsoniaTable.Combat.Main.ProjectileAuraHead=1
-    else
-        ArsoniaTable.Combat.Main.ProjectileAuraHead=0
-    end
-end)
-CombatTabMainSection:Toggle("Air Crit",function(x)
-    if x then
-        ArsoniaTable.Combat.Main.ProjectileAuraAir=1
-    else
-        ArsoniaTable.Combat.Main.ProjectileAuraAir=0
-    end
-end)]]
---[[CombatTabMainSection:Toggle("Kill All",function(x)
-    ArsoniaTable.Combat.Main.Killall=x
-end)
-CombatTabMainSection:Dropdown("Kill All Method",{"Spoofed","Equipped"},function(x)
-    ArsoniaTable.Combat.Main.KillallMethod=x
-end)]]
---[[CombatTabMainSection:Toggle("Death Kill",function(x)
-    ArsoniaTable.Combat.Main.Deathkill=x
-end)]]
---[[CombatTabMainSection:Toggle("Kill Aura",function(x)
-    ArsoniaTable.Combat.Main.Killaura=x
-end)
-CombatTabMainSection:Dropdown("Kill Aura Method",{"Flamethrower","Acid Spitter"},function(x)
-    ArsoniaTable.Combat.Main.KillauraMethod=x
-end)]]
-
---[[CombatTabMainSection:Toggle("Knife Aura",function(x)
-    ArsoniaTable.Combat.Main.Knifeaura=x
-end)
-CombatTabMainSection:Toggle("Do Fake Animation",function(x)
-    ArsoniaTable.Combat.Main.KnifeauraFakeaim=x
-end)
-CombatTabMainSection:Toggle("Air Crit",function(x)
-    if x then
-        ArsoniaTable.Combat.Main.KnifeauraAir=1
-    else
-        ArsoniaTable.Combat.Main.KnifeauraAir=0
-    end
-end)
-CombatTabMainSection:Dropdown("Knife",{"Basic","Golden"},function(x)
-    ArsoniaTable.Combat.Main.KnifeauraValue=x
-end)
-CombatTabMainSection:Dropdown("Crit",{"None","Basic","Advanced","Backstab"},function(x)
-    ArsoniaTable.Combat.Main.KnifeauraCrit=x
-end)]]
---[[CombatTabMainSection:ToggleSlider("Bomb Walk",0,100,25,function(x,y)
-    ArsoniaTable.Combat.Main.Bombwalk=x
-    ArsoniaTable.Combat.Main.BombwalkTime=y
-end)
-CombatTabMainSection:Dropdown("Bomb",{"Basic","Golden","Cherry (Infinite)"},function(x)
-    ArsoniaTable.Combat.Main.BombwalkBomb=x
-end)]]
 
 
-
-local CombatTabGunmodsSection=CombatTab:Section("Weapon")
+local CombatTabGunmodsSection=CombatTab:Section("Gunmods")
 CombatTabGunmodsSection:Toggle("Enabled",function(x)
     ArsoniaTable.Combat.Gunmods.Enabled=x
     if x then
@@ -900,96 +919,19 @@ CombatTabGunmodsSection:Dropdown("Firemode",{"Current","Semi-Automatic","Automat
         end
     end
 end)
-local AimbotTab=Window:Tab("Aimbot")
-local AimbotTabSilentaimSection=AimbotTab:Section("Silent Aim")
-AimbotTabSilentaimSection:Toggle("Enabled",function(x)
-    ArsoniaTable.Aimbot.Silentaim.Enabled=x
-end)
-AimbotTabSilentaimSection:Slider("Hit Chance",0,100,100,function(x)
-    ArsoniaTable.Aimbot.Silentaim.Hitchance=x
-end)
-AimbotTabSilentaimSection:Slider("FOV",0,1000,100,function(x)
-    ArsoniaTable.Aimbot.Silentaim.Fov=x
-end)
-AimbotTabSilentaimSection:Toggle("Ignore FOV",function(x)
-    ArsoniaTable.Aimbot.Silentaim.Ignorefov=x
-end)
-AimbotTabSilentaimSection:Dropdown("Auto Shoot",{"None","Force Fire","Fake Click","Mouse"},function(x)
-    ArsoniaTable.Aimbot.Silentaim.AutoshootMethod=x
-end)
-AimbotTabSilentaimSection:Dropdown("Priority Target",ArsoniaTable.Variables.TargetNames,function(x)
-    ArsoniaTable.Aimbot.Silentaim.Target=x
-end)
-AimbotTabSilentaimSection:Toggle("Only Target Priority",function(x)
-    ArsoniaTable.Aimbot.Silentaim.Onlytarget=x
-end)
-AimbotTabSilentaimSection:Toggle("Fake Lock",function(x)
-    ArsoniaTable.Aimbot.Silentaim.Fakelock=x
-end)
 
 
 
-local AimbotTabBacktrackSection=AimbotTab:Section("Backtrack")
-AimbotTabBacktrackSection:Toggle("Enabled",function(x)
-    ArsoniaTable.Aimbot.Backtrack.Enabled=x
-end)
-AimbotTabBacktrackSection:Slider("Life Time (ms)",0,1000,250,function(x)
-    ArsoniaTable.Aimbot.Backtrack.Lifetime=x/1000
-end)
-AimbotTabBacktrackSection:Slider("Transparency",0,10,5,function(x)
-    ArsoniaTable.Aimbot.Backtrack.Trans=x/10
-end)
-AimbotTabBacktrackSection:Slider("Reflectance",0,10,5,function(x)
-    ArsoniaTable.Aimbot.Backtrack.Refl=x/10
-end)
-AimbotTabBacktrackSection:Color("Color",Color3.new(0,1,1),function(x)
-    ArsoniaTable.Aimbot.Backtrack.Color=x
-end)
-AimbotTabBacktrackSection:Dropdown("Material",ArsoniaTable.Variables.Materials,function(x)
-    ArsoniaTable.Aimbot.Backtrack.Material=x
-end)
-AimbotTabBacktrackSection:Dropdown("Target",{"HeadHB","Torso","LeftArm","RightArm","LeftLeg","RightLeg","All"},function(x)
-    ArsoniaTable.Aimbot.Backtrack.Target=x
-end)
-AimbotTabBacktrackSection:Toggle("Render All",function(x)
-    ArsoniaTable.Aimbot.Backtrack.Showall=x
-end)
 
 
 
-local AimbotTabHitboxSection=AimbotTab:Section("Hitbox")
-AimbotTabHitboxSection:Toggle("Enabled",function(x)
-    ArsoniaTable.Aimbot.Hitboxes.Enabled=x
-end)
-AimbotTabHitboxSection:Slider("Size",0,25,5,function(x)
-    ArsoniaTable.Aimbot.Hitboxes.Size=x
-end)
-AimbotTabHitboxSection:Dropdown("Size Method",{"Absolute","Addition"},function(x)
-    ArsoniaTable.Aimbot.Hitboxes.Sizetype=x
-end)
-AimbotTabHitboxSection:Slider("Transparency",0,10,5,function(x)
-    ArsoniaTable.Aimbot.Hitboxes.Trans=x/10
-end)
-AimbotTabHitboxSection:Slider("Reflectance",0,10,5,function(x)
-    ArsoniaTable.Aimbot.Hitboxes.Refl=x/10
-end)
-AimbotTabHitboxSection:Color("Color",Color3.new(0,1,1),function(x)
-    ArsoniaTable.Aimbot.Hitboxes.Color=x
-end)
-AimbotTabHitboxSection:Dropdown("Material",ArsoniaTable.Variables.Materials,function(x)
-    ArsoniaTable.Aimbot.Hitboxes.Material=x
-end)
-AimbotTabHitboxSection:Dropdown("Target",{"HeadHB","Torso","LeftArm","RightArm","LeftLeg","RightLeg","All"},function(x)
-    ArsoniaTable.Aimbot.Hitboxes.Target=x
-end)
+
 local PlayerTab=Window:Tab("Local Player")
 local PlayerTabAntiAimSection=PlayerTab:Section("Anti Aim")
 PlayerTabAntiAimSection:Toggle("Enabled",function(x)
     ArsoniaTable.Player.Anti_Aim.Enabled=x
 end)
-PlayerTabAntiAimSection:Button("Become Invisable",function()
-    
-    end)
+
 PlayerTabAntiAimSection:ToggleSlider("Yaw",-180,180,0,function(x,y)
     ArsoniaTable.Player.Anti_Aim.Yaw=x
     ArsoniaTable.Player.Anti_Aim.YawValue=y
@@ -1100,7 +1042,7 @@ PlayerTabMovementSection:ToggleSlider("Fly",10,500,100,function(x,y)
     ArsoniaTable.Player.Movement.Flyspeed=y
     ArsoniaTable.Variables.Fly=false
 end)
-PlayerTabMovementSection:Keybind("Key","J",function(x)
+PlayerTabMovementSection:Keybind("Key","T",function(x)
     if x then
         ArsoniaTable.Variables.Fly=not ArsoniaTable.Variables.Fly
     end
@@ -1202,100 +1144,42 @@ end)
 
 
 local VisualsTab=Window:Tab("Visuals")
-local VisualsTabMainSection=VisualsTab:Section("Main")
-VisualsTabMainSection:Toggle("Enabled",function(x)
-    ArsoniaTable.Visuals.Main.Enabled=x
-    if not x then
-        for _,v in pairs(game:GetService("Players").LocalPlayer.PlayerGui.GUI.Crosshairs.Crosshair:GetChildren())do
-            if v.Name~="Center1"then
-                v.BackgroundColor3=game:GetService("Players").LocalPlayer.PlayerGui.GUI.Crosshairs.Crosshair.Center1.BackgroundColor3
-            end
-        end
-        if game.Workspace:FindFirstChild("Map")then
-            if game.Workspace.Map:FindFirstChild("Xcum")then
-                game.Workspace.Map.Xcum:Destroy()
-                for _,v in pairs(game.Workspace.Map:GetDescendants())do
-                    if v:IsA("BasePart")then
-                        if v:FindFirstChild("Transcock")then
-                            v.Transparency=v.Transcock.Value
-                        end
-                    end
-                end
-            end
-        end
-        for _,v in pairs(game.Players.LocalPlayer.Character:GetDescendants())do
-            if v:IsA("BasePart")then
-                if v.LocalTransparencyModifier~=1 then
-                    v.LocalTransparencyModifier=1
-                end
-            end
-        end
-    end
+
+
+local VisualsTabESPSection=VisualsTab:Section("ESP")
+VisualsTabESPSection:Toggle("Enabled",function(x)
+    ArsoniaTable.Visuals.ESP.Enabled=x
 end)
-VisualsTabMainSection:Toggle("Render Client",function(x)
-    ArsoniaTable.Visuals.Main.Renderplayer=x
+VisualsTabESPSection:Color("Main Color",Color3.new(255,0,0/255),function(x)
+    ArsoniaTable.Visuals.ESP.Color=x
 end)
-VisualsTabMainSection:Toggle("Remove Spawn Flash",function(x)
-    ArsoniaTable.Visuals.Main.Antiflash=x
+VisualsTabESPSection:Toggle("Box",function(x)
+    ArsoniaTable.Visuals.ESP.Box=x
 end)
-VisualsTabMainSection:Toggle("Remove Crouch Offset",function(x)
-    ArsoniaTable.Visuals.Main.Anticrouch=x
+VisualsTabESPSection:Toggle("Chams",function(x)
+    ArsoniaTable.Visuals.ESP.Chams=x
 end)
-VisualsTabMainSection:Toggle("Remove Arm Crouch Offset",function(x)
-    ArsoniaTable.Visuals.Main.Anticrouch2=x
+VisualsTabESPSection:ToggleSlider("Visible Chams Outline",1,10,5,function(x,y)
+    ArsoniaTable.Visuals.ESP.Chamsoutline=x
+    ArsoniaTable.Visuals.ESP.ChamsoutlineSize=y/10
 end)
-VisualsTabMainSection:Slider("Camera Offset X",-10,10,0,function(x)
-    ArsoniaTable.Visuals.Main.CameraoffsetX=x
+VisualsTabESPSection:Color("Outline Color",Color3.new(50/255,150/255,1),function(x)
+    ArsoniaTable.Visuals.ESP.ChamsoutlineColor=x
 end)
-VisualsTabMainSection:Slider("Camera Offset Y",-10,10,0,function(x)
-    ArsoniaTable.Visuals.Main.CameraoffsetY=x
+VisualsTabESPSection:Toggle("Backtrack Chams",function(x)
+    ArsoniaTable.Visuals.ESP.BacktrackChams=x
 end)
-VisualsTabMainSection:Slider("Camera Offset Z",-10,10,0,function(x)
-    ArsoniaTable.Visuals.Main.CameraoffsetZ=x
+VisualsTabESPSection:Toggle("Names",function(x)
+    ArsoniaTable.Visuals.ESP.Names=x
 end)
-VisualsTabMainSection:Slider("Arm Offset X",-10,10,0,function(x)
-    ArsoniaTable.Visuals.Main.ArmoffsetX=x
+VisualsTabESPSection:Toggle("Tracers",function(x)
+    ArsoniaTable.Visuals.ESP.Tracers=x
 end)
-VisualsTabMainSection:Slider("Arm Offset Y",-10,10,0,function(x)
-    ArsoniaTable.Visuals.Main.ArmoffsetY=x
+VisualsTabESPSection:Toggle("Health",function(x)
+    ArsoniaTable.Visuals.ESP.Health=x
 end)
-VisualsTabMainSection:Slider("Arm Offset Z",-10,10,0,function(x)
-    ArsoniaTable.Visuals.Main.ArmoffsetZ=x
-end)
-VisualsTabMainSection:ToggleSlider("X-Ray",0,10,5,function(x,y)
-    ArsoniaTable.Visuals.Main.Xray=x
-    ArsoniaTable.Visuals.Main.XrayTrans=y/10
-    if not x then
-        if game.Workspace:FindFirstChild("Map")then
-            if game.Workspace.Map:FindFirstChild("Xcum")then
-                game.Workspace.Map.Xcum:Destroy()
-                for _,v in pairs(game.Workspace.Map:GetDescendants())do
-                    if v:IsA("BasePart")then
-                        if v:FindFirstChild("Transcock")then
-                            v.Transparency=v.Transcock.Value
-                        end
-                    end
-                end
-            end
-        end
-    elseif ArsoniaTable.Visuals.Main.Enabled then
-        if game.Workspace:FindFirstChild("Map")then
-            if game.Workspace.Map:FindFirstChild("Xcum")then
-                game.Workspace.Map.Xcum:Destroy()
-                for _,v in pairs(game.Workspace.Map:GetDescendants())do
-                    if v:IsA("BasePart")then
-                        if v:FindFirstChild("Transcock")then
-                            v.Transparency=v.Transcock.Value
-                        end
-                    end
-                end
-            end
-        end
-    end
-end)
-VisualsTabMainSection:Color("Crosshair Color",Color3.new(255,1,1),function(x)
-    ArsoniaTable.Visuals.Main.Crosshaircol=x
-end)
+
+
 
 
 
@@ -1337,14 +1221,7 @@ VisualsTabViewmodelSection:Color("Color",Color3.new(255,0,0/255),function(x)
         end
     end
 end)
-VisualsTabViewmodelSection:Slider("Reflectance",0,10,0,function(x)
-    ArsoniaTable.Visuals.Viewmodel.GunchamsRefl=x/10
-    if game.Workspace.CurrentCamera:FindFirstChild("Arms")then
-        if game.Workspace.CurrentCamera.Arms:FindFirstChild("AnalBeads")then
-            game.Workspace.CurrentCamera.Arms.AnalBeads:Destroy()
-        end
-    end
-end)
+
 VisualsTabViewmodelSection:Dropdown("Material",ArsoniaTable.Variables.Materials,function(x)
     ArsoniaTable.Visuals.Viewmodel.GunchamsMat=x
     if game.Workspace.CurrentCamera:FindFirstChild("Arms")then
@@ -1355,39 +1232,8 @@ VisualsTabViewmodelSection:Dropdown("Material",ArsoniaTable.Variables.Materials,
 end)
 
 
+--here
 
-local VisualsTabESPSection=VisualsTab:Section("ESP")
-VisualsTabESPSection:Toggle("Enabled",function(x)
-    ArsoniaTable.Visuals.ESP.Enabled=x
-end)
-VisualsTabESPSection:Color("Main Color",Color3.new(255,0,0/255),function(x)
-    ArsoniaTable.Visuals.ESP.Color=x
-end)
-VisualsTabESPSection:Toggle("Box",function(x)
-    ArsoniaTable.Visuals.ESP.Box=x
-end)
-VisualsTabESPSection:Toggle("Chams",function(x)
-    ArsoniaTable.Visuals.ESP.Chams=x
-end)
-VisualsTabESPSection:ToggleSlider("Visible Chams Outline",1,10,5,function(x,y)
-    ArsoniaTable.Visuals.ESP.Chamsoutline=x
-    ArsoniaTable.Visuals.ESP.ChamsoutlineSize=y/10
-end)
-VisualsTabESPSection:Color("Outline Color",Color3.new(50/255,150/255,1),function(x)
-    ArsoniaTable.Visuals.ESP.ChamsoutlineColor=x
-end)
-VisualsTabESPSection:Toggle("Backtrack Chams",function(x)
-    ArsoniaTable.Visuals.ESP.BacktrackChams=x
-end)
-VisualsTabESPSection:Toggle("Names",function(x)
-    ArsoniaTable.Visuals.ESP.Names=x
-end)
-VisualsTabESPSection:Toggle("Tracers",function(x)
-    ArsoniaTable.Visuals.ESP.Tracers=x
-end)
-VisualsTabESPSection:Toggle("Health",function(x)
-    ArsoniaTable.Visuals.ESP.Health=x
-end)
 
 
 
@@ -1448,7 +1294,72 @@ end)
 VisualsTabAmbienceSection:Slider("Brightness",0,10,2,function(x)
     ArsoniaTable.Visuals.Worldambience.Brightness=x
 end)
+local VisualsTabMainSection=VisualsTab:Section("Misc")
 
+VisualsTabMainSection:Toggle("Enabled",function(x)
+    ArsoniaTable.Visuals.Main.Enabled=x
+    if not x then
+        for _,v in pairs(game:GetService("Players").LocalPlayer.PlayerGui.GUI.Crosshairs.Crosshair:GetChildren())do
+            if v.Name~="Center1"then
+                v.BackgroundColor3=game:GetService("Players").LocalPlayer.PlayerGui.GUI.Crosshairs.Crosshair.Center1.BackgroundColor3
+            end
+        end
+        if game.Workspace:FindFirstChild("Map")then
+            if game.Workspace.Map:FindFirstChild("Xcum")then
+                game.Workspace.Map.Xcum:Destroy()
+                for _,v in pairs(game.Workspace.Map:GetDescendants())do
+                    if v:IsA("BasePart")then
+                        if v:FindFirstChild("Transcock")then
+                            v.Transparency=v.Transcock.Value
+                        end
+                    end
+                end
+            end
+        end
+        for _,v in pairs(game.Players.LocalPlayer.Character:GetDescendants())do
+            if v:IsA("BasePart")then
+                if v.LocalTransparencyModifier~=1 then
+                    v.LocalTransparencyModifier=1
+                end
+            end
+        end
+    end
+end)
+
+VisualsTabMainSection:ToggleSlider("X-Ray",0,10,5,function(x,y)
+    ArsoniaTable.Visuals.Main.Xray=x
+    ArsoniaTable.Visuals.Main.XrayTrans=y/10
+    if not x then
+        if game.Workspace:FindFirstChild("Map")then
+            if game.Workspace.Map:FindFirstChild("Xcum")then
+                game.Workspace.Map.Xcum:Destroy()
+                for _,v in pairs(game.Workspace.Map:GetDescendants())do
+                    if v:IsA("BasePart")then
+                        if v:FindFirstChild("Transcock")then
+                            v.Transparency=v.Transcock.Value
+                        end
+                    end
+                end
+            end
+        end
+    elseif ArsoniaTable.Visuals.Main.Enabled then
+        if game.Workspace:FindFirstChild("Map")then
+            if game.Workspace.Map:FindFirstChild("Xcum")then
+                game.Workspace.Map.Xcum:Destroy()
+                for _,v in pairs(game.Workspace.Map:GetDescendants())do
+                    if v:IsA("BasePart")then
+                        if v:FindFirstChild("Transcock")then
+                            v.Transparency=v.Transcock.Value
+                        end
+                    end
+                end
+            end
+        end
+    end
+end)
+VisualsTabMainSection:Color("Crosshair Color",Color3.new(255,0,0),function(x)
+    ArsoniaTable.Visuals.Main.Crosshaircol=x
+end)
 
 
 
@@ -1734,6 +1645,21 @@ MiscTabSaveSection:Button("Load",function()
         Color3.new(1,1,1),
         .01
     )
+end)
+local E=Window:Tab("Credits")
+local W=E:Section("Credits")
+
+W:Button("Bolts#8888- Owner",function()
+    print("Button Pressed")
+end)
+W:Button("Storm - Co Owner",function()
+    print("Button Pressed")
+end)
+W:Button("Lolcat - Helper/Slave",function()
+    print("Button Pressed")
+end)
+W:Button("Copy Discord Link To Clip Board",function()
+    setclipboard("https://discord.gg/zbnGJU6Att")
 end)
 --[[
 Section:Slider("Slider",-100,100,8,function(x)
