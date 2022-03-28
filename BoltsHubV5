@@ -313,9 +313,7 @@ else
 kruis11.Visible = true
 kruis12.Visible = true
 puntjes1.Visible = false
-wait(1)
-game.Players.LocalPlayer:kick "Wrong game!"
-wait(1)
+
 ScriptLoader:Destroy()
 end
 
