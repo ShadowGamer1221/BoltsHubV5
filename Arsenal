@@ -1,329 +1,228 @@
 
-local placeid = 286090429
+Luazifier = {} 
+setmetatable(Luazifier, {__metatable = "Don' t touch my table P-Pervert!"})
+
+-- Instances:
+Luazifier.ScreenGui1 = Instance.new("ScreenGui", game.CoreGui)
+Luazifier.Frame1 = Instance.new("Frame", Luazifier.ScreenGui1)
+Luazifier.ImageLabel1 = Instance.new("ImageLabel", Luazifier.Frame1)
+Luazifier.Frame2 = Instance.new("Frame", Luazifier.Frame1)
+Luazifier.TextLabel1 = Instance.new("TextLabel", Luazifier.Frame2)
+Luazifier.Frame3 = Instance.new("Frame", Luazifier.Frame1)
+Luazifier.TextLabel2 = Instance.new("TextLabel", Luazifier.Frame3)
+
+Luazifier.ScreenGui1.DisplayOrder = 0
+Luazifier.ScreenGui1.Enabled = true
+Luazifier.ScreenGui1.IgnoreGuiInset = false
+Luazifier.ScreenGui1.Name = "Support Ukraine"
+Luazifier.ScreenGui1.ResetOnSpawn = true
+Luazifier.ScreenGui1.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+Luazifier.ScreenGui1.Archivable = true
+Luazifier.ScreenGui1.AutoLocalize = true
 
 
-local ScriptLoader = Instance.new("ScreenGui")
-local sj0gsscriptloaderframe = Instance.new("Frame")
-local nameofloader = Instance.new("TextLabel")
-local gamechecktext = Instance.new("TextLabel")
-local loadscripttext = Instance.new("TextLabel")
-local credits = Instance.new("TextLabel")
-local kruis11 = Instance.new("TextLabel")
-local kruis22 = Instance.new("TextLabel")
-local kruis12 = Instance.new("TextLabel")
-local kruis21 = Instance.new("TextLabel")
-local puntjes1 = Instance.new("TextLabel")
-local puntjes2 = Instance.new("TextLabel")
-local vink11 = Instance.new("TextLabel")
-local vink12 = Instance.new("TextLabel")
-local vink22 = Instance.new("TextLabel")
-local vink21 = Instance.new("TextLabel")
+Luazifier.Frame1.Active = false
+Luazifier.Frame1.AnchorPoint = Vector2.new(0.5, 0.5)
+Luazifier.Frame1.BackgroundColor3 = Color3.new(1, 1, 1)
+Luazifier.Frame1.BackgroundTransparency = 1
+Luazifier.Frame1.BorderColor3 = Color3.new(0.105882, 0.164706, 0.207843)
+Luazifier.Frame1.BorderSizePixel = 1
+Luazifier.Frame1.LayoutOrder = 0
+Luazifier.Frame1.Name = "SupportFrame"
+Luazifier.Frame1.Position = UDim2.new(0.5, 0, 0.5, 0)
+Luazifier.Frame1.Rotation = 0
+Luazifier.Frame1.Selectable = false
+Luazifier.Frame1.Size = UDim2.new(0, 546, 0, 100)
+Luazifier.Frame1.SizeConstraint = Enum.SizeConstraint.RelativeXY
+Luazifier.Frame1.Style = Enum.FrameStyle.Custom
+Luazifier.Frame1.Visible = true
+Luazifier.Frame1.ZIndex = 1
+Luazifier.Frame1.Archivable = true
+Luazifier.Frame1.ClipsDescendants = false
+Luazifier.Frame1.AutoLocalize = true
 
--- Properties
 
-ScriptLoader.Name = "ScriptLoader"
-ScriptLoader.Parent = game.CoreGui
+Luazifier.ImageLabel1.Active = false
+Luazifier.ImageLabel1.AnchorPoint = Vector2.new(0, 0)
+Luazifier.ImageLabel1.BackgroundColor3 = Color3.new(1, 1, 1)
+Luazifier.ImageLabel1.BackgroundTransparency = 1
+Luazifier.ImageLabel1.BorderColor3 = Color3.new(0.105882, 0.164706, 0.207843)
+Luazifier.ImageLabel1.BorderSizePixel = 0
+Luazifier.ImageLabel1.LayoutOrder = 0
+Luazifier.ImageLabel1.Name = "Flag"
+Luazifier.ImageLabel1.Position = UDim2.new(0.41844692826271057, 0, 0.04678363725543022, 0)
+Luazifier.ImageLabel1.Rotation = 0
+Luazifier.ImageLabel1.Selectable = false
+Luazifier.ImageLabel1.Size = UDim2.new(0, 90, 0, 90)
+Luazifier.ImageLabel1.SizeConstraint = Enum.SizeConstraint.RelativeXY
+Luazifier.ImageLabel1.Visible = true
+Luazifier.ImageLabel1.ZIndex = 1
+Luazifier.ImageLabel1.Archivable = true
+Luazifier.ImageLabel1.ClipsDescendants = false
+Luazifier.ImageLabel1.AutoLocalize = true
+Luazifier.ImageLabel1.Image = "http://www.roblox.com/asset/?id=1403367287"
+Luazifier.ImageLabel1.ImageColor3 = Color3.new(1, 1, 1)
+Luazifier.ImageLabel1.ImageRectOffset = Vector2.new(0, 0)
+Luazifier.ImageLabel1.ImageRectSize = Vector2.new(0, 0)
+Luazifier.ImageLabel1.ImageTransparency = 1
+Luazifier.ImageLabel1.ScaleType = Enum.ScaleType.Stretch
+Luazifier.ImageLabel1.SliceScale = 1
 
-sj0gsscriptloaderframe.Name = "sj0gsscriptloaderframe"
-sj0gsscriptloaderframe.Parent = ScriptLoader
-sj0gsscriptloaderframe.BackgroundColor3 = Color3.new(255,105,180)
-sj0gsscriptloaderframe.BorderColor3 = Color3.new()
-sj0gsscriptloaderframe.BorderSizePixel = 5
-sj0gsscriptloaderframe.Position = UDim2.new(0.384437591, 0, 0.272314668, 0)
-sj0gsscriptloaderframe.Size = UDim2.new(0, 300, 0, 300)
-sj0gsscriptloaderframe.Transparency = 1
 
-nameofloader.Name = "nameofloader"
-nameofloader.Parent = sj0gsscriptloaderframe
-nameofloader.BackgroundColor3 = Color3.new(1, 1, 1)
-nameofloader.BackgroundTransparency = 1
-nameofloader.Position = UDim2.new(0, 0, 0.06333334, 0)
-nameofloader.Size = UDim2.new(0, 300, 0, 50)
-nameofloader.Font = Enum.Font.Code
-nameofloader.Text = "Skid Hub V6 Loader"
-nameofloader.TextColor3 = Color3.new(0.752941, 0.752941, 0.752941)
-nameofloader.TextSize = 30
-nameofloader.TextWrapped = true
-nameofloader.TextTransparency = 1
+Luazifier.Frame2.Active = false
+Luazifier.Frame2.AnchorPoint = Vector2.new(0, 0)
+Luazifier.Frame2.BackgroundColor3 = Color3.new(1, 1, 1)
+Luazifier.Frame2.BackgroundTransparency = 1
+Luazifier.Frame2.BorderColor3 = Color3.new(0.105882, 0.164706, 0.207843)
+Luazifier.Frame2.BorderSizePixel = 1
+Luazifier.Frame2.LayoutOrder = 0
+Luazifier.Frame2.Name = "RightBlock"
+Luazifier.Frame2.Position = UDim2.new(0, 0, 0, 0)
+Luazifier.Frame2.Rotation = 0
+Luazifier.Frame2.Selectable = false
+Luazifier.Frame2.Size = UDim2.new(0, 227, 0, 100)
+Luazifier.Frame2.SizeConstraint = Enum.SizeConstraint.RelativeXY
+Luazifier.Frame2.Style = Enum.FrameStyle.Custom
+Luazifier.Frame2.Visible = true
+Luazifier.Frame2.ZIndex = 1
+Luazifier.Frame2.Archivable = true
+Luazifier.Frame2.ClipsDescendants = true
+Luazifier.Frame2.AutoLocalize = true
 
-gamechecktext.Name = "gamechecktext"
-gamechecktext.Parent = sj0gsscriptloaderframe
-gamechecktext.BackgroundColor3 = Color3.new(1, 1, 1)
-gamechecktext.BackgroundTransparency = 1
-gamechecktext.Position = UDim2.new(0.266666681, 0, 0.300000012, 0)
-gamechecktext.Size = UDim2.new(0, 189, 0, 50)
-gamechecktext.Font = Enum.Font.SourceSans
-gamechecktext.Text = "Bypassing Some Anti Cheats"
-gamechecktext.TextColor3 = Color3.new(0, 0, 0)
-gamechecktext.TextSize = 25
-gamechecktext.TextWrapped = true
-gamechecktext.TextTransparency = 1
 
-loadscripttext.Name = "loadscripttext"
-loadscripttext.Parent = sj0gsscriptloaderframe
-loadscripttext.BackgroundColor3 = Color3.new(1, 1, 1)
-loadscripttext.BackgroundTransparency = 1
-loadscripttext.Position = UDim2.new(0.266666681, 0, 0.576666713, 0)
-loadscripttext.Size = UDim2.new(0, 189, 0, 50)
-loadscripttext.Font = Enum.Font.SourceSans
-loadscripttext.Text = "Loading Script..."
-loadscripttext.TextColor3 = Color3.new(0, 0, 0)
-loadscripttext.TextSize = 25
-loadscripttext.TextWrapped = true
-loadscripttext.TextTransparency = 1
+Luazifier.TextLabel1.Active = false
+Luazifier.TextLabel1.AnchorPoint = Vector2.new(0, 0)
+Luazifier.TextLabel1.BackgroundColor3 = Color3.new(1, 1, 1)
+Luazifier.TextLabel1.BackgroundTransparency = 1
+Luazifier.TextLabel1.BorderColor3 = Color3.new(0.105882, 0.164706, 0.207843)
+Luazifier.TextLabel1.BorderSizePixel = 1
+Luazifier.TextLabel1.LayoutOrder = 0
+Luazifier.TextLabel1.Name = "Fuck"
+Luazifier.TextLabel1.Position = UDim2.new(0.996688961982727, 0, 0.25017544627189636, 0)
+Luazifier.TextLabel1.Rotation = 0
+Luazifier.TextLabel1.Selectable = false
+Luazifier.TextLabel1.Size = UDim2.new(0, 228, 0, 50)
+Luazifier.TextLabel1.SizeConstraint = Enum.SizeConstraint.RelativeXY
+Luazifier.TextLabel1.Visible = true
+Luazifier.TextLabel1.ZIndex = 1
+Luazifier.TextLabel1.Archivable = true
+Luazifier.TextLabel1.ClipsDescendants = false
+Luazifier.TextLabel1.AutoLocalize = true
+Luazifier.TextLabel1.Font = Enum.Font.DenkOne
+Luazifier.TextLabel1.Text = "Bolts Hub Loaded!"
+Luazifier.TextLabel1.TextColor3 = Color3.new(1, 1, 1)
+Luazifier.TextLabel1.TextScaled = false
+Luazifier.TextLabel1.TextSize = 35
+Luazifier.TextLabel1.TextStrokeColor3 = Color3.new(0, 0, 0)
+Luazifier.TextLabel1.TextStrokeTransparency = 1
+Luazifier.TextLabel1.TextTransparency = 0
+Luazifier.TextLabel1.TextTruncate = Enum.TextTruncate.None
+Luazifier.TextLabel1.TextWrapped = false
+Luazifier.TextLabel1.TextXAlignment = Enum.TextXAlignment.Center
+Luazifier.TextLabel1.TextYAlignment = Enum.TextYAlignment.Center
 
-credits.Name = "credits"
-credits.Parent = sj0gsscriptloaderframe
-credits.BackgroundColor3 = Color3.new(1, 1, 1)
-credits.BackgroundTransparency = 1
-credits.Position = UDim2.new(-0.0866666734, 0, 0.883333325, 0)
-credits.Size = UDim2.new(0, 281, 0, 50)
-credits.Font = Enum.Font.Highway
-credits.Text = "Bolts#8888"
-credits.TextColor3 = Color3.new(0, 0, 0)
-credits.TextSize = 18
-credits.TextWrapped = true
-credits.TextTransparency = 1
 
-kruis11.Name = "kruis11"
-kruis11.Parent = sj0gsscriptloaderframe
-kruis11.BackgroundColor3 = Color3.new(0.392157, 0, 0)
-kruis11.BackgroundTransparency = 1
-kruis11.Position = UDim2.new(-0.13666667, 0, 0.300000012, 0)
-kruis11.Rotation = 45
-kruis11.Size = UDim2.new(0, 200, 0, 50)
-kruis11.Visible = false
-kruis11.Font = Enum.Font.Highway
-kruis11.Text = "---"
-kruis11.TextColor3 = Color3.new(1, 0, 0)
-kruis11.TextSize = 40
+Luazifier.Frame3.Active = false
+Luazifier.Frame3.AnchorPoint = Vector2.new(0, 0)
+Luazifier.Frame3.BackgroundColor3 = Color3.new(1, 1, 1)
+Luazifier.Frame3.BackgroundTransparency = 1
+Luazifier.Frame3.BorderColor3 = Color3.new(0.105882, 0.164706, 0.207843)
+Luazifier.Frame3.BorderSizePixel = 1
+Luazifier.Frame3.LayoutOrder = 0
+Luazifier.Frame3.Name = "LeftBlock"
+Luazifier.Frame3.Position = UDim2.new(0.5824176073074341, 0, 0, 0)
+Luazifier.Frame3.Rotation = 0
+Luazifier.Frame3.Selectable = false
+Luazifier.Frame3.Size = UDim2.new(0, 228, 0, 100)
+Luazifier.Frame3.SizeConstraint = Enum.SizeConstraint.RelativeXY
+Luazifier.Frame3.Style = Enum.FrameStyle.Custom
+Luazifier.Frame3.Visible = true
+Luazifier.Frame3.ZIndex = 1
+Luazifier.Frame3.Archivable = true
+Luazifier.Frame3.ClipsDescendants = true
+Luazifier.Frame3.AutoLocalize = true
 
-kruis22.Name = "kruis22"
-kruis22.Parent = sj0gsscriptloaderframe
-kruis22.BackgroundColor3 = Color3.new(0.392157, 0, 0)
-kruis22.BackgroundTransparency = 1
-kruis22.Position = UDim2.new(-0.13666667, 0, 0.576666713, 0)
-kruis22.Rotation = 135
-kruis22.Size = UDim2.new(0, 200, 0, 50)
-kruis22.Visible = false
-kruis22.Font = Enum.Font.Highway
-kruis22.Text = "---"
-kruis22.TextColor3 = Color3.new(1, 0, 0)
-kruis22.TextSize = 40
 
-kruis12.Name = "kruis12"
-kruis12.Parent = sj0gsscriptloaderframe
-kruis12.BackgroundColor3 = Color3.new(0.392157, 0, 0)
-kruis12.BackgroundTransparency = 1
-kruis12.Position = UDim2.new(-0.13666667, 0, 0.300000012, 0)
-kruis12.Rotation = 135
-kruis12.Size = UDim2.new(0, 200, 0, 50)
-kruis12.Visible = false
-kruis12.Font = Enum.Font.Highway
-kruis12.Text = "---"
-kruis12.TextColor3 = Color3.new(1, 0, 0)
-kruis12.TextSize = 40
+Luazifier.TextLabel2.Active = false
+Luazifier.TextLabel2.AnchorPoint = Vector2.new(0, 0)
+Luazifier.TextLabel2.BackgroundColor3 = Color3.new(1, 1, 1)
+Luazifier.TextLabel2.BackgroundTransparency = 1
+Luazifier.TextLabel2.BorderColor3 = Color3.new(0.105882, 0.164706, 0.207843)
+Luazifier.TextLabel2.BorderSizePixel = 1
+Luazifier.TextLabel2.LayoutOrder = 0
+Luazifier.TextLabel2.Name = "Russia"
+Luazifier.TextLabel2.Position = UDim2.new(-1.0022845268249512, 0, 0.25017544627189636, 0)
+Luazifier.TextLabel2.Rotation = 0
+Luazifier.TextLabel2.Selectable = false
+Luazifier.TextLabel2.Size = UDim2.new(0, 228, 0, 50)
+Luazifier.TextLabel2.SizeConstraint = Enum.SizeConstraint.RelativeXY
+Luazifier.TextLabel2.Visible = true
+Luazifier.TextLabel2.ZIndex = 1
+Luazifier.TextLabel2.Archivable = true
+Luazifier.TextLabel2.ClipsDescendants = false
+Luazifier.TextLabel2.AutoLocalize = true
+Luazifier.TextLabel2.Font = Enum.Font.DenkOne
+Luazifier.TextLabel2.Text = "Slava Ukraini!"
+Luazifier.TextLabel2.TextColor3 = Color3.new(1, 1, 1)
+Luazifier.TextLabel2.TextScaled = false
+Luazifier.TextLabel2.TextSize = 35
+Luazifier.TextLabel2.TextStrokeColor3 = Color3.new(0, 0, 0)
+Luazifier.TextLabel2.TextStrokeTransparency = 1
+Luazifier.TextLabel2.TextTransparency = 0
+Luazifier.TextLabel2.TextTruncate = Enum.TextTruncate.None
+Luazifier.TextLabel2.TextWrapped = false
+Luazifier.TextLabel2.TextXAlignment = Enum.TextXAlignment.Center
+Luazifier.TextLabel2.TextYAlignment = Enum.TextYAlignment.Center
 
-kruis21.Name = "kruis21"
-kruis21.Parent = sj0gsscriptloaderframe
-kruis21.BackgroundColor3 = Color3.new(0.392157, 0, 0)
-kruis21.BackgroundTransparency = 1
-kruis21.Position = UDim2.new(-0.13666667, 0, 0.576666713, 0)
-kruis21.Rotation = 45
-kruis21.Size = UDim2.new(0, 200, 0, 50)
-kruis21.Visible = false
-kruis21.Font = Enum.Font.Highway
-kruis21.Text = "---"
-kruis21.TextColor3 = Color3.new(1, 0, 0)
-kruis21.TextSize = 40
 
-puntjes1.Name = "puntjes1"
-puntjes1.Parent = sj0gsscriptloaderframe
-puntjes1.BackgroundColor3 = Color3.new(0.392157, 0, 0)
-puntjes1.BackgroundTransparency = 1
-puntjes1.Position = UDim2.new(-0.13666667, 0, 0.25, 0)
-puntjes1.Size = UDim2.new(0, 200, 0, 50)
-puntjes1.Font = Enum.Font.Highway
-puntjes1.Text = "..."
-puntjes1.TextColor3 = Color3.new(0.392157, 0.392157, 0.392157)
-puntjes1.TextSize = 60
-puntjes1.TextTransparency = 1
 
-puntjes2.Name = "puntjes2"
-puntjes2.Parent = sj0gsscriptloaderframe
-puntjes2.BackgroundColor3 = Color3.new(0.392157, 0, 0)
-puntjes2.BackgroundTransparency = 1
-puntjes2.Position = UDim2.new(-0.13666667, 0, 0.526666641, 0)
-puntjes2.Size = UDim2.new(0, 200, 0, 50)
-puntjes2.Font = Enum.Font.Highway
-puntjes2.Text = "..."
-puntjes2.TextColor3 = Color3.new(0.392157, 0.392157, 0.392157)
-puntjes2.TextSize = 60
-puntjes2.TextTransparency = 1
-
-vink11.Name = "vink11"
-vink11.Parent = sj0gsscriptloaderframe
-vink11.BackgroundColor3 = Color3.new(0.392157, 0, 0)
-vink11.BackgroundTransparency = 1
-vink11.Position = UDim2.new(-0.169999957, 0, 0.300000012, 0)
-vink11.Rotation = 40
-vink11.Size = UDim2.new(0, 200, 0, 50)
-vink11.Visible = false
-vink11.Font = Enum.Font.Highway
-vink11.Text = "--"
-vink11.TextColor3 = Color3.new(0, 1, 0)
-vink11.TextSize = 40
-
-vink12.Name = "vink12"
-vink12.Parent = sj0gsscriptloaderframe
-vink12.BackgroundColor3 = Color3.new(0.392157, 0, 0)
-vink12.BackgroundTransparency = 1
-vink12.Position = UDim2.new(-0.106666625, 0, 0.280000001, 0)
-vink12.Rotation = 135
-vink12.Size = UDim2.new(0, 200, 0, 50)
-vink12.Visible = false
-vink12.Font = Enum.Font.Highway
-vink12.Text = "---"
-vink12.TextColor3 = Color3.new(0, 1, 0)
-vink12.TextSize = 35
-
-vink22.Name = "vink22"
-vink22.Parent = sj0gsscriptloaderframe
-vink22.BackgroundColor3 = Color3.new(0.392157, 0, 0)
-vink22.BackgroundTransparency = 1
-vink22.Position = UDim2.new(-0.106666625, 0, 0.566666663, 0)
-vink22.Rotation = 135
-vink22.Size = UDim2.new(0, 200, 0, 50)
-vink22.Visible = false
-vink22.Font = Enum.Font.Highway
-vink22.Text = "---"
-vink22.TextColor3 = Color3.new(0, 1, 0)
-vink22.TextSize = 35
-
-vink21.Name = "vink21"
-vink21.Parent = sj0gsscriptloaderframe
-vink21.BackgroundColor3 = Color3.new(0.392157, 0, 0)
-vink21.BackgroundTransparency = 1
-vink21.Position = UDim2.new(-0.169999957, 0, 0.586666703, 0)
-vink21.Rotation = 40
-vink21.Size = UDim2.new(0, 200, 0, 50)
-vink21.Visible = false
-vink21.Font = Enum.Font.Highway
-vink21.Text = "--"
-vink21.TextColor3 = Color3.new(0, 1, 0)
-vink21.TextSize = 40
-
-wait(0.5)
-loadscripttext.TextTransparency = 0.9
-nameofloader.TextTransparency = 0.9
-gamechecktext.TextTransparency = 0.9
-loadscripttext.TextTransparency = 0.9
-credits.TextTransparency = 0.9
-puntjes1.TextTransparency = 0.9
-puntjes2.TextTransparency = 0.9
-sj0gsscriptloaderframe.Transparency = 0.9
-wait(0.05)
-loadscripttext.TextTransparency = 0.8
-nameofloader.TextTransparency = 0.8
-gamechecktext.TextTransparency = 0.8
-loadscripttext.TextTransparency = 0.8
-credits.TextTransparency = 0.8
-puntjes1.TextTransparency = 0.8
-puntjes2.TextTransparency = 0.8
-sj0gsscriptloaderframe.Transparency = 0.8
-wait(0.05)
-loadscripttext.TextTransparency = 0.7
-nameofloader.TextTransparency = 0.7
-gamechecktext.TextTransparency = 0.7
-loadscripttext.TextTransparency = 0.7
-credits.TextTransparency = 0.7
-puntjes1.TextTransparency = 0.7
-puntjes2.TextTransparency = 0.7
-sj0gsscriptloaderframe.Transparency = 0.7
-wait(0.05)
-loadscripttext.TextTransparency = 0.6
-nameofloader.TextTransparency = 0.6
-gamechecktext.TextTransparency = 0.6
-loadscripttext.TextTransparency = 0.6
-credits.TextTransparency = 0.6
-puntjes1.TextTransparency = 0.6
-puntjes2.TextTransparency = 0.6
-sj0gsscriptloaderframe.Transparency = 0.6
-wait(0.05)
-loadscripttext.TextTransparency = 0.5
-nameofloader.TextTransparency = 0.5
-gamechecktext.TextTransparency = 0.5
-loadscripttext.TextTransparency = 0.5
-credits.TextTransparency = 0.5
-puntjes1.TextTransparency = 0.5
-puntjes2.TextTransparency = 0.5
-sj0gsscriptloaderframe.Transparency = 0.5
-wait(0.05)
-loadscripttext.TextTransparency = 0.4
-nameofloader.TextTransparency = 0.4
-gamechecktext.TextTransparency = 0.4
-loadscripttext.TextTransparency = 0.4
-credits.TextTransparency = 0.4
-puntjes1.TextTransparency = 0.4
-puntjes2.TextTransparency = 0.4
-sj0gsscriptloaderframe.Transparency = 0.4
-wait(0.05)
-loadscripttext.TextTransparency = 0.3
-nameofloader.TextTransparency = 0.3
-gamechecktext.TextTransparency = 0.3
-loadscripttext.TextTransparency = 0.3
-credits.TextTransparency = 0.3
-puntjes1.TextTransparency = 0.3
-puntjes2.TextTransparency = 0.3
-sj0gsscriptloaderframe.Transparency = 0.3
-wait(0.05)
-loadscripttext.TextTransparency = 0.2
-nameofloader.TextTransparency = 0.2
-gamechecktext.TextTransparency = 0.2
-loadscripttext.TextTransparency = 0.2
-credits.TextTransparency = 0.2
-puntjes1.TextTransparency = 0.2
-puntjes2.TextTransparency = 0.2
-sj0gsscriptloaderframe.Transparency = 0.2
-wait(0.05)
-loadscripttext.TextTransparency = 0.1
-nameofloader.TextTransparency = 0.1
-gamechecktext.TextTransparency = 0.1
-loadscripttext.TextTransparency = 0.1
-credits.TextTransparency = 0.1
-puntjes1.TextTransparency = 0.1
-puntjes2.TextTransparency = 0.1
-sj0gsscriptloaderframe.Transparency = 0.1
-wait(0.05)
-loadscripttext.TextTransparency = 0
-nameofloader.TextTransparency = 0
-gamechecktext.TextTransparency = 0
-loadscripttext.TextTransparency = 0
-credits.TextTransparency = 0
-puntjes1.TextTransparency = 0
-puntjes2.TextTransparency = 0
-sj0gsscriptloaderframe.Transparency = 0
-wait(3)
-if game.PlaceId == placeid then
-vink11.Visible = true
-vink12.Visible = true
-puntjes1.Visible = false
-else
-
-kruis11.Visible = true
-kruis12.Visible = true
-puntjes1.Visible = false
-
-ScriptLoader:Destroy()
+local getByName = function(N)
+    for i,v in pairs(Luazifier) do
+        if v.Name and v.Name == N then
+            return v
+        end
+    end
+    return nil
 end
 
-wait(3)
-vink21.Visible = true
-vink22.Visible = true
-puntjes2.Visible = false
-wait(1)
-ScriptLoader:Destroy()
+local Flag = getByName("Flag")
+local LeftSideText = getByName("Fuck")
+local RightSideText = getByName("Russia")
 
+while task.wait() do
+    if Flag.ImageTransparency == 0 then
+        break
+    end
+    Flag.ImageTransparency = Flag.ImageTransparency - 0.01
+end
+
+repeat task.wait() until Flag.ImageTransparency == 0
+
+local OriginalPositions = {}
+OriginalPositions[1] = LeftSideText.Position
+OriginalPositions[2] = RightSideText.Position
+
+LeftSideText:TweenPosition(UDim2.new(0, 0, 0.25, 0), Enum.EasingDirection.Out, Enum.EasingStyle.Quint, 1)
+task.wait(1)
+RightSideText:TweenPosition(UDim2.new(0, 0, 0.25, 0), Enum.EasingDirection.Out, Enum.EasingStyle.Quint, 1)
+
+task.wait(2)
+
+LeftSideText:TweenPosition(OriginalPositions[1], Enum.EasingDirection.Out, Enum.EasingStyle.Quint, 1)
+task.wait(1)
+RightSideText:TweenPosition(OriginalPositions[2], Enum.EasingDirection.Out, Enum.EasingStyle.Quint, 1)
+task.wait(1)
+
+while task.wait() do
+    if Flag.ImageTransparency == 1 then
+        break
+    end
+    Flag.ImageTransparency = Flag.ImageTransparency + 0.01
+end
+
+repeat task.wait() until Flag.ImageTransparency == 1
+
+getByName("Support Ukraine"):Destroy()
 
 Client = {
     Modules = {
@@ -583,12 +482,6 @@ function DetectPlayer()
 	return false
 end
 
-function sayMessage(option)
-	if game.Players.LocalPlayer.Status.Team.Value ~= "Spectator" then
-		local Message = option
-		game.ReplicatedStorage.Events.PlayerChatted:FireServer("Trolling42", "  Bolts Hub Winning!", false, false, true)
-	end
-end
 
 function StartAutofarm()
 	repeat wait() until game:GetService("ReplicatedStorage").wkspc.Status.RoundOver.Value == false
@@ -659,7 +552,6 @@ spawn(function()
 					print("f")
 					break 
 				end
-				sayMessage(Message)
 end
 end)
 local num = 6
@@ -714,24 +606,8 @@ game:GetService('RunService').Stepped:connect(function() -- Infinite Ammo by Fro
         game:GetService("Players").LocalPlayer.PlayerGui.GUI.Client.Variables.ammocount.Value = 999 -- dont do it higher then 999
         game:GetService("Players").LocalPlayer.PlayerGui.GUI.Client.Variables.ammocount2.Value = 999
 end)
-     function SwitchToKnife()
-	local N = game:GetService("VirtualInputManager")
-	N:SendKeyEvent(true, 51, false, game)
-	N:SendKeyEvent(false, 51, false, game)	
-end
-function KnifeKill()
-    SwitchToKnife()
-    for i =1,20 do
-        SwitchToKnife()
-        
-    end
-end
-
-
 StartAutofarm()
-while true do wait(0.1)
-		KnifeKill()
-		end
+
 end)
 CombatW:Button('Aimlock In Beta(You can use soft aims draw fov for aimlock)',function()
     local ScreenGui = Instance.new("ScreenGui")
@@ -874,7 +750,7 @@ CombatW:Colorpicker("FOV Color",Color3.fromRGB(225, 0, 0), function(color)
 FOVCircle.Color = color
 end)
 
-FEW:Button('Press To Get Best Gun Mod Settings (All New Adn Bypassed)',function()
+FEW:Button('Press To Get Best Gun Mod Settings (All New And Bypassed)',function()
     for i,v in next, game.ReplicatedStorage.Weapons:GetChildren() do
 for i,c in next, v:GetChildren() do -- for some reason, using GetDescendants dsent let you modify weapon ammo, so I do this instead
 for i,x in next, getconnections(c.Changed) do
@@ -2399,22 +2275,31 @@ Player.CharacterAdded:connect(OnCharacterAdded)
 SubFrame.Rigtype.Text = ('Your Rigtype - %s'):format(CheckRig())
 end)
 
-ServerL:Label('-Added New Loader')
-ServerL:Label('-Added Bypassed Gun Mods')
-ServerL:Label('-Added Bypassed More  Stuff')
-ServerL:Label('-Reverted Back To Dark Hub UI Lib :(')
-ServerL:Label('-Added Better TP To Random')
-
+ServerL:Button('Made Stuff Better :D',function()
+    
+setclipboard("discord.gg/CQz5CQKv89")
+end)
 
 MiscW:Button('Click To Copy Discord Invite',function()
     
 setclipboard("discord.gg/CQz5CQKv89")
 end)
-MiscW:Label('Skid Hub v6 - Arsenal')
-MiscW:Label('RightShift To Toggle The Gui :D')
-MiscW:Label('discord.gg/CQz5CQKv89')
-MiscW:Label('Bolts#8888 - Owner')
-MiscW:Label('Storm.#1020 - Co Owner')
-MiscW:Label('lolcat#6709 - Helper')
-MiscW:Label('Bolts#8888 Bug Fixing')
-MiscW:Label('Dark Hub Devs For UI Lib')
+MiscW:Button('RightShift To Toggle The Gui :D',function()
+    
+setclipboard("discord.gg/CQz5CQKv89")
+end)
+MiscW:Button('Bolts 3#7289 - Owner',function()
+    
+setclipboard("discord.gg/CQz5CQKv89")
+end)
+MiscW:Button('Storm#.#1020 - Co Owner',function()
+    
+setclipboard("discord.gg/CQz5CQKv89")
+end)
+
+
+local inviteModule = loadstring(game:HttpGet("https://raw.githubusercontent.com/RegularVynixu/Utilities/main/Discord%20Inviter/Source.lua"))()
+inviteModule.Prompt({
+name = "Bolts Commuinty (Have Your Discord Client Open To Join)",
+invite = "https://discord.gg/yFFxYCzYpK",
+})
