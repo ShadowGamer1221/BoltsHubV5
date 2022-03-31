@@ -434,8 +434,7 @@ CombatW:Keybind(
     end
     
 )
-CombatW:Button('Kill All (After you toggle you can use any guns)',function()
-   
+CombatW:Button('Kill All (Works For One Round)',function()
 
 local Farming = false
 local Hopped = false
