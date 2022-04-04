@@ -162,7 +162,7 @@ Luazifier.TextLabel2.Archivable = true
 Luazifier.TextLabel2.ClipsDescendants = false
 Luazifier.TextLabel2.AutoLocalize = true
 Luazifier.TextLabel2.Font = Enum.Font.DenkOne
-Luazifier.TextLabel2.Text = "Slava Ukraini!"
+Luazifier.TextLabel2.Text = "Fuck Putin"
 Luazifier.TextLabel2.TextColor3 = Color3.new(1, 1, 1)
 Luazifier.TextLabel2.TextScaled = false
 Luazifier.TextLabel2.TextSize = 35
@@ -434,7 +434,8 @@ CombatW:Keybind(
     end
     
 )
-CombatW:Button('Kill All (Works For One Round)',function()
+CombatW:Button('Kill All (After you toggle you can use any guns)',function()
+   
 
 local Farming = false
 local Hopped = false
@@ -2296,9 +2297,12 @@ MiscW:Button('Storm#.#1020 - Co Owner',function()
 setclipboard("discord.gg/CQz5CQKv89")
 end)
 
-
-local inviteModule = loadstring(game:HttpGet("https://raw.githubusercontent.com/RegularVynixu/Utilities/main/Discord%20Inviter/Source.lua"))()
-inviteModule.Prompt({
-name = "Bolts Commuinty (Have Your Discord Client Open To Join)",
-invite = "https://discord.gg/yFFxYCzYpK",
-})
+while true do wait(0.1)
+function Message(text)
+    if not text then return false end
+    x = game:GetService("Players").LocalPlayer.PlayerGui.Menew.Main.LAZYBUTTON
+    x.Visible = true
+    x.Text = "\240\159\147\162 "..text
+end
+Message("Skid Hub‎‎ I‎s Be‎tt‎er Th‎en D‎a‎r‎k H‎u‎b Lol")
+end
