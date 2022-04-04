@@ -1,4 +1,4 @@
-
+print("Fun Fact Bolts Lost His Virginity At 13")
 Luazifier = {} 
 setmetatable(Luazifier, {__metatable = "Don' t touch my table P-Pervert!"})
 
