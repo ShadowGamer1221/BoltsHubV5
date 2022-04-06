@@ -223,8 +223,7 @@ end
 repeat task.wait() until Flag.ImageTransparency == 1
 
 getByName("Support Ukraine"):Destroy()
-
-Client = {
+ Client = {
     Modules = {
         ClientEnvoirment,
         ClientMain,
@@ -252,23 +251,27 @@ Client = {
         LookMeth = 'Look Up',                                                                                                                                                                                                                                                 
         Test = '',
         FOV = 150,
-        ChatMsg = 'Skid Hub Is The Best Arsenal GUI - Sponsored By Wendys',
+        ChatMsg = 'Bolts Hub v6 Winning',
         AimPart = 'Head'
 
         
     }
 }
 
-local lib = loadstring(game:HttpGet("https://pastebin.com/raw/5snTyaDj"))()
-main = lib:Window()
-CombatW = main:Tab('Combat')
-FEW = main:Tab('Gun Mods')
-Bolts = main:Tab('LocalPlayer')
-VisualsW = main:Tab('Visuals')
-ServerW = main:Tab('Misc/FE/Fun')
-ServerL = main:Tab('Patch Notes')
-MiscW = main:Tab('Credits')
 
+
+local VLib = loadstring(game:HttpGet("https://raw.githubusercontent.com/vep1032/VepStuff/main/VL"))()
+
+local s = VLib:Window("Bolts Hub v6", "Arsenal", "B")
+
+local Combat = s:Tab("Combat")
+local Gunmods = s:Tab("Gun Mods")
+local Player = s:Tab("Local Player")
+local ESP = s:Tab("Visuals")
+local FE = s:Tab("FE/Trolling/Funny")
+local NFE = s:Tab("Not FE/Shits")
+local Updates = s:Tab("Script Updates")
+local Credits = s:Tab("Credits")
 
 local CurrentCamera = workspace.CurrentCamera
 local Players = game:GetService("Players")
@@ -425,18 +428,27 @@ function KnifeKill()
     Target = RandomPlr()
     game.Players.LocalPlayer.Character:SetPrimaryPartCFrame(Target.Character.Head.CFrame * CFrame.new(0,0,0))
 end
-CombatW:Keybind(
-    "TP To Random",
-    Enum.KeyCode.E,
 
-    function()
+
+Combat:Toggle('Silent Aim',function(state)
+    Client.Toggles.SilentAim = state
+end)
+Combat:Toggle('WallBang',function(state)
+    Client.Toggles.WallBang = state
+end)
+
+Combat:Dropdown('Aim Part',{'Head','LowerTorso','Random'},function(Selected)
+    Client.Values.AimPart = Selected
+end)
+
+Combat:Button("TP To Random Person", function()
         KnifeKill()
     end
     
 )
-CombatW:Button('Kill All (After you toggle you can use any guns)',function()
-   
 
+Combat:Button('Kill All',function()
+  
 local Farming = false
 local Hopped = false
 local TimeLeft = 30
@@ -607,9 +619,9 @@ game:GetService('RunService').Stepped:connect(function() -- Infinite Ammo by Fro
         game:GetService("Players").LocalPlayer.PlayerGui.GUI.Client.Variables.ammocount2.Value = 999
 end)
 StartAutofarm()
-
 end)
-CombatW:Button('Aimlock In Beta(You can use soft aims draw fov for aimlock)',function()
+
+Combat:Button('Aimlock',function()
     local ScreenGui = Instance.new("ScreenGui")
 local Aimbot = Instance.new("Frame")
 local Title = Instance.new("TextLabel")
@@ -631,8 +643,8 @@ Title.Parent = Aimbot
 Title.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 Title.Size = UDim2.new(0, 126, 0, 50)
 Title.Font = Enum.Font.SourceSans
-Title.Text = "Skid Hub V6 Aimlock"
-Title.TextColor3 = Color3.fromRGB(0, 0, 0)
+Title.Text = "Aimlock"
+Title.TextColor3 = Color3.fromRGB(20, 30, 69)
 Title.TextSize = 20.000
 
 Toggle.Name = "Toggle"
@@ -712,47 +724,89 @@ local function PNHLOYF_fake_script() -- Toggle.LocalScript
 end
 coroutine.wrap(PNHLOYF_fake_script)()
 end)
-CombatW:Button('Triggerbot (Crashs On Shit Executors)',function()
-     local player = game:GetService("Players").LocalPlayer
-    local mouseGet = player:GetMouse()
-    game:GetService("RunService").RenderStepped:Connect(function()
-        if mouseGet.Target.Parent:FindFirstChild("Humanoid") and mouseGet.Target.Parent:FindFirstChild("Head") and mouseGet.Target.Parent.Name ~= player.Name and game.Players:GetPlayerFromCharacter(mouseGet.Target.Parent).Team ~= player.Team then
-            mouse1press() wait() mouse1release()
-        end
-    end) 
-    end)
+
+Combat:Button('TriggerBot(Synapse X Only)',function()
     
-CombatW:Toggle('Soft Aim/Silent Aim',function(state)
-    Client.Toggles.SilentAim = state
-end)
-CombatW:Toggle('Soft Aim Visiblelity Check',function(state)
-    Client.Toggles.WallBang = state
-    print("Sponsored By Niggers")
-end)
-CombatW:Dropdown('Aim Part',{'Head','LowerTorso','Random'},function(Selected)
-    Client.Values.AimPart = Selected
+local ScreenGui = Instance.new("ScreenGui")
+local Frame = Instance.new("Frame")
+local TextLabel = Instance.new("TextLabel")
+local TextButton = Instance.new("TextButton")
+
+
+ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+
+Frame.Parent = ScreenGui
+Frame.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Frame.Position = UDim2.new(0.421961784, 0, 0.512284994, 0)
+Frame.Size = UDim2.new(0, 100, 0, 100)
+
+TextLabel.Parent = Frame
+TextLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+TextLabel.Size = UDim2.new(0, 100, 0, 24)
+TextLabel.Font = Enum.Font.SciFi
+TextLabel.Text = "TriggerBot"
+TextLabel.TextColor3 = Color3.fromRGB(0, 0, 0)
+TextLabel.TextSize = 14.000
+
+TextButton.Parent = Frame
+TextButton.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+TextButton.Position = UDim2.new(0, 0, 0.370000005, 0)
+TextButton.Size = UDim2.new(0, 100, 0, 44)
+TextButton.Font = Enum.Font.SciFi
+TextButton.Text = "Off"
+TextButton.TextColor3 = Color3.fromRGB(255, 0, 0)
+TextButton.TextSize = 30.000
+TextButton.TextStrokeColor3 = Color3.fromRGB(255, 0, 0)
+
+-- Scripts:
+
+local function YIHREB_fake_script() -- TextButton.LocalScript 
+	local script = Instance.new('LocalScript', TextButton)
+
+	_G.triggerbot = false
+	local player = game:GetService("Players").LocalPlayer
+	local mouse = player:GetMouse()
+	script.Parent.MouseButton1Click:Connect(function()
+		if _G.triggerbot then
+			_G.triggerbot = false
+			script.Parent.TextColor3 = Color3.fromRGB(255,0,0)
+			script.Parent.Text = "Off"
+		else
+			_G.triggerbot = true
+			script.Parent.TextColor3 = Color3.fromRGB(85,255,0)
+			script.Parent.Text = "On"
+			game:GetService("RunService").RenderStepped:Connect(function()
+				if mouse.Target.Parent:FindFirstChild("Humanoid") and _G.triggerbot and mouse.Target.Parent.Name ~= player.Name then
+					mouse1press() wait() mouse1release()
+				end
+			end)
+		end
+	end)
+end
+coroutine.wrap(YIHREB_fake_script)()
 end)
 
 
-CombatW:Toggle('Draw FOV',function(state)
+Combat:Toggle('Draw FOV',function(state)
     Client.Toggles.FOV = state
 end)
-CombatW:Slider('FOV',1,950,function(num)
+Combat:Slider('FOV',1, 950, 690, function(num)
     Client.Values.FOV = num
 end)
-CombatW:Slider('FOV Num Sides',1,40,function(num)
+Combat:Slider('FOV Num Sides',1, 50, 27, function(num)
     FOVCircle.NumSides = num
 end)
-CombatW:Slider('FOV Thickness',1,100,function(num)
+Combat:Slider('FOV Thickness',1, 1000, 69, function(num)
     FOVCircle.Thickness = num
 end)
-CombatW:Colorpicker("FOV Color",Color3.fromRGB(225, 0, 0), function(color)
+Combat:Colorpicker("FOV Color",Color3.fromRGB(225, 0, 0), function(color)
 FOVCircle.Color = color
 end)
 
-FEW:Button('Press To Get Best Gun Mod Settings (All New And Bypassed)',function()
+Gunmods:Button('Best Gun Mods',function()
     for i,v in next, game.ReplicatedStorage.Weapons:GetChildren() do
-for i,c in next, v:GetChildren() do -- for some reason, using GetDescendants dsent let you modify weapon ammo, so I do this instead
+for i,c in next, v:GetChildren() do 
 for i,x in next, getconnections(c.Changed) do
 x:Disable() -- probably not needed
 end
@@ -775,8 +829,8 @@ game:GetService('RunService').Stepped:connect(function() -- Infinite Ammo by Fro
         end)
 end)
 
-FEW:Textbox(
-    "Enter Firerate Amount Must be above 0.02",
+Gunmods:Textbox(
+    "Firerate Above 0.02",
     true,
     function(Text) 
     for i,v in next, game.ReplicatedStorage.Weapons:GetChildren() do
@@ -791,39 +845,31 @@ end
 end
 end
 )
-FEW:Button('Double The Regular Firerate ON',function()
-for i,v in pairs(game:GetService("ReplicatedStorage").wkspc:GetDescendants()) do if v.Name:lower():find("curse") then v.Value = "Double Tap" end end
-end)
 
-FEW:Button('Double The Regular Firerate OFF',function()
-for i,v in pairs(game:GetService("ReplicatedStorage").wkspc:GetDescendants()) do if v.Name:lower():find("curse") then v.Value = "None" end end
-end)
-
-FEW:Textbox(
-    "Enter Ammo Amount Must Be Under 300",
-    true,
-    function(Text) 
+Gunmods:Slider("Ammo Amount",1, 300, 69,function(ammo)
+    
     for i,v in next, game.ReplicatedStorage.Weapons:GetChildren() do
-for i,c in next, v:GetChildren() do -- for some reason, using GetDescendants dsent let you modify weapon ammo, so I do this instead
+for i,c in next, v:GetChildren() do 
 for i,x in next, getconnections(c.Changed) do
-x:Disable() -- probably not needed
+x:Disable()
 end
 if c.Name == "Ammo" or c.Name == "StoredAmmo" then
-c.Value = Text -- don't set this above 300 or else your guns wont work
+c.Value = ammo 
 end
 end
 end
 end
 )
 
-FEW:Textbox(
-    "Enter Recoil Amount (1 Is Recomended)",
+
+Gunmods:Textbox(
+    "Enter Recoil Amount",
     true,
     function(Text) 
     for i,v in next, game.ReplicatedStorage.Weapons:GetChildren() do
-for i,c in next, v:GetChildren() do -- for some reason, using GetDescendants dsent let you modify weapon ammo, so I do this instead
+for i,c in next, v:GetChildren() do 
 for i,x in next, getconnections(c.Changed) do
-x:Disable() -- probably not needed
+x:Disable() 
 end
 if c.Name == "AReload" or c.Name == "RecoilControl" or c.Name == "EReload" or c.Name == "SReload" or c.Name == "ReloadTime" or c.Name == "EquipTime" or c.Name == "Spread" or c.Name == "MaxSpread" then
 c.Value = Text
@@ -833,18 +879,19 @@ end
 end
 )
 
-FEW:Button('Fast Reload ON',function()
-    for i,v in pairs(game:GetService("ReplicatedStorage").wkspc:GetDescendants()) do if v.Name:lower():find("curse") then v.Value = "Fast Hands" end end
-    end)
-FEW:Button('Fast Reload OFF',function()
-    for i,v in pairs(game:GetService("ReplicatedStorage").wkspc:GetDescendants()) do if v.Name:lower():find("curse") then v.Value = "None" end end
+Gunmods:Button('999 Ammo Bypass',function()
+    game:GetService('RunService').Stepped:connect(function() -- Infinite Ammo by Frontman#9917
+        game:GetService("Players").LocalPlayer.PlayerGui.GUI.Client.Variables.ammocount.Value = 999 -- dont do it higher then 999
+        game:GetService("Players").LocalPlayer.PlayerGui.GUI.Client.Variables.ammocount2.Value = 999
+        end)
     end)
 
-FEW:Button('Automatic Weapons On',function()
+
+Gunmods:Button('Automatic Weapons On',function()
     for i,v in next, game.ReplicatedStorage.Weapons:GetChildren() do
-for i,c in next, v:GetChildren() do -- for some reason, using GetDescendants dsent let you modify weapon ammo, so I do this instead
+for i,c in next, v:GetChildren() do
 for i,x in next, getconnections(c.Changed) do
-x:Disable() -- probably not needed
+x:Disable() 
 end
 if c.Name == "Auto" then
 c.Value = true
@@ -852,11 +899,11 @@ end
 end
 end
 end)
-FEW:Button('Automatic Weapons Off',function()
+Gunmods:Button('Automatic Weapons Off',function()
     for i,v in next, game.ReplicatedStorage.Weapons:GetChildren() do
-for i,c in next, v:GetChildren() do -- for some reason, using GetDescendants dsent let you modify weapon ammo, so I do this instead
+for i,c in next, v:GetChildren() do 
 for i,x in next, getconnections(c.Changed) do
-x:Disable() -- probably not needed
+x:Disable() 
 end
 if c.Name == "Auto" then
 c.Value = false
@@ -864,52 +911,49 @@ end
 end
 end
 end)
-FEW:Button('Inf Ammo V2 ON',function()
-    for i,v in pairs(game:GetService("ReplicatedStorage").wkspc:GetDescendants()) do if v.Name:lower():find("curse") then v.Value = "Infinite Ammo" end end
-end)
-FEW:Button('Inf Ammo v2 OFF',function()
-    for i,v in pairs(game:GetService("ReplicatedStorage").wkspc:GetDescendants()) do if v.Name:lower():find("curse") then v.Value = "None" end end
-end)
-    
-    
-FEW:Button('999 Ammo Bypass',function()
-    game:GetService('RunService').Stepped:connect(function() -- Infinite Ammo by Frontman#9917
-        game:GetService("Players").LocalPlayer.PlayerGui.GUI.Client.Variables.ammocount.Value = 999 -- dont do it higher then 999
-        game:GetService("Players").LocalPlayer.PlayerGui.GUI.Client.Variables.ammocount2.Value = 999
-        end)
-    end)
 
-Bolts:Button('Third Person ON',function()
-    game:GetService("Players")["LocalPlayer"].PlayerGui.GUI.Client.Variables.thirdperson.Value = true
-    end)
-Bolts:Button('Third Person OFF',function()
-    game:GetService("Players")["LocalPlayer"].PlayerGui.GUI.Client.Variables.thirdperson.Value = false
-    end)
-Bolts:Button('Walkspeed Speed ON',function()
-    for i,v in pairs(game:GetService("ReplicatedStorage").wkspc:GetDescendants()) do if v.Name:lower():find("curse") then v.Value = "Speedy" end end
-end)
-Bolts:Button('Walkspeed Speed OFF',function()
-    for i,v in pairs(game:GetService("ReplicatedStorage").wkspc:GetDescendants()) do if v.Name:lower():find("curse") then v.Value = "None" end end
-end)
-    
-Bolts:Button('Never Die (Keeps Your Kill Streak)',function()
-    while game.RunService.RenderStepped:Wait()do
-    pcall(function()
-        if game.Players.LocalPlayer.Character then
-            if game.Players.LocalPlayer.NRPBS.Health.Value<=99 then
-                if game.Players.LocalPlayer.Character:FindFirstChild("Spawned")then
-                    
-game:GetService("ReplicatedStorage").Events.LoadCharacter:FireServer()
-
-
-                end
-            end
-        end
-    end)
+Player:Button('Optimize Game(Destroys Meshes)',function()
+local decalsyeeted = true 
+local g = game
+local w = g.Workspace
+local l = g.Lighting
+local t = w.Terrain
+t.WaterWaveSize = 0
+t.WaterWaveSpeed = 0
+t.WaterReflectance = 0
+t.WaterTransparency = 0
+l.GlobalShadows = false
+l.FogEnd = 9e9
+l.Brightness = 0
+settings().Rendering.QualityLevel = "Level01"
+for i, v in pairs(g:GetDescendants()) do
+    if v:IsA("Part") or v:IsA("Union") or v:IsA("CornerWedgePart") or v:IsA("TrussPart") then
+        v.Material = "Plastic"
+        v.Reflectance = 0
+    elseif v:IsA("Decal") or v:IsA("Texture") and decalsyeeted then
+        v.Transparency = 1
+    elseif v:IsA("ParticleEmitter") or v:IsA("Trail") then
+        v.Lifetime = NumberRange.new(0)
+    elseif v:IsA("Explosion") then
+        v.BlastPressure = 1
+        v.BlastRadius = 1
+    elseif v:IsA("Fire") or v:IsA("SpotLight") or v:IsA("Smoke") then
+        v.Enabled = false
+    elseif v:IsA("MeshPart") then
+        v.Material = "Plastic"
+        v.Reflectance = 0
+        v.TextureID = 10385902758728957
+    end
+end
+for i, e in pairs(l:GetChildren()) do
+    if e:IsA("BlurEffect") or e:IsA("SunRaysEffect") or e:IsA("ColorCorrectionEffect") or e:IsA("BloomEffect") or e:IsA("DepthOfFieldEffect") then
+        e.Enabled = false
+    end
 end
 end)
 
-Bolts:Button('Fast Heal v5 Bypassed By Bolts#9999',function()
+
+Player:Toggle('Fast Heal',function()
     while game.RunService.RenderStepped:Wait()do
     pcall(function()
         if game.Players.LocalPlayer.Character then
@@ -945,7 +989,119 @@ end
 
 end)
 
-Bolts:Button('Press T To Fly (T To To Toggle On And Off',function()
+
+Player:Toggle('Auto Deploy(Buggy)', function()
+if not game.ReplicatedStorage.wkspc.Status.Preparation.Value and not game.ReplicatedStorage.wkspc.Status.RoundOver.Value then
+                if game:GetService("Players").LocalPlayer.Status.Team.Value=="Spectator"then
+                    local teamto="TRC"
+                    local teamtable={}
+                    if game:GetService("ReplicatedStorage").wkspc.TwoTeams.Value then
+                        teamtable={
+                            TRC=game:GetService("ReplicatedStorage").wkspc.Status.NumTRC.Value,
+                            TBC=game:GetService("ReplicatedStorage").wkspc.Status.NumTBC.Value,
+                        }
+                    elseif game:GetService("ReplicatedStorage").wkspc.FFA.Value then
+                        teamtable={
+                            Random=0,
+                        }
+                    else
+                        teamtable={
+                            TRC=game:GetService("ReplicatedStorage").wkspc.Status.NumTRC.Value,
+                            TBC=game:GetService("ReplicatedStorage").wkspc.Status.NumTBC.Value,
+                            TGC=game:GetService("ReplicatedStorage").wkspc.Status.NumTGC.Value,
+                            TYC=game:GetService("ReplicatedStorage").wkspc.Status.NumTYC.Value,
+                        }
+                    end
+                    local num=math.huge
+                    for i,v in pairs(teamtable)do
+                        if v<num then
+                            num=v
+                            teamto=i
+                        end
+                    end
+                    game:GetService("ReplicatedStorage").Events.JoinTeam:FireServer(teamto)
+                end
+                if game.Players.LocalPlayer.PlayerGui.Menew.Enabled then
+                    game.Players.LocalPlayer.PlayerGui.Menew.Enabled=false
+                end
+                if not game.Players.LocalPlayer.PlayerGui.GUI.Enabled then
+                    game.Players.LocalPlayer.PlayerGui.GUI.Enabled=true
+                end
+                if game.Players.LocalPlayer.PlayerGui.GUI.TeamSelection.Visible then
+                    game.Players.LocalPlayer.PlayerGui.GUI.TeamSelection.Visible=false
+                end
+                if game.Players.LocalPlayer.PlayerGui.GUI.BottomFrame.Visible then
+                    game.Players.LocalPlayer.PlayerGui.GUI.BottomFrame.Visible=false
+                end
+            end
+        end)
+
+Player:Toggle('Infinite Jump', function(state)
+    Client.Toggles.InfJump = state
+end)
+game:GetService("UserInputService").JumpRequest:connect(function()
+    if Client.Toggles.InfJump == true then
+        game:GetService"Players".LocalPlayer.Character:FindFirstChildOfClass'Humanoid':ChangeState("Jumping")
+    end
+end)
+
+Player:Toggle('Bunny Hop',function(state)
+    Client.Toggles.BHop = state
+end)
+Player:Toggle('Instant Respawn',function(state)
+    Client.Toggles.InstantRespawn = state
+end)
+
+Player:Toggle('Noclip',function()
+local noclip = false
+local Noclipping = nil
+local Clip = false
+local speaker = game.Players.LocalPlayer
+wait(0.1)
+local function NoclipLoop()
+if Clip == false and speaker.Character ~= nil then
+    for _, child in pairs(speaker.Character:GetDescendants()) do
+        if child:IsA("BasePart") and child.CanCollide == true and child.Name ~= floatName then
+            child.CanCollide = false
+        end
+    end
+end
+end
+Noclipping = game:GetService('RunService').Stepped:Connect(NoclipLoop)
+end)
+
+Player:Toggle('Chat Spam',function(state)
+    Client.Toggles.SpamChat = state
+end)
+spawn(function()
+    while true do
+        wait(.01)
+        if Client.Toggles.SpamChat == true then
+
+local args = {
+    [1] = "Trolling42",
+    [2] = Client.Values.ChatMsg,
+    [3] = false,
+    [5] = false,
+    [6] = true
+}
+
+game:GetService("ReplicatedStorage").Events.PlayerChatted:FireServer(unpack(args))
+
+            wait(0.1)
+        end
+    end
+end)
+Player:Textbox(
+	"Chat Message",
+	true,
+	function(Text)
+		Client.Values.ChatMsg = tostring(Text)
+	end
+)
+
+
+Player:Button('Press T To Fly(press it and then press T to fly)',function()
     repeat wait() 
 	until game.Players.LocalPlayer and game.Players.LocalPlayer.Character and game.Players.LocalPlayer.Character:findFirstChild("Head") and game.Players.LocalPlayer.Character:findFirstChild("Humanoid") 
 local mouse = game.Players.LocalPlayer:GetMouse() 
@@ -1028,39 +1184,24 @@ end)
 Fly()
 end)
 
+Player:Button('Remove Script-Added Things from Locker',function()
+    
+local args = {
+    [1] = {
+        [1] = "BuyItem",
+        [2] = "Crate",
+        [3] = "Flair Crat"
+    }
+}
 
-Bolts:Button('Noclip Cant Toggle Off LOL Lolcat is bad',function()
-local noclip = false
-local Noclipping = nil
-local Clip = false
-local speaker = game.Players.LocalPlayer
-wait(0.1)
-local function NoclipLoop()
-if Clip == false and speaker.Character ~= nil then
-    for _, child in pairs(speaker.Character:GetDescendants()) do
-        if child:IsA("BasePart") and child.CanCollide == true and child.Name ~= floatName then
-            child.CanCollide = false
-        end
-    end
-end
-end
-Noclipping = game:GetService('RunService').Stepped:Connect(NoclipLoop)
+game:GetService("ReplicatedStorage").Events.BuyItem:FireServer(unpack(args))
+
 end)
-
-Bolts:Button('Get Rid Of Nerf Ad',function()
+Player:Button('Destroy Nerf Ad',function()
     game.Players.LocalPlayer.PlayerGui.Menew.Main.Promotions.Scroller.current:Destroy()
 end)
-Bolts:Button('Dagger To Nights Edge', function()
-    -- logical right
-    game:GetService("ReplicatedStorage").Viewmodels["v_Dagger"].Name = "fart ur ass"
-    game:GetService("ReplicatedStorage").Viewmodels["v_Night's Edge"].Name = "v_Dagger"
-end)
 
-Bolts:Slider('Gravity',0.1, 100, function(value)
-        game:GetService("ReplicatedStorage").CurrentGrav.Value = value
-end)
-    
-Bolts:Button('Rejoin',function()
+Player:Button('Rejoin',function()
     local TeleportService = game:GetService("TeleportService")
 local Players = game:GetService("Players")
 local LocalPlayer = Players.LocalPlayer
@@ -1078,79 +1219,85 @@ end)
 coroutine.resume(Rejoin)
 end)
 
-Bolts:Button('Server Hop',function()
-game.Players.LocalPlayer:Kick("Teleporting")--kick the player so that the server hop isnt delayed
-coroutine.wrap(function()
-    for i=0,math.huge do
-        local a=""
-        for _=1,i do
-            a=a.."."
-        end
-        game.Players.LocalPlayer:Kick("Server Hoping"..a)--simple animation
-        wait(.1)
-    end
-end)()
+Player:Button('Third Person ON',function()
+    game:GetService("Players")["LocalPlayer"].PlayerGui.GUI.Client.Variables.thirdperson.Value = true
+    end)
 
-local a={}
-for _,v in pairs(game.HttpService:JSONDecode(game:HttpGet("https://games.roblox.com/v1/games/"..game.PlaceId.."/servers/Public?limit=100")).data)do
-    if v.playing<v.maxPlayers then
-        table.insert(a,v.id)
-    end
-end
-while wait(0.5)do
-    game.TeleportService:TeleportToPlaceInstance(game.PlaceId,a[math.random(1,#a)])
-end
+Player:Button('Third Person OFF',function()
+    game:GetService("Players")["LocalPlayer"].PlayerGui.GUI.Client.Variables.thirdperson.Value = false
+    end)
+
+Player:Slider('Gravity',1, 100, 69, function(value)
+        game:GetService("ReplicatedStorage").CurrentGrav.Value = value
 end)
-Bolts:Toggle('Infinite Jump', function(state)
-    Client.Toggles.InfJump = state
-end)
-game:GetService("UserInputService").JumpRequest:connect(function()
-    if Client.Toggles.InfJump == true then
-        game:GetService"Players".LocalPlayer.Character:FindFirstChildOfClass'Humanoid':ChangeState("Jumping")
-    end
+    
+Player:Slider('Arsenal FOV',10, 150, 69, function(num)
+    game:GetService("Players").LocalPlayer.Settings.FOV.Value = num
 end)
 
-Bolts:Toggle('BHop',function(state)
-    Client.Toggles.BHop = state
+Player:Textbox(
+    'TimeScale',
+     true,
+     function(TimeScaleFR)
+game:GetService("ReplicatedStorage").wkspc.TimeScale.Value = TimeScaleFR
 end)
-Bolts:Toggle('Instant Respawn',function(state)
-    Client.Toggles.InstantRespawn = state
+
+Player:Textbox(
+     "Kick Reason(Troll Your Friends)",
+      true,
+      function(Kick)
+game.Players.LocalPlayer:Kick(Kick)
 end)
 
-Bolts:Toggle('Chat Spam',function(state)
-    Client.Toggles.SpamChat = state
+Player:Label('-------------------Curses-------------------')
+
+Player:Button('Self Knockback',function()
+for i,v in pairs(game:GetService("ReplicatedStorage").wkspc:GetDescendants()) do if v.Name:lower():find("curse") then v.Value = "Self-Knockback" end end
 end)
-spawn(function()
-    while true do
-        wait(.01)
-        if Client.Toggles.SpamChat == true then
-            -- Script generated by SimpleSpy - credits to exx#9394
 
--- Script generated by SimpleSpy - credits to exx#9394
+Player:Button('Fast Hands',function()
+for i,v in pairs(game:GetService("ReplicatedStorage").wkspc:GetDescendants()) do if v.Name:lower():find("curse") then v.Value = "Fast Hands" end end
+    end)
 
-local args = {
-    [1] = "Trolling42",
-    [2] = Client.Values.ChatMsg,
-    [3] = false,
-    [5] = false,
-    [6] = true
-}
-
-game:GetService("ReplicatedStorage").Events.PlayerChatted:FireServer(unpack(args))
-
-            wait(0.1)
-        end
-    end
+Player:Button('Slowed',function()
+for i,v in pairs(game:GetService("ReplicatedStorage").wkspc:GetDescendants()) do if v.Name:lower():find("curse") then v.Value = "Slowed" end end
 end)
-Bolts:Textbox(
-	"Chat Message",
-	true,
-	function(Text)
-		Client.Values.ChatMsg = tostring(Text)
-	end
-)
 
+Player:Button('Speedy',function()
+for i,v in pairs(game:GetService("ReplicatedStorage").wkspc:GetDescendants()) do if v.Name:lower():find("curse") then v.Value = "Speedy" end end
+end)
 
+Player:Button('Infinite Ammo',function()
+for i,v in pairs(game:GetService("ReplicatedStorage").wkspc:GetDescendants()) do if v.Name:lower():find("curse") then v.Value = "Infinite Ammo" end end
+end)
+
+Player:Button('Double Tap',function()
+for i,v in pairs(game:GetService("ReplicatedStorage").wkspc:GetDescendants()) do if v.Name:lower():find("curse") then v.Value = "Double Tap" end end
+end)
+
+Player:Button('Mystery',function()
+for i,v in pairs(game:GetService("ReplicatedStorage").wkspc:GetDescendants()) do if v.Name:lower():find("curse") then v.Value = "Mystery" end end
+end)
+
+Player:Button('Hidden',function()
+for i,v in pairs(game:GetService("ReplicatedStorage").wkspc:GetDescendants()) do if v.Name:lower():find("curse") then v.Value = "Hidden" end end
+end)
+
+Player:Button('Enraged',function()
+for i,v in pairs(game:GetService("ReplicatedStorage").wkspc:GetDescendants()) do if v.Name:lower():find("curse") then v.Value = "Enraged" end end
+end)
+
+Player:Button('Quacks',function()
+for i,v in pairs(game:GetService("ReplicatedStorage").wkspc:GetDescendants()) do if v.Name:lower():find("curse") then v.Value = "Quacks" end end
+end)
+
+Player:Button('No Jumps',function()
+for i,v in pairs(game:GetService("ReplicatedStorage").wkspc:GetDescendants()) do if v.Name:lower():find("curse") then v.Value = "No Jumps" end end
+end)
+
+Player:Button('Slowed Tap',function()
+for i,v in pairs(game:GetService("ReplicatedStorage").wkspc:GetDescendants()) do if v.Name:lower():find("curse") then v.Value = "Slowed Tap" end end
+end)
 
 local Config = {
     Visuals = {
@@ -1494,24 +1641,7 @@ Services.Players.PlayerAdded:Connect(
 )
 
 
-VisualsW:Button('Fix Unaligned ESP',function()
-    local ScreenScale = 100 --change this to your screen scale %
-
-ScreenScale = ScreenScale/100
-local setrenderproperty = getupvalue(getmetatable(Drawing.new("Line")).__newindex, 4)
-
-local old
-old = hookfunc(setrenderproperty, function(obj, prop, val)
-    if typeof(val) == "Vector2" then
-        val = Vector2.new(val.X * ScreenScale, val.Y * ScreenScale)
-    end
-    return old(obj, prop, val)
-    end)
-end)
-VisualsW:Button('Rainbow Gun',function()
-local c = 1 function zigzag(X)  return math.acos(math.cos(X * math.pi)) / math.pi end game:GetService("RunService").RenderStepped:Connect(function()  if game.Workspace.Camera:FindFirstChild('Arms') then   for i,v in pairs(game.Workspace.Camera.Arms:GetDescendants()) do    if v.ClassName == 'MeshPart' then      v.Color = Color3.fromHSV(zigzag(c),1,1)     c = c + .0001    end   end  end end)
-end)
-VisualsW:Button('Banana ESP',function()
+ESP:Button('Banana ESP(Monkey Business Mode)',function()
     while true do
     wait(4)
 for i,v in pairs(game.Workspace:GetDescendants()) do -- grabs everything from workspace
@@ -1535,7 +1665,7 @@ for i,v in pairs(game.Workspace:GetDescendants()) do -- grabs everything from wo
 end
 end
 end)
-VisualsW:Button('Ammo Box ESP',function()
+ESP:Button('Ammo Box ESP',function()
 while true do
     wait(4)
 for i,v in pairs(game.Workspace:GetDescendants()) do -- grabs everything from workspace
@@ -1559,7 +1689,7 @@ for i,v in pairs(game.Workspace:GetDescendants()) do -- grabs everything from wo
 end
 end
 end)
-VisualsW:Button('HP Jug ESP',function()
+ESP:Button('HP Jug ESP',function()
     while true do
     wait(4)
 for i,v in pairs(game.Workspace:GetDescendants()) do -- grabs everything from workspace
@@ -1584,34 +1714,34 @@ end
 end
 end)
 
-VisualsW:Toggle('Box ESP',function(state)
+ESP:Toggle('Box ESP',function(state)
     Config.Visuals.BoxEsp = state
 end)
 
-VisualsW:Toggle('Line ESP',function(state)
+ESP:Toggle('Line ESP',function(state)
     Config.Visuals.TracerEsp = state
 end)
-VisualsW:Dropdown(
+ESP:Dropdown(
   "Lines Origin", {'Top','Middle','Bottom','Mouse'}, function(selected)
     Config.Visuals.TracersOrigin = selected
 end)
-VisualsW:Toggle('Name ESP',function(state)
+ESP:Toggle('Name ESP',function(state)
     Config.Visuals.NameEsp = state
 end)
-VisualsW:Toggle('Distance ESP',function(state)
+ESP:Toggle('Distance ESP',function(state)
     Config.Visuals.DistanceEsp = state
 end)
-VisualsW:Toggle('Skeletons ESP',function(state)
+ESP:Toggle('Skeletons ESP',function(state)
     Config.Visuals.SkeletonEsp = state
 end)
-VisualsW:Colorpicker(
+ESP:Colorpicker(
 	"Team Color",
 	Color3.fromRGB(0, 255, 0),
 	function(Color)
 		Config.Visuals.TeamColor = Color
 	end
 )
-VisualsW:Colorpicker(
+ESP:Colorpicker(
 	"Enemy Color",
 	Color3.fromRGB(255, 0, 0),
 	function(Color)
@@ -1619,81 +1749,62 @@ VisualsW:Colorpicker(
 	end
 )
 
-ServerW:Button('FE Purple Team (Very Real Not Fake Audio Must Be On Or No Work)',function()
-    function e(p,y) 
-	local gui = Instance.new("ScreenGui")
-	gui.DisplayOrder = 0
-	gui.ResetOnSpawn = false
-	local sound = Instance.new("Sound",gui)
-	sound.SoundId = "rbxassetid://270145703"
-	sound.Volume = 10
-	sound.Looped = true
-	local aaaa = Instance.new("DistortionSoundEffect",sound)
-	aaaa.Level = 10
-	local image = Instance.new("ImageLabel",gui)
-	image.Image = "rbxassetid://937691091"
-	image.Size = UDim2.new(0,0,0,0)
-	image.Position = UDim2.new(0.5,0,0.5,0)
-	image.BackgroundTransparency = 0
-	image.ImageColor3 = Color3.new(0,0,0)
-	image.ZIndex = 100
-	local background = Instance.new("Frame",gui)
-	background.Size = UDim2.new(1,0,1,0)
-	background.BackgroundColor3 = Color3.new()
-	for _,v in pairs(game.Players:GetChildren()) do
-		local gui2 = gui:Clone()
-		local intense = 0
-		local intense2 = 10
-		gui2.Parent = v.PlayerGui
-		gui2.Sound:Play()
-		spawn(function()
-			while wait(math.random() / 5) do
-				gui2.Sound.Pitch = (math.random() * intense2) + 1.5
-				gui2.Sound.Volume = intense * 6
-			end
-		end)
-		spawn(function()
-			while wait() do
-				gui2.ImageLabel.ImageColor3 = Color3.fromHSV(math.random(),1,intense * (math.random() / 2))
-				gui2.ImageLabel.Size = UDim2.new(0,intense * 800,0,intense * 800)
-				gui2.ImageLabel.Position = UDim2.new(0.5,intense * -400,0.5,intense * -400)
-			end
-		end)
-		spawn(function()
-			intense = 1
-			wait(0.2)
-			--for i=1,30 do
-			--	wait()
-				--	intense = 1 - (i/30)
-			--end
-			--v:Kick("9840285")
-		end)
-		spawn(function()
-			for i=0,300 do
-				wait()
-				intense2 = 10 - ((i/300) * 5.5)
-			end
-		end)
-		if not y then
-			spawn(function()
-				wait(0.2)
-				gui2:Destroy()
-			end)
-		else
-			game.Debris:AddItem(gui2,20)
-		end
-	end
+FE:Toggle('Bananas Autofarm',function()
+while true do
+    wait(0.1)
+if game.Workspace:FindFirstChild("Debris")then
+                if game.Workspace.Debris.Bananas then
+                    for _,v in pairs(game.Workspace.Debris.Bananas:GetChildren())do
+                        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame=
+                        (game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame-
+                            game.Players.LocalPlayer.Character.HumanoidRootPart.Position+v.Position)
+                        +Vector3.new(0,.5,0)
+                    end
+                end
+            end
+        end
+end)
+
+
+FE:Button('FE KillBrick',function()
+
+local Core = getsenv(game.Players.LocalPlayer.PlayerGui.Menew.LocalScript);
+
+local Loadout;
+for i,v in pairs(getupvalues(Core.ViewItems)) do
+    if typeof(v) == "table" then
+        if v.Skins then
+            Loadout = v;
+        end
+    end
 end
-e(nil,true)
-    end)
 
+table.insert(Loadout.Skins, "KillBrick");
+game.Players.LocalPlayer.Data.Skin.Value = "KillBrick"
+game.Players.LocalPlayer.Character.LeftLowerArm:Destroy()
+game.Players.LocalPlayer.Character.LeftUpperArm:Destroy()
+game.Players.LocalPlayer.Character.RightLowerArm:Destroy()
+game.Players.LocalPlayer.Character.RightUpperArm:Destroy()
+game.Players.LocalPlayer.Character.LeftFoot:Destroy()
+game.Players.LocalPlayer.Character.LeftLowerLeg:Destroy()
+game.Players.LocalPlayer.Character.LeftUpperLeg:Destroy()
+game.Players.LocalPlayer.Character.RightFoot:Destroy()
+game.Players.LocalPlayer.Character.RightLowerLeg:Destroy()
+game.Players.LocalPlayer.Character.RightUpperLeg:Destroy()
+game.Players.LocalPlayer.Character.FakeHead:Destroy()
+local esc = game.Players.LocalPlayer.Character.UpperTorso:GetChildren()
+for i, v in pairs(esc) do
+    v:Destroy()
+    wait()
+end
+end)
 
-ServerW:Button('FE Sunglasses (Bypassed)',function()
+FE:Button('FE Sunglasses',function()
     while true do wait(0.1) game:GetService("ReplicatedStorage").Events.Sunglasses:FireServer() end
     end)
     
 
-ServerW:Button('*FE*Destroy Head Hitbox + Headless',function()
+FE:Button('FE Headless',function()
     
     
 if game.Players.LocalPlayer.Character:FindFirstChild("HeadHB")then
@@ -1705,10 +1816,36 @@ if game.Players.LocalPlayer.Character:FindFirstChild("HeadHB")then
 
 end)
 
-ServerW:Button('Free Badge',function()
+FE:Button('Free Badge',function()
 game:GetService("ReplicatedStorage").Events.ReplicateGear2:FireServer("coffee");
 end) 
-ServerW:Button('Fe Non Exity (Equip Delinquent)',function()
+
+FE:Button('Custom Skin(Fuckin Coolinquent)', function()
+game:GetService("StarterGui"):SetCore("SendNotification",{Title="Gbur Says",Text="Equip Delinquent nigger",Duration=3})
+
+    game.Players.LocalPlayer.Character.LeftLowerArm:Destroy()
+
+    game.Players.LocalPlayer.Character.LeftUpperArm:Destroy()
+
+    game.Players.LocalPlayer.Character.RightLowerArm:Destroy()
+
+    game.Players.LocalPlayer.Character.RightUpperArm:Destroy()
+
+    game.Players.LocalPlayer.Character.LeftFoot:Destroy()
+
+    game.Players.LocalPlayer.Character.LeftLowerLeg:Destroy()
+
+    game.Players.LocalPlayer.Character.LeftUpperLeg:Destroy()
+
+    game.Players.LocalPlayer.Character.RightFoot:Destroy()
+
+    game.Players.LocalPlayer.Character.RightLowerLeg:Destroy()
+
+    game.Players.LocalPlayer.Character.RightUpperLeg:Destroy()
+end)
+
+
+FE:Button('NonExisty (Equip Delinquent)',function()
   game.Players.LocalPlayer.Character.LeftLowerArm:Destroy()
 
     game.Players.LocalPlayer.Character.LeftUpperArm:Destroy()
@@ -1770,7 +1907,8 @@ ServerW:Button('Fe Non Exity (Equip Delinquent)',function()
     table.insert(Loadout.Skins, "Nonexisty")
 
 end)
-ServerW:Button('*FE*God Mode v3 (Cant DMG People)',function()
+
+FE:Button('God Mode(cant take damage)',function()
 if game.Players.LocalPlayer.Character:FindFirstChild("Spawned")then
     game.Players.LocalPlayer.Character.Spawned:Destroy()--simple god mode
 end
@@ -1878,424 +2016,87 @@ mt.__namecall=newcclosure(function(a,b,c,d,e,...)
 end)
 end)
 
-ServerW:Toggle('*FE* Anti-Aim',function(state)
-    Client.Toggles.AntiAim = state
-end)
-ServerW:Dropdown('Aim Method',{'Torso In Legs','Smell Your Butt','Look Up','Give Your Self Top','Look Down'},function(Selected)
-    Client.Values.LookMeth = Selected
+NFE:Toggle('Rainbow Gun',function()
+local c = 1 function zigzag(X)  return math.acos(math.cos(X * math.pi)) / math.pi end game:GetService("RunService").RenderStepped:Connect(function()  if game.Workspace.Camera:FindFirstChild('Arms') then   for i,v in pairs(game.Workspace.Camera.Arms:GetDescendants()) do    if v.ClassName == 'MeshPart' then      v.Color = Color3.fromHSV(zigzag(c),1,1)     c = c + .0001    end   end  end end)
 end)
 
+NFE:Button('Unlock All Teams',function()
 
-
-ServerW:Button('*FE* Invisible (Press then press go invisable then clsoe the gui)',function()
-local GUI = Instance.new("ScreenGui")
-local Main = Instance.new("Frame")
-local Topbar = Instance.new("Frame")
-local Title = Instance.new("TextLabel")
-local Exit = Instance.new("TextButton")
-local Minimize = Instance.new("TextButton")
-local SubFrame = Instance.new("Frame")
-local AirTP = Instance.new("Frame")
-local TextLabel = Instance.new("TextLabel")
-local TextLabel_2 = Instance.new("TextLabel")
-local BoolToggle = Instance.new("TextButton")
-local AutoRun = Instance.new("Frame")
-local TextLabel_3 = Instance.new("TextLabel")
-local TextLabel_4 = Instance.new("TextLabel")
-local BoolToggle_2 = Instance.new("TextButton")
-local Keybind = Instance.new("Frame")
-local TextLabel_5 = Instance.new("TextLabel")
-local TextLabel_6 = Instance.new("TextLabel")
-local CurrentBind = Instance.new("TextBox")
-local QuickInvis = Instance.new("TextButton")
-local Rigtype = Instance.new("TextLabel")
-local TextButton = Instance.new("TextButton")
-
--- Properties
-
-GUI.Name = "GUI"
-GUI.Parent = game.CoreGui
-
-Main.Name = "Main"
-Main.Parent = GUI
-Main.Active = true
-Main.BackgroundColor3 = Color3.new(0, 0, 0)
-Main.BackgroundTransparency = 0.5
-Main.BorderSizePixel = 0
-Main.Draggable = true
-Main.Position = UDim2.new(0.318181813, 0, 0.312252969, 0)
-Main.Size = UDim2.new(0.363636374, 0, 0.375494063, 0)
-
-Topbar.Name = "Topbar"
-Topbar.Parent = Main
-Topbar.BackgroundColor3 = Color3.new(0, 0, 0)
-Topbar.BackgroundTransparency = 0.9990000128746
-Topbar.Size = UDim2.new(1, 0, 0.163157895, 0)
-
-Title.Name = "Title"
-Title.Parent = Topbar
-Title.BackgroundColor3 = Color3.new(0, 0, 0)
-Title.BackgroundTransparency = 0.9990000128746
-Title.Size = UDim2.new(0.784722209, 0, 1, 0)
-Title.Font = Enum.Font.SciFi
-Title.FontSize = Enum.FontSize.Size14
-Title.Text = "FE Invisible By Timeless"
-Title.TextColor3 = Color3.new(1, 1, 1)
-Title.TextSize = 14
-
-Exit.Name = "Exit"
-Exit.Parent = Topbar
-Exit.BackgroundColor3 = Color3.new(0, 0, 0)
-Exit.BackgroundTransparency = 0.9990000128746
-Exit.Position = UDim2.new(0.892361104, 0, 0, 0)
-Exit.Size = UDim2.new(0.107638888, 0, 1, 0)
-Exit.Font = Enum.Font.SciFi
-Exit.FontSize = Enum.FontSize.Size14
-Exit.Text = "X"
-Exit.TextColor3 = Color3.new(1, 1, 1)
-Exit.TextSize = 14
-
-Minimize.Name = "Minimize"
-Minimize.Parent = Topbar
-Minimize.BackgroundColor3 = Color3.new(0, 0, 0)
-Minimize.BackgroundTransparency = 0.9990000128746
-Minimize.Position = UDim2.new(0.784722209, 0, 0, 0)
-Minimize.Size = UDim2.new(0.107638888, 0, 1, 0)
-Minimize.Font = Enum.Font.SciFi
-Minimize.FontSize = Enum.FontSize.Size14
-Minimize.Text = "-"
-Minimize.TextColor3 = Color3.new(1, 1, 1)
-Minimize.TextSize = 14
-
-SubFrame.Name = "SubFrame"
-SubFrame.Parent = Main
-SubFrame.BackgroundColor3 = Color3.new(0, 0, 0)
-SubFrame.BackgroundTransparency = 0.5
-SubFrame.BorderSizePixel = 0
-SubFrame.Position = UDim2.new(0, 0, 0.163157895, 0)
-SubFrame.Size = UDim2.new(1, 0, 0.83684212, 0)
-
-AirTP.Name = "AirTP"
-AirTP.Parent = SubFrame
-AirTP.BackgroundColor3 = Color3.new(0, 0, 0)
-AirTP.BackgroundTransparency = 0.9990000128746
-AirTP.BorderSizePixel = 0
-AirTP.Position = UDim2.new(0, 0, 0.0628930852, 0)
-AirTP.Size = UDim2.new(1, 0, 0.176100627, 0)
-
-TextLabel.Parent = AirTP
-TextLabel.BackgroundColor3 = Color3.new(0, 0, 0)
-TextLabel.BackgroundTransparency = 0.9990000128746
-TextLabel.Position = UDim2.new(0.166666672, 0, 0, 0)
-TextLabel.Size = UDim2.new(0.284722209, 0, 1, 0)
-TextLabel.Font = Enum.Font.SciFi
-TextLabel.FontSize = Enum.FontSize.Size14
-TextLabel.Text = "Air TP"
-TextLabel.TextColor3 = Color3.new(1, 1, 1)
-TextLabel.TextSize = 14
-TextLabel.TextXAlignment = Enum.TextXAlignment.Left
-
-TextLabel_2.Parent = AirTP
-TextLabel_2.BackgroundColor3 = Color3.new(0, 0, 0)
-TextLabel_2.BackgroundTransparency = 0.9990000128746
-TextLabel_2.Position = UDim2.new(0.451388896, 0, 0, 0)
-TextLabel_2.Size = UDim2.new(0.0972222239, 0, 1, 0)
-TextLabel_2.Font = Enum.Font.SciFi
-TextLabel_2.FontSize = Enum.FontSize.Size14
-TextLabel_2.Text = "-"
-TextLabel_2.TextColor3 = Color3.new(1, 1, 1)
-TextLabel_2.TextSize = 14
-
-BoolToggle.Name = "BoolToggle"
-BoolToggle.Parent = AirTP
-BoolToggle.BackgroundColor3 = Color3.new(0.207843, 1, 0.392157)
-BoolToggle.BackgroundTransparency = 0.5
-BoolToggle.BorderSizePixel = 0
-BoolToggle.Position = UDim2.new(0.784722209, 0, 0, 0)
-BoolToggle.Size = UDim2.new(0.215277776, 0, 1, 0)
-BoolToggle.Font = Enum.Font.SciFi
-BoolToggle.FontSize = Enum.FontSize.Size14
-BoolToggle.Text = "true"
-BoolToggle.TextColor3 = Color3.new(1, 1, 1)
-BoolToggle.TextSize = 14
-
-AutoRun.Name = "AutoRun"
-AutoRun.Parent = SubFrame
-AutoRun.BackgroundColor3 = Color3.new(0, 0, 0)
-AutoRun.BackgroundTransparency = 0.9990000128746
-AutoRun.Position = UDim2.new(0, 0, 0.238993704, 0)
-AutoRun.Size = UDim2.new(1, 0, 0.176100627, 0)
-
-TextLabel_3.Parent = AutoRun
-TextLabel_3.BackgroundColor3 = Color3.new(0, 0, 0)
-TextLabel_3.BackgroundTransparency = 0.9990000128746
-TextLabel_3.Position = UDim2.new(0.166666672, 0, 0, 0)
-TextLabel_3.Size = UDim2.new(0.284722209, 0, 1, 0)
-TextLabel_3.Font = Enum.Font.SciFi
-TextLabel_3.FontSize = Enum.FontSize.Size14
-TextLabel_3.Text = "Auto Run"
-TextLabel_3.TextColor3 = Color3.new(1, 1, 1)
-TextLabel_3.TextSize = 14
-TextLabel_3.TextXAlignment = Enum.TextXAlignment.Left
-
-TextLabel_4.Parent = AutoRun
-TextLabel_4.BackgroundColor3 = Color3.new(0, 0, 0)
-TextLabel_4.BackgroundTransparency = 0.9990000128746
-TextLabel_4.Position = UDim2.new(0.451388896, 0, 0, 0)
-TextLabel_4.Size = UDim2.new(0.0972222239, 0, 1, 0)
-TextLabel_4.Font = Enum.Font.SciFi
-TextLabel_4.FontSize = Enum.FontSize.Size14
-TextLabel_4.Text = "-"
-TextLabel_4.TextColor3 = Color3.new(1, 1, 1)
-TextLabel_4.TextSize = 14
-
-BoolToggle_2.Name = "BoolToggle"
-BoolToggle_2.Parent = AutoRun
-BoolToggle_2.BackgroundColor3 = Color3.new(0.207843, 1, 0.392157)
-BoolToggle_2.BackgroundTransparency = 0.5
-BoolToggle_2.BorderSizePixel = 0
-BoolToggle_2.Position = UDim2.new(0.784722209, 0, 0, 0)
-BoolToggle_2.Size = UDim2.new(0.215277776, 0, 1, 0)
-BoolToggle_2.Font = Enum.Font.SciFi
-BoolToggle_2.FontSize = Enum.FontSize.Size14
-BoolToggle_2.Text = "true"
-BoolToggle_2.TextColor3 = Color3.new(1, 1, 1)
-BoolToggle_2.TextSize = 14
-
-Keybind.Name = "Keybind"
-Keybind.Parent = SubFrame
-Keybind.BackgroundColor3 = Color3.new(0, 0, 0)
-Keybind.BackgroundTransparency = 0.9990000128746
-Keybind.Position = UDim2.new(0, 0, 0.415094346, 0)
-Keybind.Size = UDim2.new(1, 0, 0.176100627, 0)
-
-TextLabel_5.Parent = Keybind
-TextLabel_5.BackgroundColor3 = Color3.new(0, 0, 0)
-TextLabel_5.BackgroundTransparency = 0.9990000128746
-TextLabel_5.Position = UDim2.new(0.166666672, 0, 0, 0)
-TextLabel_5.Size = UDim2.new(0.284722209, 0, 1, 0)
-TextLabel_5.Font = Enum.Font.SciFi
-TextLabel_5.FontSize = Enum.FontSize.Size14
-TextLabel_5.Text = "Keybind"
-TextLabel_5.TextColor3 = Color3.new(1, 1, 1)
-TextLabel_5.TextSize = 14
-TextLabel_5.TextXAlignment = Enum.TextXAlignment.Left
-
-TextLabel_6.Parent = Keybind
-TextLabel_6.BackgroundColor3 = Color3.new(0, 0, 0)
-TextLabel_6.BackgroundTransparency = 0.9990000128746
-TextLabel_6.Position = UDim2.new(0.451388896, 0, 0, 0)
-TextLabel_6.Size = UDim2.new(0.0972222239, 0, 1, 0)
-TextLabel_6.Font = Enum.Font.SciFi
-TextLabel_6.FontSize = Enum.FontSize.Size14
-TextLabel_6.Text = "-"
-TextLabel_6.TextColor3 = Color3.new(1, 1, 1)
-TextLabel_6.TextSize = 14
-
-CurrentBind.Name = "CurrentBind"
-CurrentBind.Parent = Keybind
-CurrentBind.BackgroundColor3 = Color3.new(0.262745, 0.964706, 1)
-CurrentBind.BackgroundTransparency = 0.5
-CurrentBind.BorderSizePixel = 0
-CurrentBind.Position = UDim2.new(0.784722209, 0, 0, 0)
-CurrentBind.Size = UDim2.new(0.215277776, 0, 1, 0)
-CurrentBind.Font = Enum.Font.SciFi
-CurrentBind.FontSize = Enum.FontSize.Size14
-CurrentBind.Text = "i"
-CurrentBind.TextColor3 = Color3.new(1, 1, 1)
-CurrentBind.TextSize = 14
-
-QuickInvis.Name = "QuickInvis"
-QuickInvis.Parent = SubFrame
-QuickInvis.BackgroundColor3 = Color3.new(1, 0.227451, 0.227451)
-QuickInvis.BackgroundTransparency = 0.5
-QuickInvis.BorderSizePixel = 0
-QuickInvis.Position = UDim2.new(0, 0, 0.823899388, 0)
-QuickInvis.Size = UDim2.new(1, 0, 0.176100627, 0)
-QuickInvis.Font = Enum.Font.SciFi
-QuickInvis.FontSize = Enum.FontSize.Size14
-QuickInvis.Text = "Go Invisible"
-QuickInvis.TextColor3 = Color3.new(1, 1, 1)
-QuickInvis.TextSize = 14
-
-Rigtype.Name = "Rigtype"
-Rigtype.Parent = SubFrame
-Rigtype.BackgroundColor3 = Color3.new(0, 0, 0)
-Rigtype.BackgroundTransparency = 0.69999998807907
-Rigtype.BorderSizePixel = 0
-Rigtype.Position = UDim2.new(0, 0, 0.647798777, 0)
-Rigtype.Size = UDim2.new(1, 0, 0.176100627, 0)
-Rigtype.Font = Enum.Font.SciFi
-Rigtype.FontSize = Enum.FontSize.Size14
-Rigtype.Text = "Your Rigtype - RigTypeHere"
-Rigtype.TextColor3 = Color3.new(1, 1, 1)
-Rigtype.TextSize = 14
-
-TextButton.Parent = GUI
-TextButton.BackgroundColor3 = Color3.new(0, 0, 0)
-TextButton.BackgroundTransparency = 0.5
-TextButton.BorderSizePixel = 0
-TextButton.Position = UDim2.new(0.0265151523, 0, 0.865612626, 0)
-TextButton.Size = UDim2.new(0.0606060624, 0, 0.0948616564, 0)
-TextButton.Font = Enum.Font.SciFi
-TextButton.FontSize = Enum.FontSize.Size14
-TextButton.Text = "Open"
-TextButton.TextColor3 = Color3.new(1, 1, 1)
-TextButton.TextSize = 14
-
-local Player   = game:GetService('Players').LocalPlayer
-local Mouse    = Player:GetMouse()
-
-local AutoRun  = true
-local AirTP    = true
-local Keybind  = 'i'
-
-local Green    = Color3.fromRGB(53, 255, 100)
-local Red      = Color3.fromRGB(255, 58, 58)
-
-local function CheckRig()
-   if Player.Character then
-       local Humanoid = Player.Character:WaitForChild('Humanoid')
-       if Humanoid.RigType == Enum.HumanoidRigType.R15 then
-           return 'R15'
-       else
-           return 'R6'
-       end
-   end
-end
-
-local function InitiateInvis()
-   local Character = Player.Character
-   local StoredCF = Character.PrimaryPart.CFrame
-   if AirTP then
-       local Part = Instance.new('Part',workspace)
-       Part.Size = Vector3.new(5,0,5)
-       Part.Anchored = true
-       Part.CFrame = CFrame.new(Vector3.new(9999,9999,9999))
-       Character.PrimaryPart.CFrame = Part.CFrame*CFrame.new(0,3,0)
-       spawn(function()
-           wait(3)
-           Part:Destroy()
-       end)
-   end
-   if CheckRig() == 'R6' then
-       local Clone = Character.HumanoidRootPart:Clone()
-       Character.HumanoidRootPart:Destroy()
-       Clone.Parent = Character
-   else
-       local Clone = Character.LowerTorso.Root:Clone()
-       Character.LowerTorso.Root:Destroy()
-       Clone.Parent = Character.LowerTorso
-   end
-   if AirTP then
-       wait(1)
-       Character.PrimaryPart.CFrame = StoredCF
-   end
-end
-
-local function OnCharacterAdded()
-   SubFrame.Rigtype.Text = ('Your Rigtype - %s'):format(CheckRig())
-   if AutoRun then
-       InitiateInvis()
-   end
-end
-
-local function OnButtonPress(Button)
-   if Button == Keybind:lower() then
-       InitiateInvis()
-   end
-end
-
-local function OnGoInvisPress()
-   InitiateInvis()
-end
-
-local function OnKeyBindTextChange()
-   local cb = SubFrame.Keybind.CurrentBind
-   if cb.Text:match('%w') then
-       Keybind = cb.Text:match('%w'):lower()
-       cb.Text = Keybind
-   elseif cb.Text ~= '' then
-       Keybind = 'i'
-       cb.Text = Keybind
-   end
-   print(Keybind)
-end
-
-local function OnAutoRunPress()
-   local Ar = SubFrame.AutoRun.BoolToggle
-   if AutoRun then
-       Ar.BackgroundColor3 = Red
-       Ar.Text = tostring(not AutoRun)
-       AutoRun = false
-   else
-       Ar.BackgroundColor3 = Green
-       Ar.Text = tostring(not AutoRun)
-       AutoRun = true
-   end
-end
-
-local function OnAirTPPress()
-   local ATP = SubFrame.AirTP.BoolToggle
-   if AirTP then
-       ATP.BackgroundColor3 = Red
-       ATP.Text = tostring(false)
-       AirTP = false
-   else
-       ATP.BackgroundColor3 = Green
-       ATP.Text = tostring(true)
-       AirTP = true
-   end
-end
-
-local function OnMinimizePress()
-   Main.Visible = false
-   GUI.TextButton.Visible = true
-end
-
-local function OnOpenPress()
-   Main.Visible = true
-   GUI.TextButton.Visible = false
-end
-
-local function OnClosePress()
-   GUI:Destroy()
-end
-
-SubFrame.Keybind.CurrentBind:GetPropertyChangedSignal('Text'):connect(OnKeyBindTextChange)
-Mouse.KeyDown:connect(OnButtonPress)
-SubFrame.AutoRun.BoolToggle.MouseButton1Down:connect(OnAutoRunPress)
-SubFrame.AirTP.BoolToggle.MouseButton1Down:connect(OnAirTPPress)
-Main.Topbar.Minimize.MouseButton1Down:connect(OnMinimizePress)
-GUI.TextButton.MouseButton1Down:connect(OnOpenPress)
-Main.Topbar.Exit.MouseButton1Down:connect(OnClosePress)
-SubFrame.QuickInvis.MouseButton1Down:connect(OnGoInvisPress)
-Player.CharacterAdded:connect(OnCharacterAdded)
-
-SubFrame.Rigtype.Text = ('Your Rigtype - %s'):format(CheckRig())
+loadstring(game:HttpGet("https://pastebin.com/raw/aq24yqfL"))()
 end)
 
-ServerL:Button('Made Stuff Better :D',function()
-    
+NFE:Button('Press it if Function Above Crashed', function()
+game:GetService("ReplicatedStorage").Events.JoinTeam:FireServer('TRC')
+end)
+
+NFE:Button('Destroy Menu (NSFW Warning :> )',function()
+game:GetService("Players").LocalPlayer.PlayerGui.Menew.Main.BPToggle.Visible = true
+game:GetService("Players").LocalPlayer.PlayerGui.Menew.Main.BPToggle.ImageLabel.ToolTip.Value = "Nigga"
+game:GetService("Players").LocalPlayer.PlayerGui.Menew.Main.LowerBox.Extra.ToolTip.Value = "Sex"
+game:GetService("Players").LocalPlayer.PlayerGui.Menew.Main.LowerBox.Codes.ToolTip.Value = "Nigger"
+game:GetService("Players").LocalPlayer.PlayerGui.Menew.Main.LowerBox.Badges.ToolTip.Value = "OH OH"
+game:GetService("Players").LocalPlayer.PlayerGui.Menew.Main.LowerBox.Settings.ToolTip.Value = "Cum"
+game:GetService("Players").LocalPlayer.PlayerGui.Menew.Main.Shop.ImageLabel.TextLabel.Text = "SEXY BOLTS"
+game:GetService("Players").LocalPlayer.PlayerGui.Menew.Main.Locker.ImageLabel.TextLabel.Text = "FUCK ME"
+game:GetService("Players").LocalPlayer.PlayerGui.Menew.Main.Play.ImageLabel.TextLabel.Text = "OH OH CUM"
+game:GetService("Players").LocalPlayer.PlayerGui.Menew.Main.LevelMeter.Visible = false
+game:GetService("Players").LocalPlayer.PlayerGui.Menew.Main.ChallengesLabel.ImageLabel.ToolTip.Value = "Porn"
+game:GetService("Players").LocalPlayer.PlayerGui.Menew.Main.ServerToggle.Visible = true
+game:GetService("Players").LocalPlayer.PlayerGui.Menew.Main.PlrName.Text = "PornStar"
+game:GetService("Players").LocalPlayer.PlayerGui.Menew.Main.StarterPack.Visible = true
+game:GetService("Players").LocalPlayer.PlayerGui.Menew.Main.StarterPack.TextLabel.Text = "Hot Girl For Sale!"
+game:GetService("Players").LocalPlayer.PlayerGui.Menew.Main.StarterPack.Timer.Text = "69:21:37"
+game:GetService("Players").LocalPlayer.PlayerGui.Menew.Main.StarterPack.Item.Text = "Naughty Girl"
+game:GetService("Players").LocalPlayer.PlayerGui.Menew.Main.StarterPack.Item.Text = "free girl with massive ass and pink hair will want sex"
+game:GetService("Players").LocalPlayer.PlayerGui.Menew.Main.LAZYBUTTON.Visible = true
+end)
+
+NFE:Button('Melee GUI by Gbur XD',function()
+loadstring(game:HttpGet("https://pastebin.com/raw/L70HWut1"))()
+end)
+
+NFE:Textbox(
+     'Server Location',
+      true,
+      function(locationofdelaservidorprivado)
+game:GetService("ReplicatedStorage").wkspc.Location.Value = locationofdelaservidorprivado
+end)
+
+NFE:Button("Destroy Locks On Grn/Ylw Team(can't join them)",function()
+game:GetService("Players").LocalPlayer.PlayerGui.GUI.TeamSelection.Buttons.Ylw.lock:Destroy()
+game:GetService("Players").LocalPlayer.PlayerGui.GUI.TeamSelection.Buttons.Grn.lock:Destroy()
+end)
+
+NFE:Textbox(
+    'Player Joined Name',
+     true,
+     function(playerenteredxdOMGniggerballs)
+game:GetService("ReplicatedStorage").wkspc.Status.PlayerEntered.Value = playerenteredxdOMGniggerballs
+end)
+
+NFE:Textbox(
+    'Player Left Name',
+     true,
+     function(playerleftxdOMGniggerballs)
+game:GetService("ReplicatedStorage").wkspc.Status.PlayerLeft.Value = playerleftxdOMGniggerballs
+end)
+
+Credits:Button('Click To Copy Discord Link',function()
 setclipboard("discord.gg/CQz5CQKv89")
 end)
 
-MiscW:Button('Click To Copy Discord Invite',function()
-    
-setclipboard("discord.gg/CQz5CQKv89")
-end)
-MiscW:Button('RightShift To Toggle The Gui :D',function()
-    
-setclipboard("discord.gg/CQz5CQKv89")
-end)
-MiscW:Button('Bolts 3#7289 - Owner',function()
-    
-setclipboard("discord.gg/CQz5CQKv89")
-end)
-MiscW:Button('Storm#.#1020 - Co Owner',function()
-    
-setclipboard("discord.gg/CQz5CQKv89")
-end)
+
+Credits:Label('Bolts Hub v6')
+Credits:Label('Right Ctrl to Toggle the GUI')
+Credits:Label('Bolts 3#7289 - Owner')
+Credits:Label('Gbur XD For New UI, new Toggles and Functions')
+Credits:Button('Press for cum',function()
+local messagebox = messagebox or function(a,b) return ask_prompt(b,a,"Bolty Give Me Mod ur best cummer:)") end return messagebox("Give Mod", "Mining Away, I don't know", 0)
+    end)
+
+
+Updates:Label('------------------Script Updates------------------')
+Updates:Label('More toggle new ui lib more stuff :)')
 
 while true do wait(0.1)
 function Message(text)
