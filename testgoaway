@@ -6088,3 +6088,4 @@ uwUOWOuwUuwUuwUuwUUwUOwOuWUUwUOwoUwUUwUUwUUwUOWOOwOuWUuwUUwUuwU:Colorpicker(
             uWUOwOUwuoWooWooWoowoOwOuwuOwouwUOWOUWUuwuoWouwUUwuuWUOwoUWuUWU
     end
 )
+game.CoreGui.MarkBeatsIsGay:Destroy()
