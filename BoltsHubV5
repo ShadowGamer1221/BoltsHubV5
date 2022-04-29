@@ -93,7 +93,8 @@ TitleText.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 TitleText.BackgroundTransparency = 1.000
 TitleText.Size = UDim2.new(0, 400, 0, 35)
 TitleText.Font = Enum.Font.GothamSemibold
-TitleText.Text = "Bolts Hub v6 - Home"
+TitleText.Text = "Bolts Hub v6 - "..identifyexecutor()..""
+
 TitleText.TextColor3 = Color3.fromRGB(255, 255, 255)
 TitleText.TextSize = 20.000
 
