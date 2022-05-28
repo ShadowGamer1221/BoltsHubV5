@@ -55,7 +55,7 @@ Client = {
         LookMeth = 'Look Up',                                                                                                                                                                                                                                                 
         Test = '',
         FOV = 150,
-        ChatMsg = 'Bolts Hub v6 Paid Winning',
+        ChatMsg = 'Bolts Ware v8 On Top',
         AimPart = 'Head'
 
         
@@ -580,8 +580,8 @@ local ArsoniaTable={
 }
 
 
+local name="Bolts Ware v8 - "..identifyexecutor()..""
 
-local name="Bolts Hub v7 Beta"
 if _G.Funnyname then
     local Prefix={"Epic","","Working"}
     local Names={"Astolfo","Baker","Thigh","Breast","Femboy","Hentai","Aim","Tits","Arsenal","Rolve"}
