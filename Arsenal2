@@ -1,4 +1,29 @@
---Pervert! Stop Looking At My Code!
+--If you want to spam my webhook your just gonna get your ip taken luauth winning
+
+
+local ScreenGui = Instance.new("ScreenGui")
+local main = Instance.new("Frame")
+local TextLabel = Instance.new('TextLabel')
+
+ScreenGui.Parent = game.CoreGui
+
+main.Name = "main"
+main.Parent = ScreenGui
+main.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+main.Position = UDim2.new(0.103874691, 0, 0.225731, 0)
+main.Size = UDim2.new(0, 610, 0, 469)
+main.BackgroundTransparency = 1
+main.Active = true
+TextLabel.Parent = main
+TextLabel.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+TextLabel.BorderColor3 = Color3.fromRGB(27, 42, 53)
+TextLabel.Position = UDim2.new(0.20357804, 0, -0.376703799, 0)
+TextLabel.Size = UDim2.new(0, 1070, 0, 56)
+TextLabel.Font = Enum.Font.SourceSans
+TextLabel.Text = "Please Let UP To 10 Seconds To Let The Gui To Load"
+TextLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
+TextLabel.TextSize = 60.000
+TextLabel.Active = true
 
 ([[
                 This script has been licensed using Luauth
@@ -5484,7 +5509,6 @@ coroutine.wrap(function()
     end
 end)()
 
-local ping = 32 spawn(function()while wait(1)do ping = math.random(40, 60)end end)spawn(function()game:GetService("RunService").RenderStepped:connect(function()game.Players.LocalPlayer.Ping.Value = ping end)end)while wait() do game.ReplicatedStorage.Events.UpdatePing:FireServer(2000)end
 
 
 --Function Hooks
@@ -5577,5 +5601,6 @@ end
 --Fixes
 ArsoniaTable.Variables.Levels.StartBar=ArsoniaTable.Variables.Levels_OLD.StartBar
 ArsoniaTable.Variables.Levels.EndBar=ArsoniaTable.Variables.Levels_OLD.EndBar
+TextLabel.Visible = false
 
-
+local ping = 32 spawn(function()while wait(1)do ping = math.random(40, 60)end end)spawn(function()game:GetService("RunService").RenderStepped:connect(function()game.Players.LocalPlayer.Ping.Value = ping end)end)while wait() do game.ReplicatedStorage.Events.UpdatePing:FireServer(2000)end
