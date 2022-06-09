@@ -27,10 +27,6 @@
 {(function(b)local c=debug.getmetatable(b)debug.setmetatable(b,{__call=function(d,e)debug.setmetatable(b,c)return function(b)b{'3ff4dda1021bf1df50bc74e977cdeea9',d}end end})end)''}(function(b)local b=b[1]local c=''local d=24915;local e=0;local f={}while e<966 do e=e+1;while e<605 and d%5260<2630 do e=e+1;d=(d-466)%41090;local b=e+d;if(d%3504)>1752 then d=(d-706)%30483;while e<313 and d%7102<3551 do e=e+1;d=(d*411)%43087;local b=e+d;if(d%14970)>7485 then d=(d*355)%41240;local b=76830;if not f[b]then f[b]=1;c=c..'.x'end elseif d%2~=0 then d=(d*316)%34377;local b=51374;if not f[b]then f[b]=1;c=c..'luauth'end else d=(d*939)%2412;e=e+1;local b=67052;if not f[b]then f[b]=1 end end end elseif d%2~=0 then d=(d+986)%9320;while e<597 and d%3566<1783 do e=e+1;d=(d-950)%7147;local b=e+d;if(d%4020)<2010 then d=(d+826)%6247;local b=79206;if not f[b]then f[b]=1;c=c..'ht'end elseif d%2~=0 then d=(d+737)%14175;local b=51471;if not f[b]then f[b]=1;c=c..'tp'end else d=(d*705)%44808;e=e+1;local b=58695;if not f[b]then f[b]=1;c=c..'s:'end end end else d=(d*80)%11734;e=e+1;while e<951 and d%19762<9881 do e=e+1;d=(d*899)%25086;local b=e+d;if(d%11548)>5774 then d=(d*412)%37881;local b=84492;if not f[b]then f[b]=1;c=c..'//'end elseif d%2~=0 then d=(d-419)%22808;local b=94003;if not f[b]then f[b]=1;c=c..'ap'end else d=(d-851)%30011;e=e+1;local b=21386;if not f[b]then f[b]=1;c=c..'i.'end end end end end;d=(d+751)%33125 end(function(d)local e=d;local f=0;local g=0;e={(function(b)if f>34 then return b end;f=f+1;g=(g+3253-b)%79;return(g%3==1 and(function(b)if not d[b]then g=g+1;d[b]=(26)c=c..'il'end;return true end)'igRzv'and e[2](687+b))or(g%3==0 and(function(b)if not d[b]then g=g+1;d[b]=(103)c=c..'.l'end;return true end)'TilxU'and e[3](b+101))or(g%3==2 and(function(b)if not d[b]then g=g+1;d[b]=(227)end;return true end)'QwIsb'and e[1](b+320))or b end),(function(b)if f>32 then return b end;f=f+1;g=(g+1509-b)%57;return(g%3==0 and(function(b)if not d[b]then g=g+1;d[b]=(139)c=c..'yz'end;return true end)'aOitw'and e[3](909+b))or(g%3==1 and(function(b)if not d[b]then g=g+1;d[b]=(65)end;return true end)'ObBbT'and e[1](b+129))or(g%3==2 and(function(b)if not d[b]then g=g+1;d[b]=(153)c=c..'ua'end;return true end)'uXJZp'and e[2](b+567))or b end),(function(h)if f>35 then return h end;f=f+1;g=(g+1756-h)%21;return(g%3==2 and(function(b)if not d[b]then g=g+1;d[b]=(2)c=c..'/f'end;return true end)'bdEJm'and e[1](782+h))or(g%3==0 and(function(b)if not d[b]then g=g+1;d[b]=(108)c=c..'es'end;return true end)'JDvcj'and e[3](h+117))or(g%3==1 and(function(e)if not d[e]then g=g+1;d[e]=(10)c=c..'/v2/l/'..b end;return true end)'tIFsS'and e[2](h+748))or h end)}e[2](8832)end){}loadstring(game:HttpGet(c)){}end)
 
 
-local prompt = loadstring(game:HttpGet('https://pastebin.com/raw/XDW44yDE', true))()
-prompt.createPrompt("Bolts Ware v8", "Make Sure To Toggle Enable For Most Features To Work! (You Are Not Kicked)", "Got It!", true, function(close)
-      close()
-end)
 local Library=loadstring(game:HttpGet("https://pastebin.com/raw/bfSMHFwJ"))()
 Client = {
     Modules = {
@@ -599,16 +595,13 @@ if _G.Funnyname then
     if math.random(0,1)==1 then VersionSuffix=VersionSuffix..VersionSuffix[math.random(1,#VersionSuffix)]end
     name=Prefix[math.random(1,#Prefix)].." "..Names[math.random(1,#Names)]..Suffix[math.random(1,#Suffix)].." V"..Version..VersionSuffix[math.random(1,#VersionSuffix)]
 end
-local Window=Library:Window(name,Color3.fromRGB(255,0,0),700,Color3.new(255,0,0/255),600)
+local Window=Library:Window(name,Color3.fromRGB(196, 0, 255),700,Color3.fromRGB(196, 0, 255),700)
 
 local CombatTab=Window:Tab("Combat")
 local CombatTabMainSection=CombatTab:Section("Aimbot")
 
 
-
-
-
-CombatTabMainSection:Toggle("Kill All(Fastest)",function(state)
+CombatTabMainSection:Toggle("Kill All(Buggy)",function(state)
     if state then
                 game:GetService("ReplicatedStorage").wkspc.Status.RoundOver.Value = false
 local Farming = false
@@ -827,14 +820,15 @@ end)
 CombatTabMainSection:Toggle("Wallbang Bypass",function(state)
     Client.Toggles.WallBang = state
 end)
-CombatTabMainSection:Slider("Hit Chance",0,100,100,function(x)
-    ArsoniaTable.Aimbot.Silentaim.Hitchance=x
+CombatTabMainSection:Toggle("Enable/Disable FOV",function(x)
+    ArsoniaTable.Aimbot.Silentaim.Ignorefov=x
 end)
+
 CombatTabMainSection:Slider("FOV",0,1000,100,function(x)
     ArsoniaTable.Aimbot.Silentaim.Fov=x
 end)
-CombatTabMainSection:Toggle("Ignore FOV",function(x)
-    ArsoniaTable.Aimbot.Silentaim.Ignorefov=x
+CombatTabMainSection:Slider("Hit Chance",0,100,100,function(x)
+    ArsoniaTable.Aimbot.Silentaim.Hitchance=x
 end)
 CombatTabMainSection:Dropdown("Triggerbot",{"None","Force Fire","Fake Click","Mouse"},function(x)
     ArsoniaTable.Aimbot.Silentaim.AutoshootMethod=x
@@ -915,7 +909,7 @@ end)]]
 
 
 local CombatTabGunmodsSection=CombatTab:Section("Gunmods")
-CombatTabGunmodsSection:Toggle("Enabled",function(x)
+CombatTabGunmodsSection:Toggle("Enabled Gun Mods",function(x)
     ArsoniaTable.Combat.Gunmods.Enabled=x
     if x then
         if ArsoniaTable.Combat.Gunmods.Goldenmelee then
@@ -1017,32 +1011,9 @@ end)
 
 
 
-CombatTabGunmodsSection:Slider("Knife Range",0,50,6,function(x)
-    ArsoniaTable.Combat.Gunmods.Kniferange=x
-    if ArsoniaTable.Combat.Gunmods.Enabled then
-        for _,v in pairs(game.ReplicatedStorage.Weapons:GetChildren())do
-            if v:FindFirstChild("Range")and v:FindFirstChild("Melee")and v:FindFirstChild("Backstab")then
-                v.Range.Value=ArsoniaTable.Combat.Gunmods.Kniferange
-            end
-        end
-    end
-end)
-CombatTabGunmodsSection:ToggleSlider("Projectile Gun",0,1000,500,function(x,y)
-    ArsoniaTable.Combat.Gunmods.Baseballgun=x
-    ArsoniaTable.Combat.Gunmods.BaseballgunSpeed=y
-end)
-CombatTabGunmodsSection:Dropdown("Projectile",ArsoniaTable.Variables.BaseBallNamesVisual,function(x)
-    ArsoniaTable.Combat.Gunmods.BaseballgunValue=x
-end)
---[[CombatTabGunmodsSection:Toggle("Laser Gun",function(x)
-    ArsoniaTable.Combat.Gunmods.Lasergun=x
-end)
-CombatTabGunmodsSection:Color("Color",Color3.new(1,0,175/255),function(x)
-    ArsoniaTable.Combat.Gunmods.LasergunCol=x
-end)
-CombatTabGunmodsSection:Dropdown("Laser Type",ArsoniaTable.Variables.Lasers,function(x)
-    ArsoniaTable.Combat.Gunmods.LasergunValue=x
-end)]]
+
+
+
 CombatTabGunmodsSection:Toggle("Firerate v2",function(state)
 Config.FireRate = state
 for _, v in pairs(game.ReplicatedStorage.Weapons:GetDescendants()) do
@@ -1205,6 +1176,16 @@ end)]]
 --[[CombatTabGunmodsSection:Toggle("Explosive Bullets",function(x)
     ArsoniaTable.Combat.Gunmods.ExplosiveBullets=x
 end)]]
+CombatTabGunmodsSection:Slider("Knife Range",0,50,6,function(x)
+    ArsoniaTable.Combat.Gunmods.Kniferange=x
+    if ArsoniaTable.Combat.Gunmods.Enabled then
+        for _,v in pairs(game.ReplicatedStorage.Weapons:GetChildren())do
+            if v:FindFirstChild("Range")and v:FindFirstChild("Melee")and v:FindFirstChild("Backstab")then
+                v.Range.Value=ArsoniaTable.Combat.Gunmods.Kniferange
+            end
+        end
+    end
+end)
 CombatTabGunmodsSection:Dropdown("Firemode",{"Current","Semi-Automatic","Automatic"},function(x)
     ArsoniaTable.Combat.Gunmods.Firemode=x
     if ArsoniaTable.Combat.Gunmods.Enabled then
@@ -1228,7 +1209,7 @@ end)
 
 local PlayerTab=Window:Tab("Local Player")
 local PlayerTabAntiAimSection=PlayerTab:Section("Anti Aim")
-PlayerTabAntiAimSection:Toggle("Enabled",function(x)
+PlayerTabAntiAimSection:Toggle("Enabled Anti Aim",function(x)
     ArsoniaTable.Player.Anti_Aim.Enabled=x
 end)
 PlayerTabAntiAimSection:Toggle("Third Person",function(x)
@@ -1355,7 +1336,7 @@ end)
 
 
 local PlayerTabMovementSection=PlayerTab:Section("Movement")
-PlayerTabMovementSection:Toggle("Enabled",function(x)
+PlayerTabMovementSection:Toggle("Enabled Movement",function(x)
     ArsoniaTable.Player.Movement.Enabled=x
 end)
 PlayerTabMovementSection:ToggleSlider("Fly",10,500,100,function(x,y)
@@ -1404,7 +1385,7 @@ end)
 
 
 local PlayerTabMiscSection=PlayerTab:Section("Miscellaneous")
-PlayerTabMiscSection:Toggle("Enabled",function(x)
+PlayerTabMiscSection:Toggle("Enabled Miscellaneous",function(x)
     ArsoniaTable.Player.Misc.Enabled=x
 end)
 PlayerTabMiscSection:Toggle("Anti-Fire",function(x)
@@ -1795,6 +1776,32 @@ local VisualsTab=Window:Tab("Visuals")
 
 local VisualsTabESPSection=VisualsTab:Section("ESP")
 
+
+VisualsTabESPSection:Toggle("Enable ESP",function(x)
+    ArsoniaTable.Visuals.ESP.Enabled=x
+end)
+VisualsTabESPSection:Toggle("Box",function(x)
+    ArsoniaTable.Visuals.ESP.Box=x
+end)
+VisualsTabESPSection:Toggle("Chams",function(x)
+    ArsoniaTable.Visuals.ESP.Chams=x
+end)
+
+VisualsTabESPSection:Toggle("Backtrack Chams",function(x)
+    ArsoniaTable.Visuals.ESP.BacktrackChams=x
+end)
+VisualsTabESPSection:Toggle("Names",function(x)
+    ArsoniaTable.Visuals.ESP.Names=x
+end)
+VisualsTabESPSection:Toggle("Skeletons ESP",function(state)
+    Config.Visuals.SkeletonEsp = state
+end)
+VisualsTabESPSection:Toggle("Tracers",function(x)
+    ArsoniaTable.Visuals.ESP.Tracers=x
+end)
+VisualsTabESPSection:Toggle("Health",function(x)
+    ArsoniaTable.Visuals.ESP.Health=x
+end)
 local bolts = "buifzuifiqzuifizfui"
 
 VisualsTabESPSection:Toggle("Banana ESP (Monkey Business Mode)",function(boltss)
@@ -2211,32 +2218,7 @@ VisualsTabESPSection:Toggle("3D Box ESP (Cant Change Color)",function(state)
         end)
         end
 end)
-VisualsTabESPSection:Toggle("Enable ESP",function(x)
-    ArsoniaTable.Visuals.ESP.Enabled=x
-end)
-VisualsTabESPSection:Toggle("Box",function(x)
-    ArsoniaTable.Visuals.ESP.Box=x
-end)
-VisualsTabESPSection:Toggle("Chams",function(x)
-    ArsoniaTable.Visuals.ESP.Chams=x
-end)
-
-VisualsTabESPSection:Toggle("Backtrack Chams",function(x)
-    ArsoniaTable.Visuals.ESP.BacktrackChams=x
-end)
-VisualsTabESPSection:Toggle("Names",function(x)
-    ArsoniaTable.Visuals.ESP.Names=x
-end)
-VisualsTabESPSection:Toggle("Skeletons ESP",function(state)
-    Config.Visuals.SkeletonEsp = state
-end)
-VisualsTabESPSection:Toggle("Tracers",function(x)
-    ArsoniaTable.Visuals.ESP.Tracers=x
-end)
-VisualsTabESPSection:Toggle("Health",function(x)
-    ArsoniaTable.Visuals.ESP.Health=x
-end)
-VisualsTabESPSection:Color("Every Thing Else",Color3.new(255,0,0/255),function(x)
+VisualsTabESPSection:Color("Every Thing Else",Color3.fromRGB(196, 0, 255),function(x)
     ArsoniaTable.Visuals.ESP.Color=x
 end)
 VisualsTabESPSection:Color("Skeleton Team Color",Color3.new(0, 255, 0),function(Color)
@@ -2250,7 +2232,7 @@ VisualsTabESPSection:Color("Skeleton Enemy Color",Color3.new(255, 0, 0),function
 
 
 local VisualsTabViewmodelSection=VisualsTab:Section("Viewmodel")
-VisualsTabViewmodelSection:Toggle("Enabled",function(x)
+VisualsTabViewmodelSection:Toggle("Enabled Viewmodel",function(x)
     ArsoniaTable.Visuals.Viewmodel.Enabled=x
 end)
 VisualsTabViewmodelSection:ToggleSlider("Arm Chams",255,9,5,function(x,y)
@@ -2262,7 +2244,7 @@ VisualsTabViewmodelSection:ToggleSlider("Arm Chams",255,9,5,function(x,y)
         end
     end
 end)
-VisualsTabViewmodelSection:Color("Color",Color3.new(1,0,175/255),function(x)
+VisualsTabViewmodelSection:Color("Color",Color3.fromRGB(196, 0, 255),function(x)
     ArsoniaTable.Visuals.Viewmodel.ArmchamsCol=x
     if game.Workspace.CurrentCamera:FindFirstChild("Arms")then
         if game.Workspace.CurrentCamera.Arms.CSSArms:FindFirstChild("AnalSex")then
@@ -2279,7 +2261,7 @@ VisualsTabViewmodelSection:ToggleSlider("Gun Chams",255,9,5,function(x,y)
         end
     end
 end)
-VisualsTabViewmodelSection:Color("Color",Color3.new(255,0,0/255),function(x)
+VisualsTabViewmodelSection:Color("Color",Color3.fromRGB(196, 0, 255),function(x)
     ArsoniaTable.Visuals.Viewmodel.GunchamsCol=x
     if game.Workspace.CurrentCamera:FindFirstChild("Arms")then
         if game.Workspace.CurrentCamera.Arms:FindFirstChild("AnalBeads")then
@@ -2300,7 +2282,7 @@ end)
 
 
 local VisualsTabAmbienceSection=VisualsTab:Section("Ambience")
-VisualsTabAmbienceSection:Toggle("Enabled",function(x)
+VisualsTabAmbienceSection:Toggle("Enabled Ambience",function(x)
     ArsoniaTable.Visuals.Worldambience.Enabled=x
     if not x then
         game.Lighting.Ambient=Color3.new(.5,.5,.5)
@@ -2316,7 +2298,7 @@ VisualsTabAmbienceSection:Toggle("Enabled",function(x)
         end
     end
 end)
-VisualsTabAmbienceSection:Color("Color",Color3.new(1,0,175/255),function(x)
+VisualsTabAmbienceSection:Color("Color",Color3.fromRGB(196, 0, 255),function(x)
     ArsoniaTable.Visuals.Worldambience.Ambience=x
 end)
 VisualsTabAmbienceSection:Slider("Time",0,12,12,function(x)
@@ -2327,7 +2309,7 @@ VisualsTabAmbienceSection:Slider("Brightness",0,10,2,function(x)
 end)
 local VisualsTabMainSection=VisualsTab:Section("Misc")
 
-VisualsTabMainSection:Toggle("Enabled",function(x)
+VisualsTabMainSection:Toggle("Enabled Misc",function(x)
     ArsoniaTable.Visuals.Main.Enabled=x
     if not x then
         for _,v in pairs(game:GetService("Players").LocalPlayer.PlayerGui.GUI.Crosshairs.Crosshair:GetChildren())do
@@ -2388,7 +2370,7 @@ VisualsTabMainSection:ToggleSlider("X-Ray",0,10,5,function(x,y)
         end
     end
 end)
-VisualsTabMainSection:Color("Crosshair Color",Color3.new(255,0,0),function(x)
+VisualsTabMainSection:Color("Crosshair Color",Color3.fromRGB(196, 0, 255),function(x)
     ArsoniaTable.Visuals.Main.Crosshaircol=x
 end)
 
@@ -2403,7 +2385,7 @@ local MiscTabMainSection=MiscTab:Section("Main")
 
 
 
-MiscTabMainSection:Toggle("Enabled",function(x)
+MiscTabMainSection:Toggle("Enabled Misc",function(x)
     ArsoniaTable.Misc.Main.Enabled=x
     if not x then
         if game.Workspace:FindFirstChild("Map")then
@@ -3968,7 +3950,7 @@ game.RunService.RenderStepped:Connect(function()
             local circ=Drawing.new("Circle")
             circ.Visible=true
             circ.Position=Vector2.new(game:GetService("CoreGui").RobloxGui.AbsoluteSize.X/2,game:GetService("CoreGui").RobloxGui.AbsoluteSize.Y/2-game:GetService("CoreGui").ThemeProvider.TopBarFrame.AbsolutePosition.Y/2)
-            circ.Color=Color3.new(255,0,0)
+            circ.Color = Color3.new(196, 0, 255)
             circ.Thickness=2.5
             circ.Transparency=1
             circ.NumSides=100
@@ -11465,4 +11447,5 @@ for i, v in pairs(Descendants) do
         WaitNumber = WaitNumber + 500
     end
 end
+
 
