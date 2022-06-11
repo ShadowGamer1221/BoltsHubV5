@@ -909,7 +909,7 @@ end)]]
 
 
 local CombatTabGunmodsSection=CombatTab:Section("Gunmods")
-CombatTabGunmodsSection:Toggle("Enabled Gun Mods",function(x)
+CombatTabGunmodsSection:Toggle("Enable Gun Mods",function(x)
     ArsoniaTable.Combat.Gunmods.Enabled=x
     if x then
         if ArsoniaTable.Combat.Gunmods.Goldenmelee then
