@@ -1209,7 +1209,7 @@ end)
 
 local PlayerTab=Window:Tab("Local Player")
 local PlayerTabAntiAimSection=PlayerTab:Section("Anti Aim")
-PlayerTabAntiAimSection:Toggle("Enabled Anti Aim",function(x)
+PlayerTabAntiAimSection:Toggle("Enable Anti Aim",function(x)
     ArsoniaTable.Player.Anti_Aim.Enabled=x
 end)
 PlayerTabAntiAimSection:Toggle("Third Person",function(x)
@@ -1336,7 +1336,7 @@ end)
 
 
 local PlayerTabMovementSection=PlayerTab:Section("Movement")
-PlayerTabMovementSection:Toggle("Enabled Movement",function(x)
+PlayerTabMovementSection:Toggle("Enable Movement",function(x)
     ArsoniaTable.Player.Movement.Enabled=x
 end)
 PlayerTabMovementSection:ToggleSlider("Fly",10,500,100,function(x,y)
@@ -1385,7 +1385,7 @@ end)
 
 
 local PlayerTabMiscSection=PlayerTab:Section("Miscellaneous")
-PlayerTabMiscSection:Toggle("Enabled Miscellaneous",function(x)
+PlayerTabMiscSection:Toggle("Enable Miscellaneous",function(x)
     ArsoniaTable.Player.Misc.Enabled=x
 end)
 PlayerTabMiscSection:Toggle("Anti-Fire",function(x)
@@ -2232,7 +2232,7 @@ VisualsTabESPSection:Color("Skeleton Enemy Color",Color3.new(255, 0, 0),function
 
 
 local VisualsTabViewmodelSection=VisualsTab:Section("Viewmodel")
-VisualsTabViewmodelSection:Toggle("Enabled Viewmodel",function(x)
+VisualsTabViewmodelSection:Toggle("Enable Viewmodel",function(x)
     ArsoniaTable.Visuals.Viewmodel.Enabled=x
 end)
 VisualsTabViewmodelSection:ToggleSlider("Arm Chams",255,9,5,function(x,y)
@@ -2282,7 +2282,7 @@ end)
 
 
 local VisualsTabAmbienceSection=VisualsTab:Section("Ambience")
-VisualsTabAmbienceSection:Toggle("Enabled Ambience",function(x)
+VisualsTabAmbienceSection:Toggle("Enable Ambience",function(x)
     ArsoniaTable.Visuals.Worldambience.Enabled=x
     if not x then
         game.Lighting.Ambient=Color3.new(.5,.5,.5)
@@ -2309,7 +2309,7 @@ VisualsTabAmbienceSection:Slider("Brightness",0,10,2,function(x)
 end)
 local VisualsTabMainSection=VisualsTab:Section("Misc")
 
-VisualsTabMainSection:Toggle("Enabled Misc",function(x)
+VisualsTabMainSection:Toggle("Enable Misc",function(x)
     ArsoniaTable.Visuals.Main.Enabled=x
     if not x then
         for _,v in pairs(game:GetService("Players").LocalPlayer.PlayerGui.GUI.Crosshairs.Crosshair:GetChildren())do
@@ -2385,7 +2385,7 @@ local MiscTabMainSection=MiscTab:Section("Main")
 
 
 
-MiscTabMainSection:Toggle("Enabled Misc",function(x)
+MiscTabMainSection:Toggle("Enable Misc",function(x)
     ArsoniaTable.Misc.Main.Enabled=x
     if not x then
         if game.Workspace:FindFirstChild("Map")then
@@ -11447,5 +11447,7 @@ for i, v in pairs(Descendants) do
         WaitNumber = WaitNumber + 500
     end
 end
+
+
 
 
