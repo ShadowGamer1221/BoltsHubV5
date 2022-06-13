@@ -75,28 +75,6 @@ Config = {
 }
 
 
-if hookmetamethod then
-
-local OldNameCall
-OldNameCall = hookmetamethod(game, "__newindex", function(A, B, ...)
-    if not checkcaller()  and (B == "WalkSpeed" or B == "JumpPower") then
-        return 23
-    end
-    return OldNameCall(A, B, ...)
-end)
-end
-game.Players.LocalPlayer.Character:WaitForChild("Humanoid").WalkSpeed = 23
-game.Players.LocalPlayer.Character:WaitForChild("Humanoid").JumpPower = 16
-game.Players.LocalPlayer.CharacterAdded:Connect(
-    function()
-        repeat
-            wait()
-        until game.Players.LocalPlayer.Character
-        wait(3)
-        game.Players.LocalPlayer.Character:WaitForChild("Humanoid").WalkSpeed = 23
-        game.Players.LocalPlayer.Character:WaitForChild("Humanoid").JumpPower = 16
-    end
-)
 
 local CurrentCamera = workspace.CurrentCamera
 local Players = game:GetService("Players")
@@ -11445,8 +11423,6 @@ for i, v in pairs(Descendants) do
         WaitNumber = WaitNumber + 500
     end
 end
-
-
 
 
 
