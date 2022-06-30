@@ -558,7 +558,7 @@ local ArsoniaTable={
 }
 
 
-local name="Bolts Ware v8 Private - "..identifyexecutor()..""
+local name="Bolts Ware v8 - "..identifyexecutor()..""
 
 if _G.Funnyname then
     local Prefix={"Epic","","Working"}
@@ -1180,8 +1180,8 @@ end)
 
 
 local PlayerTab=Window:Tab("Local Player")
-local PlayerTabAntiAimSection=PlayerTab:Section("Anti Aim")
-PlayerTabAntiAimSection:Toggle("Enable Anti Aim",function(x)
+local PlayerTabAntiAimSection=PlayerTab:Section("Anti Aim / Spin Bot")
+PlayerTabAntiAimSection:Toggle("Enable Spinbot / Antiaim",function(x)
     ArsoniaTable.Player.Anti_Aim.Enabled=x
 end)
 PlayerTabAntiAimSection:Toggle("Third Person",function(x)
@@ -1191,18 +1191,18 @@ PlayerTabAntiAimSection:Toggle("Third Person",function(x)
         game:GetService("Players")["LocalPlayer"].PlayerGui.GUI.Client.Variables.thirdperson.Value = false
     end
 end)
-PlayerTabAntiAimSection:ToggleSlider("Yaw",-180,180,0,function(x,y)
+PlayerTabAntiAimSection:ToggleSlider("Spinbot Speed",-180,180,0,function(x,y)
     ArsoniaTable.Player.Anti_Aim.Yaw=x
     ArsoniaTable.Player.Anti_Aim.YawValue=y
 end)
-PlayerTabAntiAimSection:Dropdown("Yaw Type",{"Spinning","Offset","Absolute","Random","Inverted","Frozen"},function(x)
+PlayerTabAntiAimSection:Dropdown("Antiaim Type",{"Spinning"},function(x)
     ArsoniaTable.Player.Anti_Aim.YawType=x
 end)
-PlayerTabAntiAimSection:ToggleSlider("Pitch",-90,90,0,function(x,y)
+PlayerTabAntiAimSection:ToggleSlider("Move Body",-90,90,0,function(x,y)
     ArsoniaTable.Player.Anti_Aim.Pitch=x
     ArsoniaTable.Player.Anti_Aim.PitchValue=-math.rad(y)
 end)
-PlayerTabAntiAimSection:Dropdown("Pitch Type",{"Offset","Absolute","Random","Inverted",--[["Down",]]"Frozen"},function(x)
+PlayerTabAntiAimSection:Dropdown("Move Body Type",{"Offset","Absolute","Random","Inverted",--[["Down",]]"Frozen"},function(x)
     ArsoniaTable.Player.Anti_Aim.PitchType=x
 end)
 PlayerTabAntiAimSection:ToggleSlider("Torso Angle",-360,360,0,function(x,y)
@@ -1212,17 +1212,7 @@ end)
 PlayerTabAntiAimSection:Dropdown("Torso Angle Type",{"Offset","Absolute","Spinning","Down","Sideways","-Sideways","Random","Cam"},function(x)
     ArsoniaTable.Player.Anti_Aim.TorsoType=x
 end)
-PlayerTabAntiAimSection:ToggleSlider("Wall AA Enabled",-180,180,0,function(x,y)
-    ArsoniaTable.Player.Anti_Aim.Wall=x
-    ArsoniaTable.Player.Anti_Aim.WallValue=-math.rad(y)
-end)
-PlayerTabAntiAimSection:Slider("Wall AA Distance",1,10,5,function(x)
-    ArsoniaTable.Player.Anti_Aim.WallDist=x
-end)
---[[PlayerTabAntiAimSection:ToggleSlider("Wall AA Towall",1,100,0,function(x,y)
-    ArsoniaTable.Player.Anti_Aim.Wall2=x
-    ArsoniaTable.Player.Anti_Aim.WallValue2=y
-end)]]
+
 PlayerTabAntiAimSection:Toggle("Upside Down",function(x)
     ArsoniaTable.Player.Anti_Aim.Upsidedown=x
 end)
@@ -11282,5 +11272,6 @@ require(game.ReplicatedStorage.Modules.Spread).calcspread=function(a,...)
     end
     return ArsoniaTable.Variables.Functions.CalculateSpread(a,...)
 end
+
 
 
