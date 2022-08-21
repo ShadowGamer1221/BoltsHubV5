@@ -1,3 +1,4 @@
+--Made By Bolts And The3Bakers
 Library=loadstring(game:HttpGet("https://pastebin.com/raw/bfSMHFwJ"))()
 
 Client = {
@@ -2409,12 +2410,14 @@ end)
 spawn(function()
     while true do
         wait(.01)
+        if Client.Toggles.SpamChat == true then
         local A_1 = "Haha!"
 local A_2 = Client.Values.ChatMsg
 local A_3 = false
 local Event = game:GetService("ReplicatedStorage").Events.PlayerChatted
 Event:FireServer(A_1, A_2, A_3)
-        
+        wait(0.1)
+        end
     end
 end)
 MiscTabMainSection:Textbox("Custom Chat Message","Bolts Ware V8 On Top",function(x)
@@ -5311,4 +5314,3 @@ end
 --Fixes
 ArsoniaTable.Variables.Levels.StartBar=ArsoniaTable.Variables.Levels_OLD.StartBar
 ArsoniaTable.Variables.Levels.EndBar=ArsoniaTable.Variables.Levels_OLD.EndBar
-
