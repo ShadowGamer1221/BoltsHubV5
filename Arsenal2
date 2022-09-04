@@ -1146,7 +1146,13 @@ CombatTabGunmodsSection:Dropdown("Firemode",{"Current","Semi-Automatic","Automat
         end
     end
 end)
-
+CombatTabGunmodsSection:ToggleSlider("Projectile Gun",0,1000,500,function(x,y)
+    ArsoniaTable.Combat.Gunmods.Baseballgun=x
+    ArsoniaTable.Combat.Gunmods.BaseballgunSpeed=y
+end)
+CombatTabGunmodsSection:Dropdown("Projectile",ArsoniaTable.Variables.BaseBallNamesVisual,function(x)
+    ArsoniaTable.Combat.Gunmods.BaseballgunValue=x
+end)
 
 
 
