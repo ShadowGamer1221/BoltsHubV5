@@ -765,7 +765,7 @@ game:GetService("RunService").RenderStepped:Connect(function()
 	end
 end)
 end)
-CombatTabMainSection:Toggle("Wallbang Bypass V2",function(state)
+CombatTabMainSection:Toggle("Wallbang Bypass V2 (PATCHED)",function(state)
     Client.Toggles.WallBang = state
 end)
 CombatTabMainSection:Toggle("Triggerbot (Toggle Slient Aim To Work)",function(x)
@@ -5227,7 +5227,7 @@ coroutine.wrap(function()
 end)()
 
 --pingspoofer fix ig
-local ping = 32 spawn(function()while wait(1)do ping = math.random(30, 70)end end)spawn(function()game:GetService("RunService").RenderStepped:connect(function()game.Players.LocalPlayer.Ping.Value = ping end)end)while wait() do game.ReplicatedStorage.Events.UpdatePing:FireServer(500)end
+--local ping = 32 spawn(function()while wait(1)do ping = math.random(30, 70)end end)spawn(function()game:GetService("RunService").RenderStepped:connect(function()game.Players.LocalPlayer.Ping.Value = ping end)end)while wait() do game.ReplicatedStorage.Events.UpdatePing:FireServer(500)end
 --Function Hooks
 require(game.Players.LocalPlayer.PlayerGui.GUI.Client.Functions.General).applyvelocity=function(...)
     if ArsoniaTable.Player.Misc.Enabled then
