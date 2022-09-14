@@ -1,4 +1,5 @@
 --Made By Bolts And The3Bakers
+
 Library=loadstring(game:HttpGet("https://pastebin.com/raw/bfSMHFwJ"))()
 
 Client = {
@@ -531,7 +532,7 @@ local ArsoniaTable={
 }
 
 
-local name="Bolts Ware v8 - Undetected - "..identifyexecutor()..""
+local name="Bolts Ware v8 - Semi Undetected - "..identifyexecutor()..""
 
 if _G.Funnyname then
     local Prefix={"Epic","","Working"}
@@ -549,7 +550,7 @@ local CombatTab=Window:Tab("Combat")
 local CombatTabMainSection=CombatTab:Section("Aimbot")
 
 
-CombatTabMainSection:Toggle("Kill All(Buggy)",function(state)
+CombatTabMainSection:Toggle("Kill All (Buggy AND Ban Risk)",function(state)
     if state then
                 game:GetService("ReplicatedStorage").wkspc.Status.RoundOver.Value = false
 local Farming = false
@@ -765,8 +766,20 @@ game:GetService("RunService").RenderStepped:Connect(function()
 	end
 end)
 end)
-CombatTabMainSection:Toggle("Wallbang Bypass V2 (PATCHED)",function(state)
+CombatTabMainSection:Toggle("WALLBANG (WORKING BUT BAN RISK)",function(state)
     Client.Toggles.WallBang = state
+    local ping = 32 
+spawn(function()
+    while wait(0.1) do
+        ping = math.random(30, 70)end end)
+    spawn(function()
+        game:GetService("RunService").RenderStepped:connect(function()game.Players.LocalPlayer.Ping.Value = ping end)end)while wait() do local args = {
+    [1] = 500,
+    [2] = "LOL"
+}
+
+game:GetService("ReplicatedStorage").Events.UpdatePing:FireServer(unpack(args))end
+
 end)
 CombatTabMainSection:Toggle("Triggerbot (Toggle Slient Aim To Work)",function(x)
     if x then
@@ -2330,20 +2343,6 @@ local MiscTabMainSection=MiscTab:Section("Main")
 MiscTabMainSection:Toggle("Enable Misc",function(x)
     ArsoniaTable.Misc.Main.Enabled=x
     if not x then
-        if game.Workspace:FindFirstChild("Map")then
-            if game.Workspace.Map:FindFirstChild("Clips")then
-                for _,v in pairs(game.Workspace.Map.Clips:GetDescendants())do
-                    if v:IsA("BasePart")then
-                        if v:FindFirstChild("OGCanCollide")then
-                            v.CanCollide=v.OGCanCollide
-                        end
-                    end
-                end
-            end
-        end
-        game.ReplicatedStorage.Events.CoolNewRemote:FireServer("MouseButton1")
-        game:GetService("ReplicatedStorage").wkspc.CurrentCurse.Value="None"
-    else
         if ArsoniaTable.Misc.Main.Devicespoofer=="Mobile"then
             game.ReplicatedStorage.Events.CoolNewRemote:FireServer("Touch")
         elseif ArsoniaTable.Misc.Main.Devicespoofer=="PC"then
@@ -2360,7 +2359,7 @@ end)
 
 
 MiscTabMainSection:Toggle("Fast Respawn",function(x)
-    ArsoniaTable.Misc.Main.Fastrespawn=x
+        ArsoniaTable.Misc.Main.Fastrespawn=x
 end)
 
 
@@ -2415,7 +2414,7 @@ spawn(function()
     while true do
         wait(.01)
         if Client.Toggles.SpamChat == true then
-        local A_1 = "Haha!"
+        local A_1 = "Hah!"
 local A_2 = Client.Values.ChatMsg
 local A_3 = false
 local Event = game:GetService("ReplicatedStorage").Events.PlayerChatted
@@ -2736,7 +2735,9 @@ end)
 
 local E=Window:Tab("Info")
 local W=E:Section("Info")
-
+W:Button("MY DISCORD MAIN ACCOUNT IS BANNED for 7 days DM bolts#8455 for help",function()
+    print("Button Pressed")
+end)
 W:Button("Press RightShift To Hide The GUI",function()
     print("Button Pressed")
 end)
@@ -5226,8 +5227,8 @@ coroutine.wrap(function()
     end
 end)()
 
---pingspoofer fix ig
---local ping = 32 spawn(function()while wait(1)do ping = math.random(30, 70)end end)spawn(function()game:GetService("RunService").RenderStepped:connect(function()game.Players.LocalPlayer.Ping.Value = ping end)end)while wait() do game.ReplicatedStorage.Events.UpdatePing:FireServer(500)end
+--XONAE DONT GET ANY IDEAS WHORE
+
 --Function Hooks
 require(game.Players.LocalPlayer.PlayerGui.GUI.Client.Functions.General).applyvelocity=function(...)
     if ArsoniaTable.Player.Misc.Enabled then
@@ -5318,3 +5319,4 @@ end
 --Fixes
 ArsoniaTable.Variables.Levels.StartBar=ArsoniaTable.Variables.Levels_OLD.StartBar
 ArsoniaTable.Variables.Levels.EndBar=ArsoniaTable.Variables.Levels_OLD.EndBar
+
