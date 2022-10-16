@@ -1,5 +1,3 @@
---Made By Bolts And The3Bakers
-
 Library=loadstring(game:HttpGet("https://pastebin.com/raw/bfSMHFwJ"))()
 
 Client = {
@@ -533,6 +531,56 @@ local Window=Library:Window(name,Color3.fromRGB(196, 0, 255),700,Color3.fromRGB(
 local CombatTab=Window:Tab("Combat")
 local CombatTabMainSection=CombatTab:Section("Aimbot")
 
+CombatTabMainSection:Button("KILL ALL (OP)",function()
+    local Workspace = game:GetService("Workspace")
+local Players = game:GetService("Players")
+local ReplicatedStorage = game:GetService("ReplicatedStorage")
+
+local Camera = Workspace.CurrentCamera
+local Player = Players.LocalPlayer
+
+local WeaponMechanics = require(game:GetService("ReplicatedFirst").Services.Weapons.WeaponMechanics)
+ReplicatedStorage.Weapons.Knife:SetAttribute("Range", 1000)
+
+-- // Functions
+function ClosestPlayer()
+    local Dist = math.huge
+    local Target
+    for i,v in next, Players:GetPlayers() do
+        if v ~= Player then
+            --if v.Character and v.Character:FindFirstChild("Head") and v.Character.Humanoid.Health > 0 and v.TeamColor ~= Player.TeamColor then --- creating the checks
+            if v.Character and v.Character:FindFirstChild("Head") and v.Character:FindFirstChild("Gun") and v.TeamColor ~= Player.TeamColor then --- creating the checks
+                local magnitude = (v.Character.Head.Position - Player.Character.Head.Position).magnitude
+                if magnitude < Dist then
+                    Dist = magnitude
+                    Target = v
+                end
+            end
+        end
+    end
+    return Target
+end
+
+function DoStuff()
+    for i,v in next, game.Players:GetPlayers() do
+        if v.TeamColor ~= Player.TeamColor and v.Character and v.Character:FindFirstChild("Gun") then
+            Player.Character.HumanoidRootPart.CFrame = ClosestPlayer().Character.HumanoidRootPart.CFrame
+            WeaponMechanics.Fire()
+            task.wait(.1)
+        end
+    end
+end
+
+-- // Init
+game:GetService("RunService").RenderStepped:Connect(function()
+    if ClosestPlayer() then
+        Camera.CFrame = CFrame.new(Camera.CFrame.Position,ClosestPlayer().Character.Head.Position)
+    end
+end)
+
+repeat task.wait() DoStuff() until ReplicatedStorage.wkspc.Status.RoundOver.Value == true
+end)
+    
 CombatTabMainSection:Toggle("Aimlock",function(x)
 
     local ScreenGui = Instance.new("ScreenGui")
@@ -1754,7 +1802,7 @@ end)
 local MiscTabMenuSection=MiscTab:Section("Menu")
 
 
-MiscTabMenuSection:Slider("TimeScale / Firerate",1, 10, 1,function(TimeScaleFR)
+MiscTabMenuSection:Slider("TimeScale",1, 10, 1,function(TimeScaleFR)
     
 game:GetService("ReplicatedStorage").wkspc.TimeScale.Value = TimeScaleFR
 end)   
@@ -1936,7 +1984,7 @@ end)
 W:Button("The3Bakers - Helper",function()
     setclipboard("https://discord.gg/zbnGJU6Att")
 end)
-W:Button("Storm - Helper/Bypasser/Slave",function()
+W:Button("Storm - Co Owner",function()
     print("Button Pressed")
 end)
 
@@ -2018,9 +2066,7 @@ game.RunService.RenderStepped:Connect(function()
         end
     end
     
-    if getsenv(game.Players.LocalPlayer.PlayerGui.GUI.Client).lastlook~=10000 then
-        getsenv(game.Players.LocalPlayer.PlayerGui.GUI.Client).lastlook=10000
-    end
+
     ArsoniaTable.Variables.IsFall=false
     if game.Players.LocalPlayer.Character.Humanoid:GetState()==Enum.HumanoidStateType.Ragdoll or game.Players.LocalPlayer.Character.Humanoid:GetState()==Enum.HumanoidStateType.GettingUp then
         ArsoniaTable.Variables.IsFall=true
@@ -2638,9 +2684,7 @@ game.RunService.RenderStepped:Connect(function()
             end
         end
     else
-        if game.Players.LocalPlayer.PlayerGui.GUI.Black.Size~=UDim2.new(2,0,2,0)then
-            game.Players.LocalPlayer.PlayerGui.GUI.Black.Size=UDim2.new(2,0,2,0)
-        end
+        
     end
 end)
 
@@ -4275,97 +4319,4 @@ coroutine.wrap(function()
         end)
     end
 end)()
-
---XONAE DONT GET ANY IDEAS WHORE
-
---Function Hooks
-require(game.Players.LocalPlayer.PlayerGui.GUI.Client.Functions.General).applyvelocity=function(...)
-    if ArsoniaTable.Player.Misc.Enabled then
-        if ArsoniaTable.Player.Misc.AntiFling then
-            local args={...}
-            if args[5]~=game.Players.LocalPlayer.Name then
-                return
-            end
-        end
-    end
-    return ArsoniaTable.Variables.Functions.OldApplyVelocity(...)
-end
-require(game.ReplicatedStorage.Modules.ClientFunctions).CreateProjectile=function(a,b,c,d,e,...)
-    if ArsoniaTable.Aimbot.Silentaim.Enabled then
-        if ArsoniaTable.Variables.__SilentAimTarget then
-            if tostring(a)==game.Players.LocalPlayer.Name then
-                if b=="Arrow"then
-                    --[[game.ReplicatedStorage.Events.Burn:FireServer(
-                        ArsoniaTable.Variables.__SilentAimTarget,
-                        game.ReplicatedStorage.Weapons.Bow,
-                        1,
-                        ArsoniaTable.Variables.__SilentAimTarget.Position)]]
-                    local Partpos=ArsoniaTable.Variables.__SilentAimTarget.Position+Vector3.new(math.random(),math.random(),math.random())
-                    local Packedstring=string.pack(
-                        ArsoniaTable.Variables.Hitparter,
-                        Partpos.X,
-                        Partpos.Y,
-                        Partpos.Z,
-                        "Bow",
-                        0,--headshot=1 none=0
-                        0,--unknown
-                        0,--backstab=1 none=0
-                        0,--forcecrit=1 none=0
-                        0,--morecrit=1 none=0
-                        0,--spoof=2 none=0
-                        0,--unkown
-                        0,--Player Distance
-                        1,--Current Spell
-                        0,--scope=1 noscope=0
-                        0--aircrit=1 none=0
-                    )
-                    game.ReplicatedStorage.Events.HitPart:FireServer(ArsoniaTable.Variables.__SilentAimTarget,Packedstring)
-                else
-                    c=750
-                    d=ArsoniaTable.Variables.__SilentAimTarget.Position
-                    e=CFrame.new(game.Players.LocalPlayer.Character.HumanoidRootPart.Position+Vector3.new(0,1.5+game.Players.LocalPlayer.Character.Humanoid.CameraOffset.Y,0))
-                end
-            end
-        end
-    end
-    return ArsoniaTable.Variables.Functions.CreateProjectile(a,b,c,d,e,...)
-end
-getsenv(game.Players.LocalPlayer.PlayerGui.GUI.Client).flamemoment.doflame=function(a,b,...)
-    if ArsoniaTable.Aimbot.Silentaim.Enabled then
-        if ArsoniaTable.Variables.__SilentAimTarget then
-            if tostring(a)==game.Players.LocalPlayer.Name then
-                b=CFrame.new(game.Players.LocalPlayer.Character.HumanoidRootPart.Position+Vector3.new(0,1.5+game.Players.LocalPlayer.Character.Humanoid.CameraOffset.Y,0),ArsoniaTable.Variables.__SilentAimTarget.Position)
-            end
-        end
-    end
-    return ArsoniaTable.Variables.Functions.DoFlame(a,b,...)
-end
-getsenv(game.Players.LocalPlayer.PlayerGui.GUI.Client.Functions.Weapons).ShakeCam=function(...)
-    if ArsoniaTable.Combat.Gunmods.Enabled then
-        if ArsoniaTable.Combat.Gunmods.Removerecoil then
-            return
-        end
-    end
-    return ArsoniaTable.Variables.Functions.Shakecam(...)
-end
-require(game.Players.LocalPlayer.PlayerGui.GUI.Client.Functions.Weapons).getammo=function(...)
-    if ArsoniaTable.Combat.Gunmods.Enabled then
-        return math.clamp(ArsoniaTable.Variables.Functions.Getammo(...)+ArsoniaTable.Combat.Gunmods.Clipsize,0,999)
-    end
-    return ArsoniaTable.Variables.Functions.Getammo(...)
-end
-require(game.ReplicatedStorage.Modules.Spread).calcspread=function(a,...)
-    if ArsoniaTable.Combat.Gunmods.Enabled then
-        if ArsoniaTable.Combat.Gunmods.Removespread then
-            a=0
-        end
-    end
-    return ArsoniaTable.Variables.Functions.CalculateSpread(a,...)
-end
-
-
-
---Fixes
-ArsoniaTable.Variables.Levels.StartBar=ArsoniaTable.Variables.Levels_OLD.StartBar
-ArsoniaTable.Variables.Levels.EndBar=ArsoniaTable.Variables.Levels_OLD.EndBar
-
+--end :)
