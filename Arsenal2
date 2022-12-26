@@ -33,7 +33,7 @@ Client = {
         LookMeth = 'Look Up',                                                                                                                                                                                                                                                 
         Test = '',
         FOV = 150,
-        ChatMsg = 'Bolts Ware v10 On Top',
+        ChatMsg = 'xonaes Anti Cheat Updates Are Nothing But Pathetic',
         AimPart = 'Head'
 
         
@@ -2443,7 +2443,7 @@ game:GetService("ReplicatedStorage").Events.PlayerChatted:FireServer(unpack(args
 ]]--
 
 
-MiscTabMainSection:Textbox("Custom Chat Message","Bolts Ware V8 On Top",function(x)
+MiscTabMainSection:Textbox("Custom Chat Message","xonaes Anti Cheat Updates Are Nothing But Pathetic (Bolts Ware V10 On Top)",function(x)
 		Client.Values.ChatMsg = tostring(x)
 	end)
 
