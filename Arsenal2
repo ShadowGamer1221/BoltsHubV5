@@ -774,7 +774,7 @@ spawn(function()
     spawn(function()
         game:GetService("RunService").RenderStepped:connect(function()game.Players.LocalPlayer.Ping.Value = ping end)end)while wait() do local args = {
     [1] = 100,
-    [2] = "PingDeez"
+    [2] = "Pingo"
 }
 
 game:GetService("ReplicatedStorage").Events.UpdatePing:FireServer(unpack(args))end
