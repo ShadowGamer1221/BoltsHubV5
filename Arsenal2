@@ -2418,7 +2418,7 @@ spawn(function()
         wait(.01)
         if Client.Toggles.SpamChat == true then
         local args = {
-    [1] = "HEHEHEHA",
+    [1] = "GRR",
     [2] = Client.Values.ChatMsg,
     [3] = false,
     [5] = false,
