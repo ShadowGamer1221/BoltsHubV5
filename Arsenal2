@@ -549,164 +549,9 @@ local CombatTab=Window:Tab("Combat")
 local CombatTabMainSection=CombatTab:Section("Aimbot")
 
 
-CombatTabMainSection:Toggle("Kill All (Fast)",function(state)
+CombatTabMainSection:Toggle("Kill All Is No More use a op config for kill all",function(state)
     if state then
-                game:GetService("ReplicatedStorage").wkspc.Status.RoundOver.Value = false
-local Farming = false
-local Hopped = false
-local TimeLeft = 30
-local TurnBack = 4
-local CheckTick = tick()
-local PlayerLocked
-local Back = true
-
-function DetectPlayer()
-	local Blacklist = {workspace.CurrentCamera}
-	if game:GetService("Players").LocalPlayer.Character then
-		table.insert(Blacklist, game:GetService("Players").LocalPlayer.Character)
-	end
-	if workspace:FindFirstChild("Map") then
-		table.insert(Blacklist, workspace.Map)
-	end
-
-	local RaycastParam = RaycastParams.new()
-	RaycastParam.FilterType = Enum.RaycastFilterType.Blacklist
-	RaycastParam.FilterDescendantsInstances = Blacklist
-
-	local NewRay = Ray.new(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position + Vector3.new(0, 1.5, 0), workspace.CurrentCamera.CFrame.LookVector * 50000, RaycastParam)
-	local PlayerGot
-
-	if NewRay.Instance then
-		if NewRay.Instance:IsDescendantOf(workspace) then
-			if NewRay.Instance.Parent:IsA("Model") then
-				if game:GetService("Players"):GetPlayerFromCharacter(NewRay.Instance.Parent) then
-					PlayerGot = game:GetService("Players"):GetPlayerFromCharacter(NewRay.Instance.Parent)
-				end
-			elseif NewRay.Instance.Parent:IsA("Accessory") then
-				if game:GetService("Players"):GetPlayerFromCharacter(NewRay.Instance.Parent.Parent) then
-					PlayerGot = game:GetService("Players"):GetPlayerFromCharacter(NewRay.Instance.Parent.Parent)
-				end
-			end
-		end
-
-		if PlayerGot and PlayerGot.Status.Team.Value ~= game:GetService("Players").LocalPlayer.Status.Team.Value and PlayerGot.NRPBS.Health.Value > 0 then
-			return true
-		end
-	end
-
-	return false
-end
-
-
-function StartAutofarm()
-	repeat wait() until game:GetService("ReplicatedStorage").wkspc.Status.RoundOver.Value == false
-	if game:GetService("ReplicatedStorage").wkspc.Status.LastGamemode.Value:lower():find("hackula") then ServerHop() return end
-	
-	Farming = true
-	print("running")
-
-
-
-	spawn(function()
-		repeat
-			if game:GetService("Players").LocalPlayer.Status.Team.Value ~= "Spectator" then
-				for i,v in pairs(game:GetService("Players"):GetPlayers()) do
-					if v ~= game:GetService("Players").LocalPlayer then
-						if v.Character then
-							if v.NRPBS.Health.Value > 0 then
-								if v.Status.Team.Value ~= "Spectator" then
-									if v.Character:FindFirstChild("Spawned") and v.Status.Team.Value ~= game:GetService("Players").LocalPlayer.Status.Team.Value then
-										TimeLeft = 25
-										TurnBack = 4
-										Back = true
-										repeat
-											PlayerLocked = v
-											wait(.1)
-											TurnBack = TurnBack - 0.1
-											if TurnBack <= 0 then
-												Back = false
-											elseif TurnBack <= -4 then
-												break
-											end
-										until game:GetService("ReplicatedStorage").wkspc.Status.RoundOver.Value or not v or not v.Character or not v.Character:FindFirstChild("Spawned") or v.NRPBS.Health.Value <= 0 or v.Status.Team.Value == "Spectator" or v.Status.Alive.Value == false or game:GetService("Players").LocalPlayer.Status.Team.Value == v.Status.Team.Value
-									end
-								end
-							end
-						end
-					end
-				end
-			end
-			wait(0.1)
-		until game:GetService("ReplicatedStorage").wkspc.Status.RoundOver.Value == true
-
-		wait(1)
-		print("f")
-	end)
-end
-
-
-
-spawn(function()
-	while wait(0.1) do
-		if game:GetService("Players").LocalPlayer.NRPBS.Health.Value <= 0 and game:GetService("Players").LocalPlayer.Status.Team.Value ~= "Spectator" then
-			game:GetService("ReplicatedStorage").Events.LoadCharacter:FireServer()
-		end
-	end
-end)
-local num = 6
-local up = 0
-game:GetService("RunService").RenderStepped:Connect(function()
-	if Farming then
-		if workspace:FindFirstChild("Map") and PlayerLocked and PlayerLocked.Character and PlayerLocked.NRPBS.Health.Value > 0 and PlayerLocked.Character:FindFirstChild("HeadHB") then
-			workspace.CurrentCamera.CFrame = CFrame.new(workspace.CurrentCamera.CFrame.Position, PlayerLocked.Character.HeadHB.Position)
-			if Back then num = 2 up = 0 else num = -2 up = 2 end
-			game:GetService("Players").LocalPlayer.Character:SetPrimaryPartCFrame(
-				PlayerLocked.Character.HumanoidRootPart.CFrame * CFrame.new(-1.0, up, num)
-			)
-			
-			local RayParams = RaycastParams.new()
-			RayParams.FilterType = Enum.RaycastFilterType.Blacklist
-			RayParams.FilterDescendantsInstances = {workspace.CurrentCamera, game:GetService("Players").LocalPlayer.Character, workspace.Map.Ignore, workspace.Map.Clips}
-				
-			local Result = workspace:Raycast(workspace.CurrentCamera.CFrame.Position, workspace.CurrentCamera.CFrame.LookVector * 10000, RayParams)
-			local Player
-			
-			if Result and Result.Instance then
-				if Result.Instance:IsDescendantOf(PlayerLocked.Character) then
-					game:GetService("VirtualUser"):Button1Down(Vector2.new(0, 0), workspace.CurrentCamera.CFrame)
-				end
-			end
-		end
-	end
-	
-	if game:GetService("ReplicatedStorage").wkspc.Status.RoundOver.Value == true then PlayerLocked = nil end
-	if not game:GetService("Players").LocalPlayer.Character then PlayerLocked = nil end
-	if game:GetService("Players").LocalPlayer.NRPBS.Health.Value <= 0 then PlayerLocked = nil end
-end)
-
-StartAutofarm()
-for i,v in next, game.ReplicatedStorage.Weapons:GetChildren() do
-for i,c in next, v:GetChildren() do 
-for i,x in next, getconnections(c.Changed) do
-x:Disable() -- probably not needed
-end
-if c.Name == "Ammo" or c.Name == "StoredAmmo" then
-c.Value = 300 -- don't set this above 300 or else your guns wont work
-elseif c.Name == "AReload" or c.Name == "RecoilControl" or c.Name == "EReload" or c.Name == "SReload" or c.Name == "ReloadTime" or c.Name == "EquipTime" or c.Name == "Spread" or c.Name == "MaxSpread" then
-c.Value = 0
-elseif c.Name == "Range" then
-c.Value = 9e9
-elseif c.Name == "Auto" then
-c.Value = true
-elseif c.Name == "FireRate" or c.Name == "BFireRate" then
-c.Value = 0.02 -- don't set this lower than 0.02 or else your game will crash
-end
-end
-end
-game:GetService('RunService').Stepped:connect(function() -- Infinite Ammo by Frontman#9917
-        game:GetService("Players").LocalPlayer.PlayerGui.GUI.Client.Variables.ammocount.Value = 999 -- dont do it higher then 999
-        game:GetService("Players").LocalPlayer.PlayerGui.GUI.Client.Variables.ammocount2.Value = 999
-        end)
+                print("f")
     else
         game:GetService("ReplicatedStorage").wkspc.Status.RoundOver.Value = true
     end
@@ -2336,32 +2181,18 @@ local MiscTabMainSection=MiscTab:Section("Main")
 
 
 
-MiscTabMainSection:Button("*FE* Sever Crasher v18",function()
-    loadstring("\119\104\105\108\101\32\116\97\115\107\46\119\97\105\116\40\50\41\32\100\111\32\10\32\32\32\32\103\97\109\101\58\71\101\116\83\101\114\118\105\99\101\40\34\78\101\116\119\111\114\107\67\108\105\101\110\116\34\41\58\83\101\116\79\117\116\103\111\105\110\103\75\66\80\83\76\105\109\105\116\40\109\97\116\104\46\104\117\103\101\41\10\32\32\32\32\108\111\99\97\108\32\102\117\110\99\116\105\111\110\32\71\101\116\77\97\120\86\97\108\117\101\79\102\40\118\97\108\41\10\32\32\32\32\32\32\32\108\111\99\97\108\32\77\97\105\110\32\61\32\52\57\57\57\57\57\10\32\32\32\32\32\32\32\105\102\32\116\121\112\101\40\118\97\108\41\32\126\61\32\34\110\117\109\98\101\114\34\32\116\104\101\110\10\32\32\32\32\32\32\32\32\32\32\32\114\101\116\117\114\110\32\110\105\108\10\32\32\32\32\32\32\32\101\110\100\10\32\32\32\32\32\32\32\108\111\99\97\108\32\112\101\114\102\101\99\116\105\111\110\32\61\32\40\77\97\105\110\47\40\118\97\108\43\50\41\41\10\32\32\32\32\32\32\32\114\101\116\117\114\110\32\112\101\114\102\101\99\116\105\111\110\10\32\32\32\32\101\110\100\10\32\32\32\32\32\10\32\32\32\32\108\111\99\97\108\32\102\117\110\99\116\105\111\110\32\67\114\97\115\104\73\116\40\116\97\98\108\101\105\110\99\114\101\97\115\101\44\32\116\114\105\101\115\41\10\32\32\32\32\32\32\32\32\108\111\99\97\108\32\77\97\105\110\32\61\32\123\125\10\32\32\32\32\32\32\32\32\108\111\99\97\108\32\83\112\97\109\109\101\100\32\61\32\123\125\10\32\32\32\32\32\32\32\32\32\10\32\32\32\32\32\32\32\32\116\97\98\108\101\46\105\110\115\101\114\116\40\83\112\97\109\109\101\100\44\32\123\125\41\10\32\32\32\32\32\32\32\32\120\32\61\32\83\112\97\109\109\101\100\91\49\93\10\32\32\32\32\32\32\32\32\32\10\32\32\32\32\32\32\32\32\102\111\114\32\105\32\61\32\49\44\32\116\97\98\108\101\105\110\99\114\101\97\115\101\32\100\111\10\32\32\32\32\32\32\32\32\32\32\32\32\108\111\99\97\108\32\73\110\115\101\114\116\101\100\32\61\32\123\125\10\32\32\32\32\32\32\32\32\32\32\32\32\116\97\98\108\101\46\105\110\115\101\114\116\40\120\44\32\73\110\115\101\114\116\101\100\41\10\32\32\32\32\32\32\32\32\32\32\32\32\120\32\61\32\73\110\115\101\114\116\101\100\32\45\45\32\87\72\65\67\75\10\32\32\32\32\32\32\32\32\101\110\100\10\32\32\32\32\32\32\32\32\32\10\32\32\32\32\32\32\32\32\108\111\99\97\108\32\67\97\108\99\117\108\97\116\101\100\77\97\120\32\61\32\71\101\116\77\97\120\86\97\108\117\101\79\102\40\116\97\98\108\101\105\110\99\114\101\97\115\101\41\10\32\32\32\32\32\32\32\32\108\111\99\97\108\32\109\97\120\105\109\117\109\10\32\32\32\32\32\32\32\32\32\10\32\32\32\32\32\32\32\32\105\102\32\67\97\108\99\117\108\97\116\101\100\77\97\120\32\116\104\101\110\10\32\32\32\32\32\32\32\32\32\32\32\32\32\109\97\120\105\109\117\109\32\61\32\67\97\108\99\117\108\97\116\101\100\77\97\120\10\32\32\32\32\32\32\32\32\32\32\32\32\32\101\108\115\101\10\32\32\32\32\32\32\32\32\32\32\32\32\32\109\97\120\105\109\117\109\32\61\32\57\57\57\57\57\57\10\32\32\32\32\32\32\32\32\101\110\100\10\32\32\32\32\32\32\32\32\32\10\32\32\32\32\32\32\32\32\102\111\114\32\105\32\61\32\49\44\32\109\97\120\105\109\117\109\32\100\111\10\32\32\32\32\32\32\32\32\32\32\32\32\32\116\97\98\108\101\46\105\110\115\101\114\116\40\77\97\105\110\44\32\83\112\97\109\109\101\100\41\10\32\32\32\32\32\32\32\32\101\110\100\10\32\32\32\32\32\32\32\32\32\10\32\32\32\32\32\32\32\32\102\111\114\32\105\32\61\32\49\44\32\116\114\105\101\115\32\100\111\10\32\32\32\32\32\32\32\32\32\32\32\32\32\103\97\109\101\46\82\111\98\108\111\120\82\101\112\108\105\99\97\116\101\100\83\116\111\114\97\103\101\46\83\101\116\80\108\97\121\101\114\66\108\111\99\107\76\105\115\116\58\70\105\114\101\83\101\114\118\101\114\40\77\97\105\110\41\10\32\32\32\32\32\32\32\32\101\110\100\10\32\32\32\32\101\110\100\10\32\32\32\32\32\10\32\32\32\32\67\114\97\115\104\73\116\40\50\53\48\44\32\53\41\10\101\110\100\10")()
-    end)
-MiscTabMainSection:Button("This shuts off wifi untill roblox is closed^^",function()
-    print("WARNING")
-end)
 
 MiscTabMainSection:Toggle("Enable Misc",function(x)
     ArsoniaTable.Misc.Main.Enabled=x
     if not x then
-        if ArsoniaTable.Misc.Main.Devicespoofer=="Mobile"then
-            game.ReplicatedStorage.Events.CoolNewRemote:FireServer("Touch")
-        elseif ArsoniaTable.Misc.Main.Devicespoofer=="PC"then
-            game.ReplicatedStorage.Events.CoolNewRemote:FireServer("MouseButton1")
-        elseif ArsoniaTable.Misc.Main.Devicespoofer=="XBOX"then
-            game.ReplicatedStorage.Events.CoolNewRemote:FireServer("Gamepad1")
-        elseif ArsoniaTable.Misc.Main.Devicespoofer=="None"then
-            game.ReplicatedStorage.Events.CoolNewRemote:FireServer("none")
-        end
+        
         game:GetService("ReplicatedStorage").wkspc.CurrentCurse.Value=ArsoniaTable.Misc.Main.Curse
     end
 end)
 
 
 
-MiscTabMainSection:Toggle("Fast Respawn (DO NOT DISABLED)",function(x)
+MiscTabMainSection:Toggle("Fast Respawn",function(x)
         ArsoniaTable.Misc.Main.Fastrespawn=x
 end)
 
@@ -2395,20 +2226,7 @@ end)
 MiscTabMainSection:Toggle("Collect Bananas",function(x)
     ArsoniaTable.Misc.Main.Autopickupbanana=x
 end)
-MiscTabMainSection:Dropdown("Device Spoofer",{"PC","Mobile","XBOX","Wii Steering Wheel","None"},function(x)
-    ArsoniaTable.Misc.Main.Devicespoofer=x
-    if ArsoniaTable.Misc.Main.Enabled then
-        if ArsoniaTable.Misc.Main.Devicespoofer=="Mobile"then
-            game.ReplicatedStorage.Events.CoolNewRemote:FireServer("Touch")
-        elseif ArsoniaTable.Misc.Main.Devicespoofer=="PC"then
-            game.ReplicatedStorage.Events.CoolNewRemote:FireServer("MouseButton1")
-        elseif ArsoniaTable.Misc.Main.Devicespoofer=="XBOX"then
-            game.ReplicatedStorage.Events.CoolNewRemote:FireServer("Gamepad1")
-        elseif ArsoniaTable.Misc.Main.Devicespoofer=="None"then
-            game.ReplicatedStorage.Events.CoolNewRemote:FireServer("none")
-        end
-    end
-end)
+
 
 MiscTabMainSection:Toggle("Chat Spam (xonae i had to remake this smh)",function(state)
     Client.Toggles.SpamChat = state
@@ -2680,14 +2498,7 @@ MiscTabSaveSection:Button("Load",function()
             end
         end
     end
-    getsenv(game.Players.LocalPlayer.PlayerGui.GUI.Main.Chats.DisplayChat).moveOldMessages()
-    getsenv(game.Players.LocalPlayer.PlayerGui.GUI.Main.Chats.DisplayChat).createNewMessage(
-        "Bolts Slave/Hooker",
-        "Loadded: "..a.." Features With "..b.." Errors",
-        _G.UIMainColor or Color3.fromRGB(255,0,0),
-        Color3.new(255,0,0),
-        .01
-    )
+   
 end)
 local MiscTabSaveSection=MiscTab:Section("Configs 2")
 MiscTabSaveSection:Button("Save",function()
@@ -2713,14 +2524,7 @@ MiscTabSaveSection:Button("Load",function()
             end
         end
     end
-    getsenv(game.Players.LocalPlayer.PlayerGui.GUI.Main.Chats.DisplayChat).moveOldMessages()
-    getsenv(game.Players.LocalPlayer.PlayerGui.GUI.Main.Chats.DisplayChat).createNewMessage(
-        "Bolts Slave/Hooker",
-        "Loadded: "..a.." Features With "..b.." Errors",
-        _G.UIMainColor or Color3.fromRGB(255,0,0),
-        Color3.new(255,0,0),
-        .01
-    )
+    
 end)
 local MiscTabSaveSection=MiscTab:Section("Configs 3")
 MiscTabSaveSection:Button("Save",function()
@@ -2746,14 +2550,7 @@ MiscTabSaveSection:Button("Load",function()
             end
         end
     end
-    getsenv(game.Players.LocalPlayer.PlayerGui.GUI.Main.Chats.DisplayChat).moveOldMessages()
-    getsenv(game.Players.LocalPlayer.PlayerGui.GUI.Main.Chats.DisplayChat).createNewMessage(
-        "Bolts Slave/Hooker",
-        "Loadded: "..a.." Features With "..b.." Errors",
-        _G.UIMainColor or Color3.fromRGB(255,0,0),
-        Color3.new(255,0,0),
-        .01
-    )
+    
 end)
 
 local E=Window:Tab("Info")
