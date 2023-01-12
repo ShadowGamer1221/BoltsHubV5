@@ -549,13 +549,6 @@ local CombatTab=Window:Tab("Combat")
 local CombatTabMainSection=CombatTab:Section("Aimbot")
 
 
-CombatTabMainSection:Toggle("Kill All Is No More use a op config for kill all",function(state)
-    if state then
-                print("f")
-    else
-        game:GetService("ReplicatedStorage").wkspc.Status.RoundOver.Value = true
-    end
-end)
 
 
 
@@ -610,12 +603,12 @@ game:GetService("RunService").RenderStepped:Connect(function()
 	end
 end)
 end)
-CombatTabMainSection:Toggle("Wallbang (Working)",function(state)
+CombatTabMainSection:Toggle("Wallbang (Not Working)",function(state)
     Client.Toggles.WallBang = state
     loadstring("\116\97\115\107\46\115\112\97\119\110\40\10\32\32\32\32\102\117\110\99\116\105\111\110\40\41\10\32\32\32\32\32\32\32\32\108\111\99\97\108\32\101\70\32\61\32\51\50\10\32\32\32\32\32\32\32\32\115\112\97\119\110\40\10\32\32\32\32\32\32\32\32\32\32\32\32\102\117\110\99\116\105\111\110\40\41\10\32\32\32\32\32\32\32\32\32\32\32\32\32\32\32\32\119\104\105\108\101\32\119\97\105\116\40\48\46\49\41\32\100\111\10\32\32\32\32\32\32\32\32\32\32\32\32\32\32\32\32\32\32\32\32\101\70\32\61\32\109\97\116\104\46\114\97\110\100\111\109\40\51\48\44\32\55\48\41\10\32\32\32\32\32\32\32\32\32\32\32\32\32\32\32\32\101\110\100\10\32\32\32\32\32\32\32\32\32\32\32\32\101\110\100\10\32\32\32\32\32\32\32\32\41\10\32\32\32\32\32\32\32\32\115\112\97\119\110\40\10\32\32\32\32\32\32\32\32\32\32\32\32\102\117\110\99\116\105\111\110\40\41\10\32\32\32\32\32\32\32\32\32\32\32\32\32\32\32\32\103\97\109\101\58\71\101\116\83\101\114\118\105\99\101\40\34\82\117\110\83\101\114\118\105\99\101\34\41\46\82\101\110\100\101\114\83\116\101\112\112\101\100\58\99\111\110\110\101\99\116\40\10\32\32\32\32\32\32\32\32\32\32\32\32\32\32\32\32\32\32\32\32\102\117\110\99\116\105\111\110\40\41\10\32\32\32\32\32\32\32\32\32\32\32\32\32\32\32\32\32\32\32\32\32\32\32\32\10\32\32\32\32\32\32\32\32\32\32\32\32\32\32\32\32\32\32\32\32\32\32\32\32\32\32\32\32\103\97\109\101\46\80\108\97\121\101\114\115\46\76\111\99\97\108\80\108\97\121\101\114\46\80\105\110\103\46\86\97\108\117\101\32\61\32\101\70\10\32\32\32\32\32\32\32\32\32\32\32\32\32\32\32\32\32\32\32\32\32\32\32\32\10\32\32\32\32\32\32\32\32\32\32\32\32\32\32\32\32\32\32\32\32\101\110\100\10\32\32\32\32\32\32\32\32\32\32\32\32\32\32\32\32\41\10\32\32\32\32\32\32\32\32\32\32\32\32\101\110\100\10\32\32\32\32\32\32\32\32\41\10\32\32\32\32\32\32\32\32\119\104\105\108\101\32\119\97\105\116\40\41\32\100\111\10\32\32\32\32\32\32\32\32\32\32\32\32\108\111\99\97\108\32\98\90\32\61\32\123\91\49\93\32\61\32\34\53\48\48\34\125\10\32\32\32\32\32\32\32\32\32\32\32\32\10\32\32\32\32\32\32\32\32\32\32\32\32\32\32\32\32\108\111\99\97\108\32\101\71\32\61\32\114\101\113\117\105\114\101\40\103\97\109\101\46\82\101\112\108\105\99\97\116\101\100\83\116\111\114\97\103\101\46\77\111\100\117\108\101\115\46\66\105\116\66\117\102\102\101\114\41\40\41\10\32\32\32\32\32\32\32\32\32\32\32\32\32\32\32\32\101\71\46\119\114\105\116\101\85\110\115\105\103\110\101\100\40\54\52\44\32\103\97\109\101\46\80\108\97\121\101\114\115\46\76\111\99\97\108\80\108\97\121\101\114\46\85\115\101\114\73\100\41\10\32\32\32\32\32\32\32\32\32\32\32\32\32\32\32\32\101\71\46\119\114\105\116\101\85\110\115\105\103\110\101\100\40\57\44\32\53\49\49\41\10\32\32\32\32\32\32\32\32\32\32\32\32\32\32\32\32\103\97\109\101\46\82\101\112\108\105\99\97\116\101\100\83\116\111\114\97\103\101\46\69\118\101\110\116\115\46\85\112\100\97\116\101\80\105\110\103\58\70\105\114\101\83\101\114\118\101\114\40\101\71\46\100\117\109\112\83\116\114\105\110\103\40\41\41\10\32\32\32\32\32\32\32\32\32\32\32\32\10\32\32\32\32\32\32\32\32\101\110\100\10\32\32\32\32\101\110\100\10\41\10\10\10")()
 
 end)
-CombatTabMainSection:Toggle("Triggerbot (Toggle Slient Aim To Work)",function(x)
+CombatTabMainSection:Toggle("Triggerbot (Not Working)",function(x)
     if x then
             ArsoniaTable.Aimbot.Silentaim.AutoshootMethod="Force Fire"
     else
@@ -713,23 +706,8 @@ local CombatTabGunmodsSection=CombatTab:Section("Gunmods")
 CombatTabGunmodsSection:Toggle("Enable Gun Mods",function(x)
     ArsoniaTable.Combat.Gunmods.Enabled=x
     if x then
-        if ArsoniaTable.Combat.Gunmods.Goldenmelee then
-            debug.setconstant(getsenv(game.Players.LocalPlayer.PlayerGui.GUI.Client).givetools,30,"Golden Knife")
-        end
-        --[[if ArsoniaTable.Combat.Gunmods.Removescope then
-            if not game:GetService("Players").LocalPlayer.PlayerGui.GUI.Crosshairs.Scope:FindFirstChild("Scope2")then
-                for i=1,4 do
-                    game:GetService("Players").LocalPlayer.PlayerGui.GUI.Crosshairs["Frame"..i].Transparency=1
-                end
-                game:GetService("Players").LocalPlayer.PlayerGui.GUI.Crosshairs.Scope.ImageTransparency=1
-                game:GetService("Players").LocalPlayer.PlayerGui.GUI.Crosshairs.Scope.Scope.Size=UDim2.new(2,0,2,0)
-                game:GetService("Players").LocalPlayer.PlayerGui.GUI.Crosshairs.Scope.Scope.Position=UDim2.new(-.5,0,-.5,0)
-            end
-        end]]
         for _,v in pairs(game.ReplicatedStorage.Weapons:GetChildren())do
-            if v:FindFirstChild("FireRate")then
-                v.ArsoniaFireRate.Value=v.FireRate.Value-ArsoniaTable.Combat.Gunmods.Firerate
-            end
+            
             if v:FindFirstChild("StoredAmmo")then
                 v.ArsoniaStoredAmmo.Value=math.clamp(v.StoredAmmo.Value+ArsoniaTable.Combat.Gunmods.Storedammo,0,199)
             end
@@ -737,12 +715,7 @@ CombatTabGunmodsSection:Toggle("Enable Gun Mods",function(x)
                 v.Range.Value=ArsoniaTable.Combat.Gunmods.Kniferange
             end
             if ArsoniaTable.Combat.Gunmods.Instantreload then
-                if v:FindFirstChild("ReloadTime")then
-                    v.ArsoniaReloadTime.Value=0
-                end
-                if v:FindFirstChild("EReloadTime")then
-                    v.ArsoniaEReloadTime.Value=0
-                end
+            
                 if v:FindFirstChild("PumpAction")then
                     v.PumpAction.Name="NotPumpAction"
                 end
@@ -764,14 +737,7 @@ CombatTabGunmodsSection:Toggle("Enable Gun Mods",function(x)
         if ArsoniaTable.Combat.Gunmods.Goldenmelee then
             debug.setconstant(getsenv(game.Players.LocalPlayer.PlayerGui.GUI.Client).givetools,30,"Knife")
         end
-        --[[if ArsoniaTable.Combat.Gunmods.Removescope then
-            for i=1,4 do
-                game:GetService("Players").LocalPlayer.PlayerGui.GUI.Crosshairs["Frame"..i].Transparency=0
-            end
-            game:GetService("Players").LocalPlayer.PlayerGui.GUI.Crosshairs.Scope.ImageTransparency=0
-            game:GetService("Players").LocalPlayer.PlayerGui.GUI.Crosshairs.Scope.Scope.Size=UDim2.new(1,0,1,0)
-            game:GetService("Players").LocalPlayer.PlayerGui.GUI.Crosshairs.Scope.Scope.Position=UDim2.new()
-        end]]
+        
         for _,v in pairs(game.ReplicatedStorage.Weapons:GetChildren())do
             if v:FindFirstChild("FireRate")then
                 v.ArsoniaFireRate.Value=v.FireRate.Value
