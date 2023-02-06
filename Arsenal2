@@ -52,8 +52,8 @@ Client = {
         Sight = false,
         FOV = false,
         Golden = true,
-        Test = true,
-        Testt = true,
+        Test = false,
+        Testt = false,
         Visiblecheck = false,
         SilentAim = false,
 
