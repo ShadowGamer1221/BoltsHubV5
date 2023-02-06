@@ -1,4 +1,33 @@
---Made By Bolts And The3Bakers
+local M = getrawmetatable(game)
+make_writeable(M)
+local N = M.__namecall
+M.__namecall =
+    newcclosure(
+    function(self, ...)
+        local O = getnamecallmethod()
+        if O == "Kick" then
+            wait(9e9)
+            return nil
+        end
+        if self.Name == "Peep" then
+            wait(9e9)
+            return nil
+        end
+        if self.Name == "Ban" then
+            wait(9e9)
+            return nil
+        end
+        if self.Name == "Ban2" then
+            wait(9e9)
+            return nil
+        end
+        if self.Name == "NewYear" and O == "FireServer" then
+            wait(9e9)
+            return nil
+        end
+        return N(self, ...)
+    end
+)
 
 Library=loadstring(game:HttpGet("https://pastebin.com/raw/bfSMHFwJ"))()
 
@@ -531,7 +560,7 @@ local ArsoniaTable={
 }
 
 
-local name="Bolts Ware v10 - Fully Undetected - "..identifyexecutor()..""
+local name="Thunder Client - Fully Undetected - "..identifyexecutor()..""
 
 if _G.Funnyname then
     local Prefix={"Epic","","Working"}
@@ -543,13 +572,18 @@ if _G.Funnyname then
     if math.random(0,1)==1 then VersionSuffix=VersionSuffix..VersionSuffix[math.random(1,#VersionSuffix)]end
     name=Prefix[math.random(1,#Prefix)].." "..Names[math.random(1,#Names)]..Suffix[math.random(1,#Suffix)].." V"..Version..VersionSuffix[math.random(1,#VersionSuffix)]
 end
-local Window=Library:Window(name,Color3.fromRGB(196, 0, 255),700,Color3.fromRGB(196, 0, 255),700)
+local Window=Library:Window(name,Color3.fromRGB(127, 255, 212),700,Color3.fromRGB(127, 255, 212),700)
 
 local CombatTab=Window:Tab("Combat")
 local CombatTabMainSection=CombatTab:Section("Aimbot")
 
 
+CombatTabMainSection:Toggle("Kill All (soon)",function(x)
+    
+    end)
+CombatTabMainSection:Toggle("Kill Aura (soon)",function(x)
 
+end)
 
 
 CombatTabMainSection:Toggle("Silent Aim",function(x)
@@ -603,21 +637,43 @@ game:GetService("RunService").RenderStepped:Connect(function()
 	end
 end)
 end)
-CombatTabMainSection:Toggle("Wallbang (Still Not Working)",function(state)
+CombatTabMainSection:Toggle("Wallbang (Working)",function(state)
     Client.Toggles.WallBang = state
     task.spawn(
     function()
-        local eK = 32
-            local eL = require(game.ReplicatedStorage.Modules.BitBuffer)()
-            eL.writeUnsigned(64, game.Players.LocalPlayer.UserId)
-            eL.writeUnsigned(9, 511)
-            game.ReplicatedStorage.Events.UpdatePing:FireServer(eL.dumpString())
-        
+        local eF = 32
+        spawn(
+            function()
+                while wait(0.1) do
+                    eF = math.random(30, 70)
+                end
+            end
+        )
+        spawn(
+            function()
+                game:GetService("RunService").RenderStepped:connect(
+                    function()
+                        
+                            game.Players.LocalPlayer.Ping.Value = eF
+                        
+                    end
+                )
+            end
+        )
+        while wait() do
+            local bZ = {[1] = "500"}
+            
+                local eG = require(game.ReplicatedStorage.Modules.BitBuffer)()
+                eG.writeUnsigned(64, game.Players.LocalPlayer.UserId)
+                eG.writeUnsigned(9, 511)
+                game.ReplicatedStorage.Events.UpdatePing:FireServer(eG.dumpString())
+            
+        end
     end
 )
 
 end)
-CombatTabMainSection:Toggle("Triggerbot ( Still Not Working)",function(x)
+CombatTabMainSection:Toggle("Triggerbot (Working)",function(x)
     if x then
             ArsoniaTable.Aimbot.Silentaim.AutoshootMethod="Force Fire"
     else
@@ -2506,7 +2562,7 @@ end)
 W:Button("If you want to donate to me",function()
     print("Button Pressed")
 end)
-W:Button("inno is a bitch edited on 9/13/22",function()
+W:Button("we have rebranded again welcoem to tunder client",function()
     print("Button Pressed")
 end)
 W:Button("Cash App : $Bolts.GG",function()
