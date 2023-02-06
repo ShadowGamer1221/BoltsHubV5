@@ -699,13 +699,14 @@ spawn(function()
 end)
 
 
-
-
-
-
-CombatTabMainSection:Toggle("Kill Aura (Toggle Kill All On And Off To Work)",function(x)
-while true do wait(0.1)
-for r, c in pairs(game.Players:GetPlayers()) do
+CombatTabMainSection:Toggle("Kill Aura",function(state)
+    Client.Toggles.Testt = state
+end)
+spawn(function()
+    while true do
+        wait(.01)
+        if Client.Toggles.Testt == true then
+        for r, c in pairs(game.Players:GetPlayers()) do
                     if
                         c and c ~= game.Players.LocalPlayer and c.Character and c.Character:FindFirstChild("Head") and
                             c.Character:FindFirstChild("Spawned") and
@@ -720,10 +721,15 @@ for r, c in pairs(game.Players:GetPlayers()) do
                         end
                     end
                 end
-            
-end
-
+        --here
+        wait(0.1)
+        end
+    end
 end)
+
+
+
+
 
 
 CombatTabMainSection:Toggle("Silent Aim",function(x)
