@@ -2409,7 +2409,7 @@ game:GetService("ReplicatedStorage").Events.PlayerChatted:FireServer(unpack(args
 ]]--
 
 
-MiscTabMainSection:Textbox("Custom Chat Message","xonaes Anti Cheat Updates Are Nothing But Pathetic (Bolts Ware V10 On Top)",function(x)
+MiscTabMainSection:Textbox("Custom Chat Message","Thunder Client On Top!",function(x)
 		Client.Values.ChatMsg = tostring(x)
 	end)
 
