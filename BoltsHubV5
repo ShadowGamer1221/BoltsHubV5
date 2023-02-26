@@ -1,5 +1,3 @@
--- Function/Variable Defining
-
 local darkCore = {}
 darkCore.makeDraggable = function(gui)
     local UserInputService = game:GetService("UserInputService")
@@ -39,14 +37,14 @@ end
 -- Check for Other Instances
 
 for i,v in next, game:GetService("CoreGui"):GetChildren() do
-	if v.Name == "DarkHub" then
+	if v.Name == "ThunderClient" then
 		v:Destroy()
 	end
 end
 
 -- Main Interfacing
 
-local DarkHub = Instance.new("ScreenGui")
+local ThunderClient = Instance.new("ScreenGui")
 local Background = Instance.new("Frame")
 local TopBar = Instance.new("Frame")
 local TitleText = Instance.new("TextLabel")
@@ -67,11 +65,11 @@ local CreditsValue = Instance.new("TextLabel")
 local BackButtonBack = Instance.new("ImageLabel")
 local BackIcon = Instance.new("ImageLabel")
 local BackButton = Instance.new("TextButton")
-DarkHub.Name = "DarkHub"
-DarkHub.Parent = game:GetService("CoreGui")
+ThunderClient.Name = "ThunderClient"
+ThunderClient.Parent = game:GetService("CoreGui")
 
 Background.Name = "Background"
-Background.Parent = DarkHub
+Background.Parent = ThunderClient
 Background.Active = true
 Background.ClipsDescendants = true
 Background.BackgroundColor3 = Color3.fromRGB(45, 45, 45)
@@ -93,7 +91,7 @@ TitleText.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 TitleText.BackgroundTransparency = 1.000
 TitleText.Size = UDim2.new(0, 400, 0, 35)
 TitleText.Font = Enum.Font.GothamSemibold
-TitleText.Text = "Bolts Hub v6 - "..identifyexecutor()..""
+TitleText.Text = "Thunder Client - "..identifyexecutor()..""
 
 TitleText.TextColor3 = Color3.fromRGB(255, 255, 255)
 TitleText.TextSize = 20.000
@@ -266,7 +264,7 @@ CreditsLabel.BorderSizePixel = 0
 CreditsLabel.Position = UDim2.new(0.00642135181, 0, -0.156518772, 0)
 CreditsLabel.Size = UDim2.new(1, 0, 0.156518787, 0)
 CreditsLabel.Font = Enum.Font.GothamSemibold
-CreditsLabel.Text = "DarkHub Credits"
+CreditsLabel.Text = "Thunder Client Credits"
 CreditsLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
 CreditsLabel.TextSize = 14.000
 
@@ -277,15 +275,14 @@ CreditsValue.BackgroundTransparency = 1.000
 CreditsValue.BorderSizePixel = 0
 CreditsValue.Size = UDim2.new(1, 0, 1, 0)
 CreditsValue.Font = Enum.Font.GothamSemibold
-CreditsValue.Text = "test"
+CreditsValue.Text = "Thunder Client"
 CreditsValue.TextColor3 = Color3.fromRGB(255, 255, 255)
 CreditsValue.TextSize = 14.000
 
 local ClickSound = Instance.new("Sound")
 ClickSound.Volume = 1
-ClickSound.Parent = DarkHub
+ClickSound.Parent = ThunderClient
 ClickSound.SoundId = "rbxassetid://1238528678"
-
 
 
 BackButton.MouseButton1Click:Connect(function()
