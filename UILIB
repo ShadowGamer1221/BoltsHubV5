@@ -26,6 +26,7 @@ function Library:Window(a, b, c, e)
     local q = Instance.new("UIListLayout")
     local r = Instance.new("Frame")
     local s
+    local RainbowCum = Color3.new()
     getgenv().ArsoniaSettings = {}
     getgenv().ArsoniaNum = 1
     getgenv().WindowThemeColor = b
@@ -131,12 +132,26 @@ function Library:Window(a, b, c, e)
     local function y(z, A)
         return game:GetService("TweenService"):Create(z, TweenInfo.new(0.5, Enum.EasingStyle.Quint), A):Play()
     end
+    local DESCS_LOL = {}
+    spawn(function()
+        while wait(0.5) do
+            DESCS_LOL = p:GetDescendants()
+        end
+    end)
+    spawn(function()
+        while game.RunService.RenderStepped:Wait() do
+            for az = 0, 1, 0.0023 do
+                game.RunService.RenderStepped:Wait()
+                RainbowCum = Color3.fromHSV(az, 1, 1)
+            end
+        end
+    end)
     h.RenderStepped:Connect(
         function()
             o.TextColor3 = getgenv().TitleColor
             framePosLeft = 1
             framePosRight = 1
-            for t, B in next, p:GetChildren() do
+            for _, B in next, p:GetChildren() do
                 B.Position = UDim2.new(-0.00377, 0, 0, framePosLeft - 2)
                 framePosLeft = framePosLeft + B.Size.Y.Offset + 5
                 if p.Size.Y.Offset - framePosLeft + 7 < 0 then
@@ -149,16 +164,18 @@ function Library:Window(a, b, c, e)
             end
             ZIndexNum = 0
             ZIndexMax = 0
-            local sfwrwgwgwr = p:GetDescendants()
-            for _, C in next, sfwrwgwgwr do
+            for _, C in next, DESCS_LOL do
                 if C.Name == "Section" or C.Name == "Dropdown" or C.Name == "Color" then
                     ZIndexMax = ZIndexMax + 1
                 end
             end
-            for _, C in next, sfwrwgwgwr do
+            for _, C in next, DESCS_LOL do
                 if C.Name == "Section" or C.Name == "Dropdown" or C.Name == "Color" then
                     C.ZIndex = 2 + ZIndexMax - ZIndexNum
                     ZIndexNum = ZIndexNum + 1
+                end
+                if C.Name == "fuck_this_shit_bro" then
+                    C.BackgroundColor3 = getgenv().WindowThemeColor
                 end
             end
         end
@@ -213,13 +230,13 @@ function Library:Window(a, b, c, e)
             end
             D.TextXAlignment = Enum.TextXAlignment.Left
             while TabCounter == 0 do
-                for t, F in next, r:GetChildren() do
+                for _, F in next, r:GetChildren() do
                     if F:IsA("TextButton") then
                         altersize(F)
                         TabCounter = TabCounter + 1
                         if TabCounter == 1 then
                             F.TextColor3 = Color3.fromRGB(255, 255, 255)
-                            for t, H in next, F.Contents:GetChildren() do
+                            for _, H in next, F.Contents:GetChildren() do
                                 s = F
                                 H.Visible = true
                                 H.Parent = p
@@ -352,6 +369,7 @@ function Library:Window(a, b, c, e)
                 W.AutoButtonColor = false
                 W.Font = Enum.Font.RobotoMono
                 W.Text = ""
+                W.Name = "nah_bro"
                 W.TextColor3 = Color3.new(1, 1, 1)
                 W.TextSize = 14
                 W.TextStrokeTransparency = 0.4
@@ -370,8 +388,10 @@ function Library:Window(a, b, c, e)
                 local funnn2 = function(Z)
                     if not Z then
                         y(W, {BackgroundColor3 = Color3.fromRGB(45, 45, 45)})
+                        W.Name = "love_this_shit_bro"
                     else
                         y(W, {BackgroundColor3 = getgenv().WindowThemeColor})
+                        W.Name = "fuck_this_shit_bro"
                     end
                     T(Z)
                     getgenv().ArsoniaSettings[V] = {SetVal = funnn2, Val = {Z}}
@@ -381,19 +401,14 @@ function Library:Window(a, b, c, e)
                     function()
                         if Y then
                             y(W, {BackgroundColor3 = Color3.fromRGB(45, 45, 45)})
+                            W.Name = "love_this_shit_bro"
                         else
                             y(W, {BackgroundColor3 = getgenv().WindowThemeColor})
+                            W.Name = "fuck_this_shit_bro"
                         end
                         Y = not Y
                         T(Y)
                         getgenv().ArsoniaSettings[V] = {SetVal = funnn2, Val = {Y}}
-                    end
-                )
-                h.RenderStepped:Connect(
-                    function()
-                        if Y then
-                            W.BackgroundColor3 = getgenv().WindowThemeColor
-                        end
                     end
                 )
                 getgenv().ArsoniaSettings[V] = {SetVal = funnn2, Val = {Y}}
@@ -636,20 +651,6 @@ function Library:Window(a, b, c, e)
                     g.MouseIconEnabled = true
                     return nil
                 end
-                if not getgenv().Rainbowd then
-                    getgenv().Rainbowd = true
-                    spawn(
-                        function()
-                            repeat
-                                game.RunService.RenderStepped:Wait()
-                                for az = 0, 1, 0.0023 do
-                                    game.RunService.RenderStepped:Wait()
-                                    getgenv()["RainbowCum"] = Color3.fromHSV(az, 1, 1)
-                                end
-                            until nil
-                        end
-                    )
-                end
                 if _ and type(_) == "userdata" then
                     al(_)
                 else
@@ -687,7 +688,7 @@ function Library:Window(a, b, c, e)
                         h.RenderStepped:Connect(
                             function()
                                 if aj then
-                                    al(getgenv()["RainbowCum"])
+                                    al(RainbowCum)
                                 end
                             end
                         )
@@ -730,25 +731,12 @@ function Library:Window(a, b, c, e)
                     end
                 )
             end
-            function S:Dropdown(...)
+            function S:Dropdown(pressff, tbllol, funclol)
                 local aB = Instance.new("TextLabel")
                 local U = Instance.new("TextButton")
                 local l = Instance.new("Frame")
                 local aC = Instance.new("UIListLayout")
-                local aD
-                local aE
-                local T
-                local a
-                for t, aF in next, {...} do
-                    aD = type(aF)
-                    if aD == "table" then
-                        aE = aF
-                    elseif aD == "function" then
-                        T = aF
-                    elseif aD == "string" then
-                        a = aF
-                    end
-                end
+                local T = funclol
                 local V = getgenv().ArsoniaNum
                 getgenv().ArsoniaNum = getgenv().ArsoniaNum + 1
                 aB.Name = "Dropdown"
@@ -759,7 +747,7 @@ function Library:Window(a, b, c, e)
                 aB.Size = UDim2.new(0, 178, 0, 39)
                 aB.ZIndex = 2
                 aB.Font = Enum.Font.RobotoMono
-                aB.Text = a
+                aB.Text = pressff
                 aB.TextColor3 = Color3.new(0.301961, 0.301961, 0.301961)
                 aB.TextSize = 14
                 aB.TextStrokeTransparency = 0.40000000596046
@@ -773,7 +761,7 @@ function Library:Window(a, b, c, e)
                 U.Size = UDim2.new(0, 223, 0, 18)
                 U.AutoButtonColor = false
                 U.Font = Enum.Font.RobotoMono
-                U.Text = " " .. aE[1]
+                U.Text = " " .. tbllol[1]
                 U.TextColor3 = Color3.new(1, 1, 1)
                 U.TextSize = 14
                 U.TextStrokeTransparency = 0.40000000596046
@@ -789,7 +777,7 @@ function Library:Window(a, b, c, e)
                 aC.Parent = l
                 aC.SortOrder = Enum.SortOrder.LayoutOrder
                 local function aG(aH, aI)
-                    y(l, {Size = UDim2.new(0, 223, 0, (#aE - 1) * aH)})
+                    y(l, {Size = UDim2.new(0, 223, 0, (#tbllol - 1) * aH)})
                     for t, a0 in next, l:GetChildren() do
                         if a0:IsA("TextButton") and a0 ~= U then
                             y(a0, {Size = UDim2.new(0, 223, 0, aH)})
@@ -798,7 +786,7 @@ function Library:Window(a, b, c, e)
                     wait(aI)
                     l.Visible = not l.Visible
                 end
-                local Y = aE[1]
+                local Y = tbllol[1]
                 local aJ = {}
                 local funnn2 = function(D)
                     aJ[D]()
@@ -837,7 +825,7 @@ function Library:Window(a, b, c, e)
                     U.MouseButton1Click:Connect(aL)
                     return U
                 end
-                T(aE[1])
+                T(tbllol[1])
                 U.MouseButton1Click:Connect(
                     function()
                         if l.Visible then
@@ -853,7 +841,7 @@ function Library:Window(a, b, c, e)
                         a0.Visible = true
                     end
                 end
-                for aM, aN in next, aE do
+                for aM, aN in next, tbllol do
                     local T = createfunc(aN, T)
                     if aM == 1 then
                         T.Visible = false
@@ -1465,18 +1453,12 @@ function Library:Window(a, b, c, e)
                 be.TextSize = 14
                 be.TextStrokeTransparency = 0.4
                 be.TextXAlignment = Enum.TextXAlignment.Left
+                l.Name = "fuck_this_shit_bro"
                 l.Parent = be
                 l.BackgroundColor3 = getgenv().WindowThemeColor
                 l.BorderSizePixel = 0
                 l.Position = UDim2.new(0, 0, 1, 0)
                 l.Size = UDim2.new(0, 1, 0, 0)
-                spawn(
-                    function()
-                        while wait() do
-                            l.BackgroundColor3 = getgenv().WindowThemeColor
-                        end
-                    end
-                )
                 be.Focused:Connect(
                     function()
                         l.Size = UDim2.new(0, 1, 0, 1)
