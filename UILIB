@@ -1,5 +1,9 @@
 local Library = {}
-function Library:Window(a, b, c, e)
+function Library:Window(b)
+    -- sufi is dum shit ~ edited by AndrewDarkyy#7782
+    -- yo sufi emo girl u can sack my balls
+    -- and this ui lib is ur daddy, sufi dum shit stupid jerk
+    -- and ur so dum 😘 (ligma balls)
     local f = game:GetService("CoreGui")
     local g = game:GetService("UserInputService")
     local h = game:GetService("RunService")
@@ -32,11 +36,11 @@ function Library:Window(a, b, c, e)
     getgenv().WindowThemeColor = b
     getgenv().GuiToggle = Enum.KeyCode.RightShift
     for _, u in next, f:GetChildren() do
-        if u.Name == a then
+        if u.Name == "tcv10" then
             u:Destroy()
         end
     end
-    i.Name = a
+    i.Name = "tcv10"
     i.Parent = f
     i.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
     i.DisplayOrder = 1
@@ -64,7 +68,7 @@ function Library:Window(a, b, c, e)
     k.BackgroundColor3 = Color3.new(0.0509804, 0.0509804, 0.0509804)
     k.BorderColor3 = Color3.new(0, 0, 0)
     k.Position = UDim2.new(-0.001, 0, 0.023466019, 0)
-    k.Size = UDim2.new(0, 513, 0, c)
+    k.Size = UDim2.new(0, 513, 0, 700)
     l.Parent = k
     l.BackgroundColor3 = Color3.new(0.0862745, 0.0862745, 0.0862745)
     l.BorderColor3 = Color3.new(0, 0, 0)
@@ -87,9 +91,9 @@ function Library:Window(a, b, c, e)
     o.BackgroundColor3 = Color3.new(1, 1, 1)
     o.BackgroundTransparency = 1
     o.Position = UDim2.new(0.0137524558, 0, 0.00199999125, 0)
-    o.Size = UDim2.new(0, #a * 6.833333333333333, 0, 23)
+    o.Size = UDim2.new(0, #getgenv().TitleText * 6.833333333333333, 0, 23)
     o.Font = Enum.Font.RobotoMono
-    o.Text = a
+    o.Text = getgenv().TitleText
     o.TextSize = 14
     o.TextColor3 = o.TextColor3
     o.TextStrokeTransparency = 0.4
@@ -110,7 +114,7 @@ function Library:Window(a, b, c, e)
     x.Position = UDim2.new(0.0155808367, 0, 0.0434783697, 0)
     x.Size = UDim2.new(0, 495, 0, l.Size.Y.Offset - 21)
     x.ScrollBarImageTransparency = 1
-    x.CanvasSize = UDim2.new(0, 495, 0, l.Size.Y.Offset + e)
+    x.CanvasSize = UDim2.new(0, 495, 0, l.Size.Y.Offset + 700)
     p.Name = "Content"
     p.Parent = x
     p.BackgroundColor3 = Color3.new(0, 0, 0)
@@ -135,6 +139,8 @@ function Library:Window(a, b, c, e)
     local DESCS_LOL = {}
     spawn(function()
         while wait(0.5) do
+            o.Size = UDim2.new(0, #getgenv().TitleText * 6.833333333333333, 0, 23)
+            o.Text = getgenv().TitleText
             DESCS_LOL = p:GetDescendants()
         end
     end)
@@ -732,122 +738,243 @@ function Library:Window(a, b, c, e)
                 )
             end
             function S:Dropdown(pressff, tbllol, funclol)
-                local aB = Instance.new("TextLabel")
-                local U = Instance.new("TextButton")
-                local l = Instance.new("Frame")
-                local aC = Instance.new("UIListLayout")
-                local T = funclol
-                local V = getgenv().ArsoniaNum
-                getgenv().ArsoniaNum = getgenv().ArsoniaNum + 1
-                aB.Name = "Dropdown"
-                aB.Parent = P
-                aB.BackgroundColor3 = Color3.new(1, 1, 1)
-                aB.BackgroundTransparency = 1
-                aB.Position = UDim2.new(0, 0, 2.39047599, 0)
-                aB.Size = UDim2.new(0, 178, 0, 39)
-                aB.ZIndex = 2
-                aB.Font = Enum.Font.RobotoMono
-                aB.Text = pressff
-                aB.TextColor3 = Color3.new(0.301961, 0.301961, 0.301961)
-                aB.TextSize = 14
-                aB.TextStrokeTransparency = 0.40000000596046
-                aB.TextXAlignment = Enum.TextXAlignment.Left
-                aB.TextYAlignment = Enum.TextYAlignment.Top
-                U.Name = "Button"
-                U.Parent = aB
-                U.BackgroundColor3 = Color3.new(0.192157, 0.192157, 0.192157)
-                U.BorderColor3 = Color3.new(0, 0, 0)
-                U.Position = UDim2.new(-0.0140000004, 0, 0.48, 0)
-                U.Size = UDim2.new(0, 223, 0, 18)
-                U.AutoButtonColor = false
-                U.Font = Enum.Font.RobotoMono
-                U.Text = " " .. tbllol[1]
-                U.TextColor3 = Color3.new(1, 1, 1)
-                U.TextSize = 14
-                U.TextStrokeTransparency = 0.40000000596046
-                U.TextXAlignment = Enum.TextXAlignment.Left
-                l.Parent = U
-                l.BackgroundColor3 = Color3.new(0.192157, 0.192157, 0.192157)
-                l.BorderColor3 = Color3.new(0, 0, 0)
-                l.BorderSizePixel = 1
-                l.Position = UDim2.new(0, 0, 1.05, 0)
-                l.Size = UDim2.new(0, 223, 0, 0)
-                l.Visible = false
-                l.ZIndex = 2
-                aC.Parent = l
-                aC.SortOrder = Enum.SortOrder.LayoutOrder
-                local function aG(aH, aI)
-                    y(l, {Size = UDim2.new(0, 223, 0, (#tbllol - 1) * aH)})
-                    for t, a0 in next, l:GetChildren() do
-                        if a0:IsA("TextButton") and a0 ~= U then
-                            y(a0, {Size = UDim2.new(0, 223, 0, aH)})
-                        end
-                    end
-                    wait(aI)
-                    l.Visible = not l.Visible
-                end
-                local Y = tbllol[1]
-                local aJ = {}
-                local funnn2 = function(D)
-                    aJ[D]()
-                    aG(0, 0.1)
-                end
-                function createfunc(a, aK)
+                if #tbllol > 50 then  
+                    local aB = Instance.new("TextLabel")
                     local U = Instance.new("TextButton")
+                    local l = Instance.new("ScrollingFrame")
+                    local aC = Instance.new("UIListLayout")
+                    local T = funclol
+                    local V = getgenv().ArsoniaNum
+                    getgenv().ArsoniaNum = getgenv().ArsoniaNum + 1
+                    aB.Name = "Dropdown"
+                    aB.Parent = P
+                    aB.BackgroundColor3 = Color3.new(1, 1, 1)
+                    aB.BackgroundTransparency = 1
+                    aB.Position = UDim2.new(0, 0, 2.39047599, 0)
+                    aB.Size = UDim2.new(0, 178, 0, 39)
+                    aB.ZIndex = 2
+                    aB.Font = Enum.Font.RobotoMono
+                    aB.Text = pressff
+                    aB.TextColor3 = Color3.new(0.301961, 0.301961, 0.301961)
+                    aB.TextSize = 14
+                    aB.TextStrokeTransparency = 0.40000000596046
+                    aB.TextXAlignment = Enum.TextXAlignment.Left
+                    aB.TextYAlignment = Enum.TextYAlignment.Top
                     U.Name = "Button"
-                    U.Parent = l
+                    U.Parent = aB
                     U.BackgroundColor3 = Color3.new(0.192157, 0.192157, 0.192157)
                     U.BorderColor3 = Color3.new(0, 0, 0)
-                    U.BorderSizePixel = 0
-                    U.Position = UDim2.new(-0.0140000004, 0, 0.519999981, 0)
-                    U.Size = UDim2.new(0, 223, 0, 0)
+                    U.Position = UDim2.new(-0.0140000004, 0, 0.48, 0)
+                    U.Size = UDim2.new(0, 223, 0, 18)
                     U.AutoButtonColor = false
                     U.Font = Enum.Font.RobotoMono
-                    U.Text = " " .. a
+                    U.Text = " " .. tbllol[1]
                     U.TextColor3 = Color3.new(1, 1, 1)
                     U.TextSize = 14
                     U.TextStrokeTransparency = 0.40000000596046
                     U.TextXAlignment = Enum.TextXAlignment.Left
-                    local function aL()
-                        aK(a)
-                        Y = a
-                        U.Visible = false
-                        l.Parent.Text = " " .. a
-                        aG(0, 0.09)
+                    l.Parent = U
+                    l.BackgroundColor3 = Color3.new(0.192157, 0.192157, 0.192157)
+                    l.BorderColor3 = Color3.new(0, 0, 0)
+                    l.BorderSizePixel = 1
+                    l.Position = UDim2.new(0, 0, 1.05, 0)
+                    l.Size = UDim2.new(0, 223, 0, 0)
+                    l.Visible = false
+                    l.ZIndex = 2
+                    l.ScrollingDirection = "Y"
+                    aC.Parent = l
+                    aC.SortOrder = Enum.SortOrder.LayoutOrder
+                    local function aG(aH, aI)
+                        y(l, {Size = UDim2.new(0, 223, 0, 110)})
                         for t, a0 in next, l:GetChildren() do
                             if a0:IsA("TextButton") and a0 ~= U then
-                                a0.Visible = true
+                                y(a0, {Size = UDim2.new(0, 223, 0, aH)})
                             end
                         end
-                        getgenv().ArsoniaSettings[V] = {SetVal = funnn2, Val = {Y}}
+                        wait(aI)
+                        l.Visible = not l.Visible
                     end
-                    aJ[a] = aL
-                    U.MouseButton1Click:Connect(aL)
-                    return U
-                end
-                T(tbllol[1])
-                U.MouseButton1Click:Connect(
-                    function()
-                        if l.Visible then
-                            aG(0, 0.1)
-                            wait(0.15)
-                        else
-                            aG(18, 0.02)
+                    local Y = tbllol[1]
+                    local aJ = {}
+                    local funnn2 = function(D)
+                        aJ[D]()
+                        aG(0, 0.1)
+                    end
+                    function createfunc(a, aK)
+                        local U = Instance.new("TextButton")
+                        U.Name = "Button"
+                        U.Parent = l
+                        U.BackgroundColor3 = Color3.new(0.192157, 0.192157, 0.192157)
+                        U.BorderColor3 = Color3.new(0, 0, 0)
+                        U.BorderSizePixel = 0
+                        U.Position = UDim2.new(-0.0140000004, 0, 0.519999981, 0)
+                        U.Size = UDim2.new(0, 223, 0, 0)
+                        U.AutoButtonColor = false
+                        U.Font = Enum.Font.RobotoMono
+                        U.Text = " " .. a
+                        U.TextColor3 = Color3.new(1, 1, 1)
+                        U.TextSize = 14
+                        U.TextStrokeTransparency = 0.40000000596046
+                        U.TextXAlignment = Enum.TextXAlignment.Left
+                        local function aL()
+                            aK(a)
+                            Y = a
+                            U.Visible = false
+                            l.Parent.Text = " " .. a
+                            aG(0, 0.09)
+                            for t, a0 in next, l:GetChildren() do
+                                if a0:IsA("TextButton") and a0 ~= U then
+                                    a0.Visible = true
+                                end
+                            end
+                            getgenv().ArsoniaSettings[V] = {SetVal = funnn2, Val = {Y}}
+                        end
+                        aJ[a] = aL
+                        U.MouseButton1Click:Connect(aL)
+                        return U
+                    end
+                    T(tbllol[1])
+                    U.MouseButton1Click:Connect(
+                        function()
+                            if l.Visible then
+                                aG(0, 0.1)
+                                wait(0.15)
+                            else
+                                aG(18, 0.02)
+                            end
+                        end
+                    )
+                    l.CanvasSize = UDim2.new(#tbllol - 11, #tbllol - 11, #tbllol - 11, #tbllol - 11)
+                    for _, a0 in next, l:GetChildren() do
+                        if a0:IsA("TextButton") and a0 ~= U then
+                            a0.Visible = true
                         end
                     end
-                )
-                for t, a0 in next, l:GetChildren() do
-                    if a0:IsA("TextButton") and a0 ~= U then
-                        a0.Visible = true
+                    for aM, aN in next, tbllol do
+                        local T = createfunc(aN, T)
+                        if aM == 1 then
+                            T.Visible = false
+                        end
                     end
-                end
-                for aM, aN in next, tbllol do
-                    local T = createfunc(aN, T)
-                    if aM == 1 then
-                        T.Visible = false
+                    getgenv().ArsoniaSettings[V] = {SetVal = funnn2, Val = {Y}}
+                else
+                    local aB = Instance.new("TextLabel")
+                    local U = Instance.new("TextButton")
+                    local l = Instance.new("Frame")
+                    local aC = Instance.new("UIListLayout")
+                    local T = funclol
+                    local V = getgenv().ArsoniaNum
+                    getgenv().ArsoniaNum = getgenv().ArsoniaNum + 1
+                    aB.Name = "Dropdown"
+                    aB.Parent = P
+                    aB.BackgroundColor3 = Color3.new(1, 1, 1)
+                    aB.BackgroundTransparency = 1
+                    aB.Position = UDim2.new(0, 0, 2.39047599, 0)
+                    aB.Size = UDim2.new(0, 178, 0, 39)
+                    aB.ZIndex = 2
+                    aB.Font = Enum.Font.RobotoMono
+                    aB.Text = pressff
+                    aB.TextColor3 = Color3.new(0.301961, 0.301961, 0.301961)
+                    aB.TextSize = 14
+                    aB.TextStrokeTransparency = 0.40000000596046
+                    aB.TextXAlignment = Enum.TextXAlignment.Left
+                    aB.TextYAlignment = Enum.TextYAlignment.Top
+                    U.Name = "Button"
+                    U.Parent = aB
+                    U.BackgroundColor3 = Color3.new(0.192157, 0.192157, 0.192157)
+                    U.BorderColor3 = Color3.new(0, 0, 0)
+                    U.Position = UDim2.new(-0.0140000004, 0, 0.48, 0)
+                    U.Size = UDim2.new(0, 223, 0, 18)
+                    U.AutoButtonColor = false
+                    U.Font = Enum.Font.RobotoMono
+                    U.Text = " " .. tbllol[1]
+                    U.TextColor3 = Color3.new(1, 1, 1)
+                    U.TextSize = 14
+                    U.TextStrokeTransparency = 0.40000000596046
+                    U.TextXAlignment = Enum.TextXAlignment.Left
+                    l.Parent = U
+                    l.BackgroundColor3 = Color3.new(0.192157, 0.192157, 0.192157)
+                    l.BorderColor3 = Color3.new(0, 0, 0)
+                    l.BorderSizePixel = 1
+                    l.Position = UDim2.new(0, 0, 1.05, 0)
+                    l.Size = UDim2.new(0, 223, 0, 0)
+                    l.Visible = false
+                    l.ZIndex = 2
+                    aC.Parent = l
+                    aC.SortOrder = Enum.SortOrder.LayoutOrder
+                    local function aG(aH, aI)
+                        y(l, {Size = UDim2.new(0, 223, 0, (#tbllol - 1) * aH)})
+                        for t, a0 in next, l:GetChildren() do
+                            if a0:IsA("TextButton") and a0 ~= U then
+                                y(a0, {Size = UDim2.new(0, 223, 0, aH)})
+                            end
+                        end
+                        wait(aI)
+                        l.Visible = not l.Visible
                     end
+                    local Y = tbllol[1]
+                    local aJ = {}
+                    local funnn2 = function(D)
+                        aJ[D]()
+                        aG(0, 0.1)
+                    end
+                    function createfunc(a, aK)
+                        local U = Instance.new("TextButton")
+                        U.Name = "Button"
+                        U.Parent = l
+                        U.BackgroundColor3 = Color3.new(0.192157, 0.192157, 0.192157)
+                        U.BorderColor3 = Color3.new(0, 0, 0)
+                        U.BorderSizePixel = 0
+                        U.Position = UDim2.new(-0.0140000004, 0, 0.519999981, 0)
+                        U.Size = UDim2.new(0, 223, 0, 0)
+                        U.AutoButtonColor = false
+                        U.Font = Enum.Font.RobotoMono
+                        U.Text = " " .. a
+                        U.TextColor3 = Color3.new(1, 1, 1)
+                        U.TextSize = 14
+                        U.TextStrokeTransparency = 0.40000000596046
+                        U.TextXAlignment = Enum.TextXAlignment.Left
+                        local function aL()
+                            aK(a)
+                            Y = a
+                            U.Visible = false
+                            l.Parent.Text = " " .. a
+                            aG(0, 0.09)
+                            for t, a0 in next, l:GetChildren() do
+                                if a0:IsA("TextButton") and a0 ~= U then
+                                    a0.Visible = true
+                                end
+                            end
+                            getgenv().ArsoniaSettings[V] = {SetVal = funnn2, Val = {Y}}
+                        end
+                        aJ[a] = aL
+                        U.MouseButton1Click:Connect(aL)
+                        return U
+                    end
+                    T(tbllol[1])
+                    U.MouseButton1Click:Connect(
+                        function()
+                            if l.Visible then
+                                aG(0, 0.1)
+                                wait(0.15)
+                            else
+                                aG(18, 0.02)
+                            end
+                        end
+                    )
+                    for t, a0 in next, l:GetChildren() do
+                        if a0:IsA("TextButton") and a0 ~= U then
+                            a0.Visible = true
+                        end
+                    end
+                    for aM, aN in next, tbllol do
+                        local T = createfunc(aN, T)
+                        if aM == 1 then
+                            T.Visible = false
+                        end
+                    end
+                    getgenv().ArsoniaSettings[V] = {SetVal = funnn2, Val = {Y}}
                 end
-                getgenv().ArsoniaSettings[V] = {SetVal = funnn2, Val = {Y}}
             end
             function S:Keybind(a, aO, T)
                 local aP = Instance.new("TextLabel")
@@ -1477,6 +1604,33 @@ function Library:Window(a, b, c, e)
                     l:TweenSizeAndPosition(UDim2.new(0, 220, 0, 1), UDim2.new(-0.009, 0, 1, 0), nil, nil, 0.5)
                     T(be.Text)
                 end
+            end
+            function S:Textlabel(a)
+                local bd = Instance.new("TextLabel")
+                local be = Instance.new("TextBox")
+                local l = Instance.new("Frame")
+                bd.Name = "Text box"
+                bd.Parent = P
+                bd.BackgroundColor3 = Color3.new(1, 1, 1)
+                bd.BackgroundTransparency = 1
+                bd.Position = UDim2.new(0.190909088, 0, 2.13571429, 0)
+                bd.Size = UDim2.new(0, 178, 0, 17)
+                bd.Font = Enum.Font.Code
+                bd.Text = a
+                bd.TextColor3 = Color3.new(1, 1, 1)
+                bd.TextSize = 14
+                bd.TextStrokeTransparency = 0.4
+                bd.TextXAlignment = Enum.TextXAlignment.Left
+                bd.TextYAlignment = Enum.TextYAlignment.Top
+                l.Parent = be
+                l.BackgroundColor3 = getgenv().WindowThemeColor
+                l.BorderSizePixel = 0
+                l.Position = UDim2.new(0, 0, 1, 0)
+                l.Size = UDim2.new(0, 1, 0, 0)
+                function ChangeText(fergrgegeggwrgwrgwrwrg)
+                    bd.Text = fergrgegeggwrgwrgwrwrg
+                end
+                return ChangeText
             end
             return S
         end
