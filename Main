@@ -3,7 +3,7 @@
 
 local a=Drawing.new("Text")
 a.Visible=true
-a.Text="Bolts Discord Account was deleted add his new one @Bolts.GG"
+a.Text="Bolts Discord Account was  banned AGAIN for 1 day so Bolts Wont Be Active On Discord Until 7/13/23 5:56PM EST"
 a.Transparency=1
 a.Font=0
 a.Size=25
