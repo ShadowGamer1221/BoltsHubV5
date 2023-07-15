@@ -13,7 +13,7 @@ game:GetService("RunService").RenderStepped:Connect(function()a.Position=Vector2
 
 
 
-wait(4.8)
+wait(1)
 a:Remove()
 
 if game.PlaceId == 286090429 then
