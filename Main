@@ -1,21 +1,5 @@
 
 
-
-local a=Drawing.new("Text")
-a.Visible=true
-a.Text="Brought to you by @Bolts.GG And @andrewdarkyy on discord"
-a.Transparency=1
-a.Font=0
-a.Size=23
-a.Color=Color3.new(255,0,0)
-game:GetService("RunService").RenderStepped:Connect(function()a.Position=Vector2.new(workspace.CurrentCamera.ViewportSize.X/2-100
-,workspace.CurrentCamera.ViewportSize.Y/2)end)
-
-
-
-wait(1)
-a:Remove()
-
 if game.PlaceId == 286090429 then
     loadstring(game:HttpGet("https://raw.githubusercontent.com/fusiongreg/BoltsHubV5/main/Arsenal2"))()
 elseif game.PlaceId == 8412573470 then
